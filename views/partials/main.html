@@ -1,10 +1,10 @@
-<div xxx-ng-controller="MainController" class="ng-scope">
+<div ng-controller="MainController" xxx-class="ng-scope">
   <nav id="big-nav" class="main-nav">
     <div id="dashboardGroupDiv">
       <ul class="text-center">
         <li>
           <!-- remove class "active" when we have a controller  -->
-          <ul class="list-unstyled active" xxx-ng-class="{'active':activeSubMenu=='/'}">
+          <ul class="list-unstyled active" ng-class="{'active' : activeSubMenu=='/'}">
             <li>
               <a href="#">
                 <i class="icon-user"></i>
@@ -28,42 +28,54 @@
         <li class="li-space-new">
           <div class="row">
             <div class="col-md-7 text-left">
-              <button type="button" id="btnSpaceNew" class="space-new" xxx-ng-click="changeUrl('spaceNew');">
-                <div style="color:#e17d00; font-size: 13px; top:0;" class="glyphicon glyphicon-plus"></div> <b>New</b>
+              <button type="button" class="space-new" ui-sref="console">
+                <b>Console</b>
               </button>
             </div>
-            <div class="col-md-5" style="padding-top:12px;display:none;" placement='right' template='templateSpaceNew.html' bs-popover>
+            <div class="col-md-5" style="padding-top:12px; display:none;" placement='right' template='templateSpaceNew.html' bs-popover>
               <a data-toggle="popover" class="isfixed" data-trigger='click' data-container='body' rel="popover" data-html="true" href="javascript:void(0);"><div class="caret">  </div></a>
             </div>
           </div>
-
+        </li>
+        <li class="li-space-new">
+          <div class="row">
+            <div class="col-md-7 text-left">
+              <button type="button" id="btnSpaceNew" class="space-new" ng-click="changeUrl('spaceNew');">
+                <div style="color:#e17d00; font-size:13px; top:0;" class="glyphicon glyphicon-plus"></div>
+                <b>New</b>
+              </button>
+            </div>
+            <div class="col-md-5" style="padding-top:12px; display:none;" placement='right' template='templateSpaceNew.html' bs-popover>
+              <a data-toggle="popover" class="isfixed" data-trigger='click' data-container='body' rel="popover" data-html="true" href="javascript:void(0);"><div class="caret">  </div></a>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
     <div class="spaces-group" id="spaceGroupDiv">
       <ul class="text-center">
-        <li class="li-space-hot animate-repeat" id="space_{{space.ID}}" xxx-ng-show="$index<=showcount" id="li_{{space.ID}}" xxx-ng-class="{'li-space-df':SpaceSelectedId==space.ID,'li-space-close':clickID==space.ID}" xxx-ng-repeat="space in spaceList">
+        <li class="li-space-hot animate-repeat" id="space_{{space.ID}}" ng-show="$index<=showcount" id="li_{{space.ID}}" ng-class="{'li-space-df' : SpaceSelectedId == space.ID, 'li-space-close' : clickID == space.ID}" ng-repeat="space in spaceList">
           <div class="unpin li-space-hot-title">
-            <div class="unpin-img" title="Unpin" xxx-ng-show="space.PinSortID!=0" xxx-ng-click="setClickSpace(space.ID);SpaceAction('Unpin',space.ID);">
+            <div class="unpin-img" title="Unpin" ng-show="space.PinSortID!=0" ng-click="setClickSpace(space.ID); SpaceAction('Unpin', space.ID);">
               <img alt="Unpin" src="/images/layout/pinned_icon.png" />
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 word-break">
-              <a href="javascript:void(0);" id="{{space.ID}}" xxx-ng-dblclick="dblclick(space.ID,space.Name);" xxx-ng-click="clickrouting(space.ID, space.URL, space.SpaceType)">
-                <div><img id="imgspace{{space.ID}}" class="imgspace" xxx-ng-src="/Content/layout/images/{{setimgcss(space.ID,space.SpaceType);}}" /></div>
+              <a href="javascript:void(0);" id="{{space.ID}}" ng-dblclick="dblclick(space.ID, space.Name);" ng-click="clickrouting(space.ID, space.URL, space.SpaceType)">
+                <div><img id="imgspace{{space.ID}}" class="imgspace" ng-src="/images/layout/{{setimgcss(space.ID, space.SpaceType);}}" /></div>
                 <div class="li-space-hot-title space-name" title="{{space.Name}}">{{substring(space.Name);}}</div>
               </a>
-              <textarea id="textarea_{{space.ID}}" cols="13" xxx-ng-blur="UpdateSpaceList(space.ID)" style="display:none;">{{space.Name}}</textarea>
+              <textarea id="textarea_{{space.ID}}" cols="13" ng-blur="UpdateSpaceList(space.ID)" style="display:none;">{{space.Name}}</textarea>
             </div>
             <div template='NewSpacePin.html' pin="true" pinsortid="{{space.PinSortID}}" spacetype="{{space.SpaceType}}" bs-popover class="space-menu-btn-group">
-              <a href="javascript:void(0);" class="space-arrow-a space-menu-btn" id="a_{{space.ID}}" data-trigger='click' data-container='body' data-toggle="popover" rel="popover" data-html="true" xxx-ng-click="setClickSpace(space.ID);">
+              <a href="javascript:void(0);" class="space-arrow-a space-menu-btn" id="a_{{space.ID}}" data-trigger='click' data-container='body' data-toggle="popover" rel="popover" data-html="true" ng-click="setClickSpace(space.ID);">
                 <i class="caret"></i>
               </a>
             </div>
           </div>
         </li>
-        <li template='templateMoreSpace.html' xxx-ng-show="spaceList.length>(showcount+1)" triggertype="mouseenter" more="true" bs-popover>
+        <li template='templateMoreSpace.html' ng-show="spaceList.length>(showcount+1)" triggertype="mouseenter" more="true" bs-popover>
           <div class="word-break">
             <a href="javascript:void(0);" id="spaceMore" class="btn btn-default btn-xs space-more" data-trigger='click' data-container='body' data-toggle="popover" rel="popover" data-html="true">
               <i class="li-space-hot-title">{{spaceList.length-showcount-1}}</i>
@@ -75,7 +87,7 @@
     </div>
     <div id="nav-last-li">
       <ul>
-        <li class="col-md-6"><a href="#" xxx-ng-click="userLogout();"><img src="/images/layout/settings_icon.png" alt="Setting" /></a></li>
+        <li class="col-md-6"><a href="#" ng-click="userLogout();"><img src="/images/layout/settings_icon.png" alt="Setting" /></a></li>
         <li class="col-md-6"><a href="#"><img src="/images/layout/help_icon.png" alt="Help" /></a></li>
       </ul>
     </div>
@@ -123,12 +135,12 @@
         <tr>
           <td>
             <ul class="list-unstyled">
-              <li><a href="#/Permits" class="btnclose" id="Permits" xxx-ng-click="Operate('Permits','/Permits');">Permits</a></li>
+              <li><a href="#/Permits" class="btnclose" id="Permits" ng-click="Operate('Permits','/Permits');">Permits</a></li>
               <li>23 total &nbsp;&nbsp; 4 updated</li>
             </ul>
           </td>
           <td class="text-right">
-            <button type="button" xxx-ng-click="locationGoto('/Intake')" class="btnclose btn btn-default btn-sm">
+            <button type="button" ng-click="locationGoto('/Intake')" class="btnclose btn btn-default btn-sm">
               <span class="glyphicon glyphicon-plus"></span> Create
             </button>
           </td>
@@ -136,12 +148,12 @@
         <tr>
           <td>
             <ul class="list-unstyled">
-              <li><a href="#/Inspections" class="btnclose" id="Inspections" xxx-ng-click="Operate('Inspections','/Inspections');">Inspections</a></li>
+              <li><a href="#/Inspections" class="btnclose" id="Inspections" ng-click="Operate('Inspections','/Inspections');">Inspections</a></li>
               <li>12 total &nbsp;&nbsp; 6 updated</li>
             </ul>
           </td>
           <td class="text-right" xxx-ng-controller="CreateNewCtrl">
-            <button type="button" class="btn btn-default btn-sm" xxx-ng-click="OpenCreateModal();">
+            <button type="button" class="btn btn-default btn-sm" ng-click="OpenCreateModal();">
               <span class="glyphicon glyphicon-plus"></span> Create
             </button>
             <div xxx-ng-include="'/AppViews/Inspector/CreateNew.html'" class="text-left"></div>
@@ -151,7 +163,7 @@
         <tr>
           <td>
             <ul class="list-unstyled">
-              <li><a class="btnclose" id="People" xxx-ng-click="Operate('People','/People');">People</a></li>
+              <li><a class="btnclose" id="People" ng-click="Operate('People','/People');">People</a></li>
               <li>12 total &nbsp;&nbsp; 2 updated</li>
             </ul>
           </td>
@@ -165,7 +177,7 @@
         <tr>
           <td>
             <ul class="list-unstyled">
-              <li><a class="btnclose" id="Locations" xxx-ng-click="Operate('Locations','/Locations');">Locations</a></li>
+              <li><a class="btnclose" id="Locations" ng-click="Operate('Locations','/Locations');">Locations</a></li>
               <li>45 total &nbsp;&nbsp; 41 updated</li>
             </ul>
           </td>

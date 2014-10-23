@@ -23,14 +23,13 @@
     </div>
     <div class="time float-right">
       <div class="title">
-        12:34 PM
         {{dashboard.today | customDateFilter:'HH:mm a'}}
       </div>
       <span>PDT</span>
     </div>
     <div class="weather float-right">
-      <div class="title"><i class="icon-high-arrow"></i>&nbsp;80° &nbsp;&nbsp;&nbsp;<i class="icon-low-arrow"></i>&nbsp;52°</div>
-      <span>Fair</span>
+      <div class="title"><i class="icon-high-arrow"></i>&nbsp;{{dashboard.weather.high}}° &nbsp;&nbsp;&nbsp;<i class="icon-low-arrow"></i>&nbsp;{{dashboard.weather.low}}°</div>
+      <span>{{dashboard.weather.outlook}}</span>
     </div>
   </header>
   <div class="row">
@@ -59,8 +58,8 @@
           </div>
           <span loading show-model="dashboard.myTasks.loading" class="pull-right"></span>
         </header>
-        <div class="tasks row" ng-class="{'list-view':dashboard.myTasks.toggleView=='List'}">
-          <div ng-class="{'col-xs-6':dashboard.myTasks.toggleView=='Grid', 'col-md-12': dashboard.myTasks.toggleView=='List'}" ng-repeat="task in myTasks | orderBy:dashboard.myTasks.orderByValue | limitTo:dashboard.myTasks.limitTo">
+        <div class="tasks row" ng-class="{'list-view' : dashboard.myTasks.toggleView === 'List'}">
+          <div ng-class="{'col-xs-6' : dashboard.myTasks.toggleView === 'Grid', 'col-md-12' : dashboard.myTasks.toggleView ==='List'}" ng-repeat="task in myTasks | orderBy:dashboard.myTasks.orderByValue | limitTo:dashboard.myTasks.limitTo">
             <div class="task">
               <div class="title"><a href="#/PermitSummary/{{task.recordId.id}}" id="linkTask{{$index}}">{{task.recordId.customId}}</a></div>
               <div class="type display-ellipsis">

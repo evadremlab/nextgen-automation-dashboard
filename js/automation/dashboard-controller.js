@@ -8,11 +8,72 @@
   /**
    * @ngInject
    */
-  function controller($scope, $log, CONFIG) {
+  function controller($scope, $log) {
 
     // PRIVATE data
 
-    var vm = this;
+    var mockPermitResponse = {
+      "status": 200,
+      "result": [
+        {
+          "name": "New 3600 SF detached SFR with open concept, 4 bedrooms & 4 bathrooms, 3 car garage, finished basement, and 500 SF deck",
+          "id": "BPTDEV-DUB13-00000-00003",
+          "type": {
+            "module": "Permits",
+            "value": "Permits/Residential/New/NA",
+            "type": "Residential",
+            "category": "NA",
+            "text": "Residential New",
+            "group": "Permits",
+            "subType": "New",
+            "id": "Permits-Residential-New-NA"
+          },
+          "status": {
+            "value": "Expired",
+            "text": "Expired"
+          },
+          "description": "New 3600 SF detached SFR with open concept, 4 bedrooms & 4 bathrooms, 3 car garage, finished basement, and 500 SF deck",
+          "initiatedProduct": "AV360",
+          "module": "Permits",
+          "createdBy": "ADMIN",
+          "reportedChannel": {
+            "value": "Call Center",
+            "text": "Call Center"
+          },
+          "reportedDateFrom": "2013-03-18 00:00:00",
+          "statusDate": "2013-05-08 00:00:00",
+          "serviceProviderCode": "BPTDEV",
+          "totalJobCost": 0,
+          "closedDateFrom": "2013-05-08 00:00:00",
+          "undistributedCost": 0,
+          "customId": "PMT13-00001",
+          "jobValue": 890000,
+          "actualProductionUnit": 0,
+          "estimatedProductionUnit": 0,
+          "trackingId": 261800045,
+          "numberOfBuildings": 1,
+          "recordClass": "COMPLETE",
+          "closedByUser": "ADMIN",
+          "constructionType": {
+            "value": "101",
+            "text": "Single Family Houses Detached"
+          },
+          "openedDateFrom": "2013-03-18 00:00:00",
+          "housingUnits": 1,
+          "closedByDepartment": "BPTDEV/ADMIN/NA/NA/NA/NA/NA",
+          "value": "DUB13-00000-00003",
+          "totalFee": 590,
+          "totalPay": 590,
+          "balance": 0,
+          "booking": false,
+          "infraction": false,
+          "misdemeanor": false,
+          "offenseWitnessed": false,
+          "defendantSignature": false,
+          "publicOwned": false
+        }
+      ]
+    };
 
     var mockUserResponse = {
       "status": 200,
@@ -39,6 +100,7 @@
     };
 
     var mockUserSpacesResponse = {
+      "status": 200,
       "result": [
         {
           "ID": 6710,
@@ -484,33 +546,116 @@
       }
     };
 
+    var mockActivityList = [
+      {
+        type: 'address',
+        title: 'Address change',
+        description: '2633 Camino Ramon, San Ramon, CA, 94583',
+        permitId: 'BLD-12345',
+        date: '06/20/14 at 12:32 PM'
+      },
+      {
+        type: 'people',
+        title: 'Applicant updated email',
+        description: 'j.stevenson@urabuilder.com',
+        permitId: 'COM-00098',
+        date: '06/20/14 at 11:59 AM'
+      },
+      {
+        type: 'workflow',
+        title: 'New ad hoc workflow added',
+        description: 'Demolition Plan Review',
+        permitId: 'COM12-23861',
+        date: '06/20/14 at 11:00 AM'
+      },
+      {
+        type: 'comments',
+        title: 'Comments added',
+        description: 'Owner did not change minimum distributions',
+        permitId: 'PMT-00023',
+        date: '06/20/14 at 01:50 AM'
+      },
+      {
+        type: 'email',
+        title: 'Email sent to',
+        description: 'Owner, Architect',
+        permitId: 'COM-00123',
+        date: '06/20/14 at 12:00 PM'
+      },
+      {
+        type: 'locked',
+        title: 'Conditional lock applied',
+        description: 'Stop work order',
+        permitId: 'BLD-76294',
+        date: '06/20/14 at 11:59 AM'
+      },
+      {
+        type: 'address',
+        title: 'Address change',
+        description: '2633 Camino Ramon, San Ramon, CA, 94583',
+        permitId: 'BLD-12345',
+        date: '06/20/14 at 08:29 AM'
+      },
+      {
+        type: 'address',
+        title: 'Address change',
+        description: '2633 Camino Ramon, San Ramon, CA, 94583',
+        permitId: 'BLD-12345',
+        date: '06/20/14 at 11:59 AM'
+      },
+      {
+        type: 'address',
+        title: 'Address change',
+        description: '2633 Camino Ramon, San Ramon, CA, 94583',
+        permitId: 'BLD-12345',
+        date: '06/20/14 at 11:59 AM'
+      },
+      {
+        type: 'address',
+        title: 'Address change',
+        description: '2633 Camino Ramon, San Ramon, CA, 94583',
+        permitId: 'BLD-12345',
+        date: '06/20/14 at 11:59 AM'
+      },
+      {
+        type: 'address',
+        title: 'Address change',
+        description: '2633 Camino Ramon, San Ramon, CA, 94583',
+        permitId: 'BLD-12345',
+        date: '06/20/14 at 11:59 AM'
+      },
+      {
+        type: 'address',
+        title: 'Address change',
+        description: '2633 Camino Ramon, San Ramon, CA, 94583',
+        permitId: 'BLD-12345',
+        date: '06/20/14 at 11:59 AM'
+      }
+    ];
+
     // PUBLIC data
 
     $scope.dashboard = {
+      activity: {
+        limitTo: 9,
+        list: mockActivityList,
+        loadingMore: "Loading More..."
+        //toggleView: "Watch"
+      },
       currentUser: [],
-      today: new Date(),
       myTasks: {
-        toggleView: "Grid",
-        mockupDate: new Date(),
-        orderByValue: "assignedDate",
-        orderByText: "Date Assigned",
-        loadingMore: "Click for More",
         limitTo: 6,
-        minLength: 6,
-        maxLength: 10,
-        sortBy: [{
-          text: 'Date Assigned',
-          value: 'assignedDate'
-        },
-          {
-            text: 'Date Due',
-            value: 'dueDate'
-          },
-          {
-            text: 'Priority',
-            value: ''
-          }],
         loading: false,
+        loadingMore: "Click for More",
+        maxLength: 10,
+        minLength: 6,
+        orderByText: "Date Assigned",
+        orderByValue: "assignedDate",
+        sortBy: [
+          { text: 'Date Assigned', value: 'assignedDate' },
+          { text: 'Date Due', value: 'dueDate' },
+          { text: 'Priority', value: '' }
+        ],
         toggleLoading: function () {
           if ($scope.dashboard.myTasks.limitTo == 6) {
             $scope.dashboard.myTasks.limitTo = 10;
@@ -519,106 +664,91 @@
             $scope.dashboard.myTasks.limitTo = 6;
             $scope.dashboard.myTasks.loadingMore = "Click for More";
           }
-        }
+        },
+        toggleView: "Grid"
       },
-      activity: {
-        //toggleView: "Watch",
-        //Mockup data
-        list: [{
-          type: 'address',
-          title: 'Address change',
-          description: '2633 Camino Ramon, San Ramon, CA, 94583',
-          permitId: 'BLD-12345',
-          date: '06/20/14 at 12:32 PM'
-        }, {
-          type: 'people',
-          title: 'Applicant updated email',
-          description: 'j.stevenson@urabuilder.com',
-          permitId: 'COM-00098',
-          date: '06/20/14 at 11:59 AM'
-        }, {
-          type: 'workflow',
-          title: 'New ad hoc workflow added',
-          description: 'Demolition Plan Review',
-          permitId: 'COM12-23861',
-          date: '06/20/14 at 11:00 AM'
-        }, {
-          type: 'comments',
-          title: 'Comments added',
-          description: 'Owner did not change minimum distributions',
-          permitId: 'PMT-00023',
-          date: '06/20/14 at 01:50 AM'
-        }, {
-          type: 'email',
-          title: 'Email sent to',
-          description: 'Owner, Architect',
-          permitId: 'COM-00123',
-          date: '06/20/14 at 12:00 PM'
-        }, {
-          type: 'locked',
-          title: 'Conditional lock applied',
-          description: 'Stop work order',
-          permitId: 'BLD-76294',
-          date: '06/20/14 at 11:59 AM'
-        }, {
-          type: 'address',
-          title: 'Address change',
-          description: '2633 Camino Ramon, San Ramon, CA, 94583',
-          permitId: 'BLD-12345',
-          date: '06/20/14 at 08:29 AM'
-        }, {
-          type: 'address',
-          title: 'Address change',
-          description: '2633 Camino Ramon, San Ramon, CA, 94583',
-          permitId: 'BLD-12345',
-          date: '06/20/14 at 11:59 AM'
-        }, {
-          type: 'address',
-          title: 'Address change',
-          description: '2633 Camino Ramon, San Ramon, CA, 94583',
-          permitId: 'BLD-12345',
-          date: '06/20/14 at 11:59 AM'
-        }, {
-          type: 'address',
-          title: 'Address change',
-          description: '2633 Camino Ramon, San Ramon, CA, 94583',
-          permitId: 'BLD-12345',
-          date: '06/20/14 at 11:59 AM'
-        }, {
-          type: 'address',
-          title: 'Address change',
-          description: '2633 Camino Ramon, San Ramon, CA, 94583',
-          permitId: 'BLD-12345',
-          date: '06/20/14 at 11:59 AM'
-        }, {
-          type: 'address',
-          title: 'Address change',
-          description: '2633 Camino Ramon, San Ramon, CA, 94583',
-          permitId: 'BLD-12345',
-          date: '06/20/14 at 11:59 AM'
-        }],
-        limitTo: 9,
-        loadingMore: "Loading More..."
-      },
-      userSpaces: [],
       search: {
         text: ""
+      },
+      today: new Date(),
+      userSpaces: [],
+      weather: {
+        high: 80,
+        low: 52,
+        outlook: 'Fair'
       }
     };
+
+    // PUBLIC methods
 
     $scope.newSpaceLoading = false;
 
     $scope.getCurrentUser = function () {
+//      UserService.Init().then(function (d) {
+//        $scope.dashboard.currentUser = UserService.user;
+//      }, function (e) {
+//      });
+
       $scope.dashboard.currentUser = mockUserResponse.result;
     };
 
     $scope.getCurrentUser();
 
+//    setInterval(function () {
+//      $safeApply($scope, function () {
+//        $scope.dashboard.today = new Date();
+//      });
+//    }, 60000);
+
     $scope.myTasks = [];
 
     $scope.getMyTasks = function () {
-      $scope.myTasks = mockWorkflowTasksResponse.result;
-      $scope.dashboard.myTasks.showMore = $scope.myTasks.length > $scope.dashboard.myTasks.limitTo ? true : false;
+//      LoadingService.show();
+//      DashboardService.getMyWorkflowTasks("en", 0, 10).then(function (data) {
+//        if (data) {
+//          $scope.myTasks = data;
+//
+//          $scope.dashboard.myTasks.showMore = $scope.myTasks.length > $scope.dashboard.myTasks.limitTo ? true : false;
+//
+//          $.each($scope.myTasks, function (item, value) {
+//            permitSDK.get(value.recordId.id, function (data) {
+//              $safeApply($scope, function () {
+//                $scope.myTasks[item].permitType = data.type.text;
+//                $scope.myTasks[item].projectName = data.name;
+//              });
+//            });
+//          })
+//        };
+//
+//        LoadingService.hide();
+//
+//      }, function (error) {
+//        alertTipService.show("Danger", error.message);
+//        LoadingService.hide();
+//      });
+
+      var data = mockPermitResponse.result[0];
+      var myTasks = mockWorkflowTasksResponse.result;
+
+      _.each(myTasks, function(item, value) {
+        item.permitType = data.type.text;
+        item.projectName = data.name;
+        item.statusDate = data.statusDate;
+        item.assignedUser = { text: 'Dave' };
+      });
+
+//      $.each(myTasks, function (item, value) {
+//        permitSDK.get(value.recordId.id, function (data) {
+//          $safeApply($scope, function () {
+//            $scope.myTasks[item].permitType = data.type.text;
+//            $scope.myTasks[item].projectName = data.name;
+//          });
+//        });
+//      })
+
+      $scope.myTasks = myTasks;
+
+      $scope.dashboard.myTasks.showMore = myTasks.length > $scope.dashboard.myTasks.limitTo;
     };
 
     $scope.getMyTasks();
@@ -632,15 +762,79 @@
     $scope.getSpaceList = function () {
       $scope.newSpaceLoading = true;
       $scope.dashboard.userSpaces = [];
+
+//      SpaceService.GetUserCloseSpace(function (data) {
+//        if (data.result != 300) {
+//          $scope.dashboard.userSpaces = data.result;
+//          $.each($scope.dashboard.userSpaces, function (i, v) {
+//            v.CreatedDate = new Date(v.CreatedDate);
+//            var customCreatedDate = v.CreatedDate;
+//            var today = new Date();
+//            var yesterday = new Date();
+//            yesterday.setDate(today.getDate() - 1);
+//            if (customCreatedDate.getFullYear() == today.getFullYear() && customCreatedDate.getMonth() == today.getMonth()) {
+//              if (customCreatedDate.getDate() == today.getDate()) {
+//                customCreatedDate = "Today at " + $filter('date')(customCreatedDate, 'h:mm a');
+//              } else if (customCreatedDate.getDate() == yesterday.getDate()) {
+//                customCreatedDate = "Yesterday at " + $filter('date')(customCreatedDate, 'h:mm a');
+//              } else {
+//                customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
+//              }
+//            } else {
+//              customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
+//            }
+//
+//
+//            v.customCreatedDate = customCreatedDate;
+//
+//            // add by arno  set Image
+//            v.imgsrc = $scope.setImage(v.SpaceType);
+//          });
+//
+//          $scope.newSpaceLoading = false;
+//        }
+//        else {
+//          //$scope.getSpaceList();
+//        }
+//      });
+
       $scope.dashboard.userSpaces = mockClosedSpacesResponse.result;
       $scope.newSpaceLoading = false;
     };
 
     $scope.getSpaceList();
-    $scope.deleteUserSpace = function (space) {};
-    $scope.reopenSpace = function (space) {};
 
-    $scope.globalSearch = function () {};
+    $scope.deleteUserSpace = function (space) {
+//      SpaceService.deleteSpace(space.ID, function (data) {
+//        if (data.result == 200) {
+//          //console.log(angular.toJson(data));
+//          $scope.getSpaceList();
+//        }
+//      });
+    };
+
+    $scope.reopenSpace = function (space) {
+//      SpaceService.reopenUserSpace(space.ID, function (data) {
+//        if (data.result == "PinFull") {
+//          alertTipsController.show("Danger", "The Pinned WorkSpace are full: can't add new space!");
+//        }
+//        $rootScope.$broadcast("refreshSpace");
+//        if (data.result != "300") {
+//          $rootScope.$broadcast("clickSpace", data.result.ID, data.result.URL);
+//        }
+//      });
+    };
+
+//    $rootScope.$on("userSpaceClose", function () {
+//      $scope.getSpaceList();
+//    })
+
+    $scope.globalSearch = function () {
+//      if ($scope.dashboard.search.text) {
+//        searchService.keyword = $scope.dashboard.search.text;
+//        $location.path("/SpaceNew");
+//      }
+    };
 
     $scope.toggleActivityLimitTo = function () {
       if ($scope.dashboard.activity.limitTo == 9) {
@@ -652,7 +846,6 @@
       }
     };
 
-    // set image by arno
     $scope.setImage = function (spaceType) {
       spaceType = spaceType == null ? "null" : spaceType;
       var imgsrc = "untitled_icon_selected.png";
@@ -673,9 +866,6 @@
       }
       return imgsrc;
     };
-
-    // PUBLIC methods
-
 
     // CONSTRUCTOR
 
