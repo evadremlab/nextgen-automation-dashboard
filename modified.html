@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" dir="ltr" id="ng-app" ng-app="accela.automation" ng-strict-di="" xmlns:ng="http://angularjs.org">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="IE=EmulateIE8" http-equiv="X-UA-Compatible">
+
+  <!-- remove for production -->
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
+
+  <title>NextGen Automation Prototype</title>
+
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/favicon.ico">
+  <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico">
+
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
+  <!-- endbower -->
+
+  <!--<link rel="stylesheet" href="styles/main.css" />-->
+  <link rel="stylesheet" href="styles/site.css" />
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/permits-solution.css" />
+
+  <script type="text/javascript" src="js/vendor/modernizr.custom.js"></script>
+
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="js/core/angular-ui-ieshiv.js"></script>
+  <script type="text/javascript" src="js/vendor/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body ng-cloak ng-controller="AutomationController as app" class="aa-body">
+  <header class="navbar" id="header">
+    <div class="container">
+      <div class=" navbar-default">
+        <div class="navbar-header">
+          <h1><a class="navbar-brand" href="#" xxx-ng-bind="Language.Label.Header_Brand">Language.Label.Header_Brand</a></h1>
+        </div>
+        <div class="collapse navbar-collapse">
+          <!--@Html.Partial("GlobalSearch")-->
+          <ul class="nav navbar-nav navbar-right user-nav visible-lg">
+            <li class="dropdown">
+              <!--@Html.Partial("CurrentUser")-->
+              <span xxx-ng-bind="Language.Label.Header_Hello +','">Language.Label.Header_Hello ???</span>
+              <a class="dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                loginId
+                <i class="glyphicon glyphicon-chevron-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>logout link
+                  <!--@Html.ActionLink("{{Language.Label.Logout}}", "Logout", "Account")-->
+                </li>
+              </ul>
+              <!-- end: CurrentUser -->
+            </li>
+            <li class="header-date">
+              <span></span>
+              <a href="javascript:;"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- CONTINUE HERE -->
+  <div ui-view=""><!-- this format is required for IE8 -->
+    <!-- content here -->
+  </div>
+
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+  <script src="bower_components/stacktrace-js/stacktrace.js"></script>
+  <script src="bower_components/sprintf/src/sprintf.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <!-- endbower -->
+
+  <script src="js/core/global.js"></script>
+  <script src="js/config.js"></script>
+
+  <!-- define Angular 'accela.core' module -->
+  <script src="js/core/accela.js"></script>
+  <script src="js/core/stacktrace-wrapper.js"></script>
+  <script src="js/core/underscore-wrapper.js"></script>
+  <script src="js/core/directives/ensure-unique.js"></script>
+  <script src="js/core/directives/focus.js"></script>
+  <script src="js/core/services/data-service.js"></script>
+  <script src="js/core/services/http-interceptor.js"></script>
+  <script src="js/core/services/logging-service.js"></script>
+  <script src="js/core/services/modal-dialog-service.js"></script>
+
+  <!-- define Accela.Entity classes -->
+  <script src="js/core/entities/portlet.js"></script>
+  <script src="js/core/entities/console-page.js"></script>
+  <script src="js/core/entities/user-console.js"></script>
+
+  <!-- define Angular 'accela.automation' module -->
+  <script src="js/automation/app.js"></script>
+  <script src="js/automation/automation-controller.js"></script>
+
+  <script src="js/dashboard/dashboard-controller.js"></script>
+
+  <script src="js/console/controllers/console-controller.js"></script>
+  <script src="js/console/controllers/console-page-controller.js"></script>
+  <script src="js/console/controllers/add-portlet-controller.js"></script>
+  <script src="js/console/directives/portlet-iframe.js"></script>
+  <script src="js/console/models/console-model.js"></script>
+  <script src="js/console/services/console-manager.js"></script>
+</body>
+</html>

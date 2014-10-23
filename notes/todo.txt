@@ -1,0 +1,73 @@
+ng-app="accela-automation"
+
+DashboardController
+C:\Users\dbalmer\Documents\GitHub\Role-Based-UI\Accela.RBUI\AppViews\Common\dashboard.html
+
+using some embedded templates eg:
+  <script id="templateSpaceNew.html" type="text/ng-template">
+</script>
+
+has a hidden div called "AlertMsg" that appears in the top left
+
+step 1 identify resources
+  css needed for:
+    header ("proximia-nova" font);
+      http://permits.cloudapp.net/Content/Site.css
+      http://permits.cloudapp.net/Content/permits-solution.css
+    sidenav
+      http://permits.cloudapp.net/content/layout/images
+      http://permits.cloudapp.net/Content/layout/layout.css
+    Current Tasks
+      http://permits.cloudapp.net/Content/permits-solution.css
+    Recent Activity
+    Recently Closed Spaces
+    modal dialogs
+      http://permits.cloudapp.net/Content/Site.css
+step 2 create WebStorm app without .NET dependencies
+step 3 clone dashboard using mock data
+
+/js/core				<-- contains components shared between AA and ACA
+	logging-service.js (DONE)
+
+/js/core/entities/			<-- contains data models shared between AA and ACA
+/js/automation
+	app.js (DONE)
+	config.js (DONE)
+
+also need to share UI layout
+
+
+keep what I like from Permit Solution:
+
+  javascript namespace
+    C:\Users\dbalmer\Documents\GitHub\Role-Based-UI\Accela.RBUI\Scripts\SDK\core\global.js (DONE)
+  javascript modules (ie: "Accela.module("foo", {}); // but use revealing module pattern
+    eg: C:\Users\dbalmer\Documents\GitHub\Role-Based-UI\Accela.RBUI\Scripts\SDK\PermitSDK\address.js
+
+
+Core
+  interval refresh
+  logging (DONE)
+  error handling (DONE)
+  modal dialogs - for messaging and forms (DONE)
+AutomationController
+  notifications
+  maps
+  New
+DashboardController
+    spaces
+    "n more" popover
+    help link
+    settings link
+ConsoleController
+  CurrentTasksController
+    sort
+    search (is this part of Current Tasks?)
+    switch view (grid/list)
+    click for more/less
+  RecentActivityController
+    loading more/less
+  RecentlyClosedSpacesController
+    close
+
+each should be an independent component

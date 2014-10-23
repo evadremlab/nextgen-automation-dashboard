@@ -1,0 +1,117 @@
+{
+  "status": {
+    "code": "OK",
+    "comment": "displayed as sidenav tiles",
+    "from": "http://permits.cloudapp.net/SolutionAdmin/GetUserSpaces?userID=ADMIN&time=0.28574609851724975"
+  },
+  "content" : [
+    {
+      "ID": 6417,
+      "Name": "Untitled Space(1)",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T20:36:24.0114915",
+      "URL": "/SpaceNew",
+      "SortID": 28,
+      "PinSortID": 0,
+      "Status": "open",
+      "UpdateDate": "2014-10-20T20:36:24.0114915",
+      "SpaceType": "new"
+    },
+    {
+      "ID": 6416,
+      "Name": "Untitled Space",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T20:19:50.6570632",
+      "URL": "/SpaceNew",
+      "SortID": 1,
+      "PinSortID": 0,
+      "Status": "open",
+      "UpdateDate": "2014-10-20T20:19:50.6570632",
+      "SpaceType": "new"
+    },
+    {
+      "ID": 6411,
+      "Name": "New Application(7)",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T18:15:15.263441",
+      "URL": "/Intake",
+      "SortID": 25,
+      "PinSortID": 0,
+      "Status": "open",
+      "UpdateDate": "2014-10-20T18:15:15.263441",
+      "SpaceType": "new"
+    },
+    {
+      "ID": 6410,
+      "Name": "Gobal Search",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T18:15:03.073953",
+      "URL": "/SpaceNew",
+      "SortID": 24,
+      "PinSortID": 0,
+      "Status": "open",
+      "UpdateDate": "2014-10-20T18:15:03.073953",
+      "SpaceType": "Search"
+    },
+    {
+      "ID": 6409,
+      "Name": "New Application(7)",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T18:09:56.382953",
+      "URL": "/Intake",
+      "SortID": 23,
+      "PinSortID": 0,
+      "Status": "open",
+      "UpdateDate": "2014-10-20T18:09:56.382953",
+      "SpaceType": "new"
+    },
+    {
+      "ID": 6405,
+      "Name": "New Application(6)",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T17:57:12.1934427",
+      "URL": "/Intake",
+      "SortID": 22,
+      "PinSortID": 0,
+      "Status": "open",
+      "UpdateDate": "2014-10-20T17:57:12.1934427",
+      "SpaceType": "new"
+    },
+    {
+      "ID": 6403,
+      "Name": "Gobal Search",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T17:51:54.9555617",
+      "URL": "/SpaceNew",
+      "SortID": 22,
+      "PinSortID": 0,
+      "Status": "open",
+      "UpdateDate": "2014-10-20T17:51:54.9555617",
+      "SpaceType": "Search"
+    },
+    {
+      "ID": 6400,
+      "Name": "14EST-000009",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T17:48:42.159953",
+      "URL": "/FinalizePermits/BPTDEV-14EST-00000-00592",
+      "SortID": 21,
+      "PinSortID": 0,
+      "Status": "open",
+      "UpdateDate": "2014-10-20T17:48:42.159953",
+      "SpaceType": "Permits"
+    },
+    {
+      "ID": 6297,
+      "Name": "14EST-003601",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-17T17:32:32.9741088",
+      "URL": "/FinalizePermits/BPTDEV-14EST-00000-03634",
+      "SortID": 4,
+      "PinSortID": 0,
+      "Status": "open",
+      "UpdateDate": "2014-10-17T17:32:32.9741088",
+      "SpaceType": "Permits"
+    }
+  ]
+}

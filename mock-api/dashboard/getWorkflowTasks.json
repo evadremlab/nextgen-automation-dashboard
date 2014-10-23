@@ -1,0 +1,223 @@
+{
+  "status": {
+    "code": "OK",
+    "comment": "displayed as ???",
+    "from": "https://apps-apis.dev.accela.com/v4/workflowTasks/mine?lang=en&offset=0&limit=10"
+  },
+  "content": [
+    {
+      "dueDate": "2013-04-02 00:00:00",
+      "comment": "",
+      "serviceProviderCode": "BPTDEV",
+      "processCode": "PMT_RES",
+      "isCompleted": "N",
+      "isActive": "Y",
+      "description": "Electrical Review",
+      "assignedDate": "2013-03-28 00:00:00",
+      "dispositionNote": "",
+      "id": "14-3",
+      "recordId": {
+        "id": "BPTDEV-DUB13-00000-00003",
+        "customId": "PMT13-00001",
+        "trackingId": 261800045,
+        "serviceProviderCode": "BPTDEV",
+        "value": "DUB13-00000-00003"
+      },
+      "daysDue": 5
+    },
+    {
+      "dueDate": "2013-03-29 00:00:00",
+      "comment": "",
+      "serviceProviderCode": "BPTDEV",
+      "processCode": "PMT_COMM",
+      "isCompleted": "N",
+      "isActive": "Y",
+      "description": "Application Submittal",
+      "assignedDate": "2013-03-28 00:00:00",
+      "dispositionNote": "",
+      "id": "1-2",
+      "recordId": {
+        "id": "BPTDEV-DUB13-00000-00004",
+        "customId": "PMT13-00002",
+        "trackingId": 212013792,
+        "serviceProviderCode": "BPTDEV",
+        "value": "DUB13-00000-00004"
+      },
+      "daysDue": 1
+    },
+    {
+      "dueDate": "2013-04-14 00:00:00",
+      "comment": "",
+      "serviceProviderCode": "BPTDEV",
+      "processCode": "NONE",
+      "isCompleted": "N",
+      "isActive": "Y",
+      "description": "No Workflow Required",
+      "assignedDate": "2013-04-14 00:00:00",
+      "dispositionNote": "",
+      "id": "1-12",
+      "recordId": {
+        "id": "BPTDEV-DUB13-00000-0001F",
+        "customId": "PLN13-00001",
+        "trackingId": 201978183,
+        "serviceProviderCode": "BPTDEV",
+        "value": "DUB13-00000-0001F"
+      },
+      "daysDue": 0
+    },
+    {
+      "dueDate": "2013-04-15 00:00:00",
+      "comment": "",
+      "serviceProviderCode": "BPTDEV",
+      "processCode": "PMT_GRADING",
+      "isCompleted": "N",
+      "isActive": "Y",
+      "description": "Application Submittal",
+      "assignedDate": "2013-04-14 00:00:00",
+      "dispositionNote": "",
+      "id": "1-12682",
+      "recordId": {
+        "id": "BPTDEV-DUB13-00000-0001E",
+        "customId": "PMT13-00009",
+        "trackingId": 214454019,
+        "serviceProviderCode": "BPTDEV",
+        "value": "DUB13-00000-0001E"
+      },
+      "daysDue": 1
+    },
+    {
+      "dueDate": "2013-05-12 00:00:00",
+      "comment": "",
+      "serviceProviderCode": "BPTDEV",
+      "processCode": "PMT_COMM",
+      "isCompleted": "N",
+      "isActive": "Y",
+      "description": "Public Works Review",
+      "assignedDate": "2013-05-07 00:00:00",
+      "dispositionNote": "",
+      "id": "5-2",
+      "recordId": {
+        "id": "BPTDEV-DUB13-00000-00006",
+        "customId": "PMT13-00003",
+        "trackingId": 216696723,
+        "serviceProviderCode": "BPTDEV",
+        "value": "DUB13-00000-00006"
+      },
+      "daysDue": 5
+    },
+    {
+      "dueDate": "2013-05-12 00:00:00",
+      "comment": "",
+      "serviceProviderCode": "BPTDEV",
+      "processCode": "PMT_COMM",
+      "isCompleted": "N",
+      "isActive": "Y",
+      "description": "Building Review",
+      "assignedDate": "2013-05-07 00:00:00",
+      "dispositionNote": "",
+      "id": "2-2",
+      "recordId": {
+        "id": "BPTDEV-DUB13-00000-00006",
+        "customId": "PMT13-00003",
+        "trackingId": 216696723,
+        "serviceProviderCode": "BPTDEV",
+        "value": "DUB13-00000-00006"
+      },
+      "daysDue": 5
+    },
+    {
+      "dueDate": "2013-05-12 00:00:00",
+      "comment": "",
+      "serviceProviderCode": "BPTDEV",
+      "processCode": "PMT_COMM",
+      "isCompleted": "N",
+      "isActive": "Y",
+      "description": "Fire Review",
+      "assignedDate": "2013-05-07 00:00:00",
+      "dispositionNote": "",
+      "id": "3-2",
+      "recordId": {
+        "id": "BPTDEV-DUB13-00000-00006",
+        "customId": "PMT13-00003",
+        "trackingId": 216696723,
+        "serviceProviderCode": "BPTDEV",
+        "value": "DUB13-00000-00006"
+      },
+      "daysDue": 5
+    },
+    {
+      "dueDate": "2013-05-12 00:00:00",
+      "comment": "",
+      "serviceProviderCode": "BPTDEV",
+      "processCode": "PMT_COMM",
+      "isCompleted": "N",
+      "isActive": "Y",
+      "description": "Planning Review",
+      "assignedDate": "2013-05-07 00:00:00",
+      "dispositionNote": "",
+      "id": "4-2",
+      "recordId": {
+        "id": "BPTDEV-DUB13-00000-00006",
+        "customId": "PMT13-00003",
+        "trackingId": 216696723,
+        "serviceProviderCode": "BPTDEV",
+        "value": "DUB13-00000-00006"
+      },
+      "daysDue": 5
+    },
+    {
+      "dueDate": "2013-04-02 00:00:00",
+      "comment": "",
+      "serviceProviderCode": "BPTDEV",
+      "processCode": "PMT_RES",
+      "isCompleted": "N",
+      "isActive": "Y",
+      "description": "Building Review",
+      "assignedDate": "2013-05-08 11:27:57",
+      "dispositionNote": "",
+      "id": "13-3",
+      "recordId": {
+        "id": "BPTDEV-DUB13-00000-00003",
+        "customId": "PMT13-00001",
+        "trackingId": 261800045,
+        "serviceProviderCode": "BPTDEV",
+        "value": "DUB13-00000-00003"
+      },
+      "assignedUser": {
+        "value": "BPTDAILY",
+        "text": "Daily User"
+      },
+      "daysDue": 5
+    },
+    {
+      "dueDate": "2013-04-02 00:00:00",
+      "comment": "",
+      "serviceProviderCode": "BPTDEV",
+      "processCode": "PMT_RES",
+      "isCompleted": "N",
+      "isActive": "Y",
+      "description": "Zoning Review",
+      "assignedDate": "2013-05-08 11:28:51",
+      "dispositionNote": "",
+      "id": "18-3",
+      "recordId": {
+        "id": "BPTDEV-DUB13-00000-00003",
+        "customId": "PMT13-00001",
+        "trackingId": 261800045,
+        "serviceProviderCode": "BPTDEV",
+        "value": "DUB13-00000-00003"
+      },
+      "assignedUser": {
+        "value": "BPTDAILY",
+        "text": "Daily User"
+      },
+      "daysDue": 5
+    }
+  ],
+  "page": {
+    "offset": 0,
+    "total": 12,
+    "limit": 10,
+    "hasmore": true
+  }
+}

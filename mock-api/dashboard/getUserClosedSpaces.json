@@ -1,0 +1,117 @@
+{
+  "status": {
+    "code": "OK",
+    "comment": "displayed as Recently Closed Spaces",
+    "from": "http://permits.cloudapp.net/SolutionAdmin/GetUserSpaces?userID=ADMIN&time=0.03847427728304653"
+  },
+  "content": [
+    {
+      "ID": 6412,
+      "Name": "Permits(2)",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T18:16:33.1183077",
+      "URL": "/Permits",
+      "SortID": 26,
+      "PinSortID": 0,
+      "Status": "close",
+      "UpdateDate": "2014-10-20T18:17:06.1323077",
+      "SpaceType": "Permits"
+    },
+    {
+      "ID": 6329,
+      "Name": "Untitled Space",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T05:47:35.6236382",
+      "URL": "/SpaceNew",
+      "SortID": 315,
+      "PinSortID": 0,
+      "Status": "close",
+      "UpdateDate": "2014-10-20T05:48:04.9738787",
+      "SpaceType": "new"
+    },
+    {
+      "ID": 6321,
+      "Name": "APITestName_20141020015651",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-20T01:50:53.6080642",
+      "URL": "/FinalizePermits/BPTDEV-14EST-00000-03699",
+      "SortID": 308,
+      "PinSortID": 0,
+      "Status": "close",
+      "UpdateDate": "2014-10-20T01:50:53.6080642",
+      "SpaceType": "Permits"
+    },
+    {
+      "ID": 6124,
+      "Name": "New Application(4)",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-14T16:25:57.0904021",
+      "URL": "/Intake",
+      "SortID": 331,
+      "PinSortID": 0,
+      "Status": "close",
+      "UpdateDate": "2014-10-14T08:37:50.0643593",
+      "SpaceType": "new"
+    },
+    {
+      "ID": 6100,
+      "Name": "APITestName_20141014015615",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-14T01:48:22.6983192",
+      "URL": "/SpaceNew",
+      "SortID": 312,
+      "PinSortID": 0,
+      "Status": "close",
+      "UpdateDate": "2014-10-14T01:48:22.6983192",
+      "SpaceType": "new"
+    },
+    {
+      "ID": 6085,
+      "Name": "14EST-003453",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-13T16:54:59.4934147",
+      "URL": "/FinalizePermits/BPTDEV-14EST-00000-03486",
+      "SortID": 318,
+      "PinSortID": 0,
+      "Status": "close",
+      "UpdateDate": "2014-10-13T09:40:59.7284883",
+      "SpaceType": "Permits"
+    },
+    {
+      "ID": 6086,
+      "Name": "14EST-003452",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-13T17:13:35.7637718",
+      "URL": "/FinalizePermits/BPTDEV-14EST-00000-03485",
+      "SortID": 319,
+      "PinSortID": 0,
+      "Status": "close",
+      "UpdateDate": "2014-10-13T09:40:55.471944",
+      "SpaceType": "Permits"
+    },
+    {
+      "ID": 6087,
+      "Name": "PMT14-00988",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-13T17:16:28.1321745",
+      "URL": "/PermitSummary/BPTDEV-DUB14-00000-0017G",
+      "SortID": 320,
+      "PinSortID": 0,
+      "Status": "close",
+      "UpdateDate": "2014-10-13T09:40:52.6410343",
+      "SpaceType": "submitPermits"
+    },
+    {
+      "ID": 6053,
+      "Name": "PMT14-00058",
+      "UserID": "ADMIN",
+      "CreatedDate": "2014-10-13T09:24:59.4117963",
+      "URL": "/PermitSummary/BPTDEV-DUB14-00000-0004N",
+      "SortID": 301,
+      "PinSortID": 0,
+      "Status": "close",
+      "UpdateDate": "2014-10-13T09:24:59.4117963",
+      "SpaceType": "submitPermits"
+    }
+  ]
+}

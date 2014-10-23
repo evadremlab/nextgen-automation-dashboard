@@ -1,0 +1,65 @@
+{
+  "status": {
+    "code": "OK",
+    "comment": "https://apps-apis.dev.accela.com/v4/records/BPTDEV-DUB13-00000-00003"
+  },
+  "result": [
+    {
+      "name": "New 3600 SF detached SFR with open concept, 4 bedrooms & 4 bathrooms, 3 car garage, finished basement, and 500 SF deck",
+      "id": "BPTDEV-DUB13-00000-00003",
+      "type": {
+        "module": "Permits",
+        "value": "Permits/Residential/New/NA",
+        "type": "Residential",
+        "category": "NA",
+        "text": "Residential New",
+        "group": "Permits",
+        "subType": "New",
+        "id": "Permits-Residential-New-NA"
+      },
+      "status": {
+        "value": "Expired",
+        "text": "Expired"
+      },
+      "description": "New 3600 SF detached SFR with open concept, 4 bedrooms & 4 bathrooms, 3 car garage, finished basement, and 500 SF deck",
+      "initiatedProduct": "AV360",
+      "module": "Permits",
+      "createdBy": "ADMIN",
+      "reportedChannel": {
+        "value": "Call Center",
+        "text": "Call Center"
+      },
+      "reportedDateFrom": "2013-03-18 00:00:00",
+      "statusDate": "2013-05-08 00:00:00",
+      "serviceProviderCode": "BPTDEV",
+      "totalJobCost": 0,
+      "closedDateFrom": "2013-05-08 00:00:00",
+      "undistributedCost": 0,
+      "customId": "PMT13-00001",
+      "jobValue": 890000,
+      "actualProductionUnit": 0,
+      "estimatedProductionUnit": 0,
+      "trackingId": 261800045,
+      "numberOfBuildings": 1,
+      "recordClass": "COMPLETE",
+      "closedByUser": "ADMIN",
+      "constructionType": {
+        "value": "101",
+        "text": "Single Family Houses Detached"
+      },
+      "openedDateFrom": "2013-03-18 00:00:00",
+      "housingUnits": 1,
+      "closedByDepartment": "BPTDEV/ADMIN/NA/NA/NA/NA/NA",
+      "value": "DUB13-00000-00003",
+      "totalFee": 590,
+      "totalPay": 590,
+      "balance": 0,
+      "booking": false,
+      "infraction": false,
+      "misdemeanor": false,
+      "offenseWitnessed": false,
+      "defendantSignature": false,
+      "publicOwned": false
+    }
+  ]
+}

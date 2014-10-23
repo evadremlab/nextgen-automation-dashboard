@@ -1,0 +1,233 @@
+﻿/*------------------------------------------------------------------
+
+[Responsive Stylesheet]
+
+Project:	Permit Solution
+Version:	1.0
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[Max Width: 979px]
+*/
+@media (max-width: 979px) {
+}
+/* Extra small devices (phones, up to 480px) */
+/* No media query since this is the default in Bootstrap */
+@media (max-width : 767px) {
+    .parent-click-collapse {
+        position: relative;
+    }
+
+    .click-collapse {
+        position: absolute;
+        width: 100%;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        display: block;
+    }
+
+    .widget {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    #save-drafts .drafts dt {
+        float: left;
+        width: 160px;
+        overflow: hidden;
+        clear: left;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    #save-drafts .drafts dd {
+        margin-left: 180px;
+        height: 130px;
+    }
+
+    .item-row {
+        display: block;
+    }
+
+        .item-row:before,
+        .item-row:after {
+            content: " ";
+            /* 1 */
+            display: table;
+            /* 2 */
+        }
+
+        .item-row:after {
+            clear: both;
+        }
+
+        .item-row .item-label {
+            display: block;
+            width: 100%;
+            margin-bottom: 1.5em;
+        }
+
+        .item-row .item-content {
+            display: block;
+            width: 100%;
+        }
+
+
+    #btn-toggle {
+        display: none;
+    }
+
+    .bs-footer {
+        width: 80%;
+    }
+}
+
+@media(max-width:768px) {
+    .second-nav, .menu-right, .menu-left {
+        width: 202px;
+    }
+
+    .li-action button {
+        width: 182px;
+    }
+
+    .main-content {
+        margin-left: 202px;
+    }
+
+    .main-form {
+        margin-left: 0px;
+    }
+
+    .single-form {
+        margin-left: 0px;
+    }
+
+    section.activity-watch {
+        margin-left: 0px;
+    }
+    .record-section-left{
+        margin-right:20px !important;
+    }
+    .record-section-asitBar{
+        margin-right:20px !important;
+    }
+    .record-footer, .documemt-foot {
+        width: 516px !important;
+        margin-left: 252px !important;
+    }
+
+    .summary-items {
+        margin: 0 15px 0 10px;
+    }
+
+    .intake-footer {
+        width: 495px !important;
+    }
+
+    .default-sections .lists {
+        margin-right: 5px !important;
+        margin-bottom: 20px;
+    }
+
+    .default-sections .assignments, .default-sections .recent {
+        margin-left: 20px !important;
+        margin-right: 5px;
+    }
+
+    section.search-bar {
+        padding-right: 5px;
+        padding-left: 20px;
+    }
+
+    .div-people-section {
+         padding-left: 0px !important; 
+         padding-right: 0px !important
+    }
+
+    .view-file-model .full-screen .content{
+        width:620px !important;
+    }
+
+    .view-file-model .content .view-img .file-img{
+        width: 400px !important;
+        min-height: 400px !important;
+        max-height: 400px !important;
+    }
+    .fee-margin-top-40{
+        margin-top:40px;
+    }
+    
+    .AdvanceMore-icon {
+        margin-left: 4px !important;
+    }
+}
+
+@media(max-width:1200px) {
+    .page-content {
+        width: 892px;
+    }
+
+    .content-body {
+        border-right:none;
+    }
+
+    .dashboard-list-item > .col-ss-3 {
+        padding: 0px;
+        width: 15%;
+    }
+
+    .record-footer, .documemt-foot {
+        width: 651px;
+    }
+
+    .intake-footer {
+        width: 683px;
+    }
+
+    .document-delete {
+        right:5px !important;
+    }
+    
+    #spaceNew .advancedsearchresults {
+        padding: 0px 20px 0px 40px;
+    }
+    .AdvanceMore-icon {
+        margin-left: 8px;
+    }
+    .GridTemplate_v3_ellipsis{
+        white-space: normal;
+    }
+    .AdvanedList_body th {
+        padding: 8px 2px !important;
+    }
+    .AdvanedList_body td {
+        padding: 8px 4px !important;
+    }
+}
+
+/*------------------------------------------------------------------
+[Max Width: 480px]
+*/
+@media (max-width: 480px) {
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 1024px) {
+    /*Accela Form*/
+
+    .accela-form .col-xs-1:not(:last-child), .accela-form .col-sm-1:not(:last-child), .accela-form .col-md-1:not(:last-child), .accela-form .col-lg-1:not(:last-child), .accela-form .col-xs-2:not(:last-child), .accela-form .col-sm-2:not(:last-child), .accela-form .col-md-2:not(:last-child), .accela-form .col-lg-2:not(:last-child), .accela-form .col-xs-3:not(:last-child), .accela-form .col-sm-3:not(:last-child), .accela-form .col-md-3:not(:last-child), .accela-form .col-lg-3:not(:last-child), .accela-form .col-xs-4:not(:last-child), .accela-form .col-sm-4:not(:last-child), .accela-form .col-md-4:not(:last-child), .accela-form .col-lg-4:not(:last-child), .accela-form .col-xs-5:not(:last-child), .accela-form .col-sm-5:not(:last-child), .accela-form .col-md-5:not(:last-child), .accela-form .col-lg-5:not(:last-child), .accela-form .col-xs-6:not(:last-child), .accela-form .col-sm-6:not(:last-child), .accela-form .col-md-6:not(:last-child), .accela-form .col-lg-6:not(:last-child), .accela-form .col-xs-7:not(:last-child), .accela-form .col-sm-7:not(:last-child), .accela-form .col-md-7:not(:last-child), .accela-form .col-lg-7:not(:last-child), .accela-form .col-xs-8:not(:last-child), .accela-form .col-sm-8:not(:last-child), .accela-form .col-md-8:not(:last-child), .accela-form .col-lg-8:not(:last-child), .accela-form .col-xs-9:not(:last-child), .accela-form .col-sm-9:not(:last-child), .accela-form .col-md-9:not(:last-child), .accela-form .col-lg-9:not(:last-child), .accela-form .col-xs-10:not(:last-child), .accela-form .col-sm-10:not(:last-child), .accela-form .col-md-10:not(:last-child), .accela-form .col-lg-10:not(:last-child), .accela-form .col-xs-11:not(:last-child), .accela-form .col-sm-11:not(:last-child), .accela-form .col-md-11:not(:last-child), .accela-form .col-lg-11:not(:last-child) {
+        padding-right: 5px;
+    }
+
+    .accela-form .col-xs-1:not(:first-child), .accela-form .col-sm-1:not(:first-child), .accela-form .col-md-1:not(:first-child), .accela-form .col-lg-1:not(:first-child), .accela-form .col-xs-2:not(:first-child), .accela-form .col-sm-2:not(:first-child), .accela-form .col-md-2:not(:first-child), .accela-form .col-lg-2:not(:first-child), .accela-form .col-xs-3:not(:first-child), .accela-form .col-sm-3:not(:first-child), .accela-form .col-md-3:not(:first-child), .accela-form .col-lg-3:not(:first-child), .accela-form .col-xs-4:not(:first-child), .accela-form .col-sm-4:not(:first-child), .accela-form .col-md-4:not(:first-child), .accela-form .col-lg-4:not(:first-child), .accela-form .col-xs-5:not(:first-child), .accela-form .col-sm-5:not(:first-child), .accela-form .col-md-5:not(:first-child), .accela-form .col-lg-5:not(:first-child), .accela-form .col-xs-6:not(:first-child), .accela-form .col-sm-6:not(:first-child), .accela-form .col-md-6:not(:first-child), .accela-form .col-lg-6:not(:first-child), .accela-form .col-xs-7:not(:first-child), .accela-form .col-sm-7:not(:first-child), .accela-form .col-md-7:not(:first-child), .accela-form .col-lg-7:not(:first-child), .accela-form .col-xs-8:not(:first-child), .accela-form .col-sm-8:not(:first-child), .accela-form .col-md-8:not(:first-child), .accela-form .col-lg-8:not(:first-child), .accela-form .col-xs-9:not(:first-child), .accela-form .col-sm-9:not(:first-child), .accela-form .col-md-9:not(:first-child), .accela-form .col-lg-9:not(:first-child), .accela-form .col-xs-10:not(:first-child), .accela-form .col-sm-10:not(:first-child), .accela-form .col-md-10:not(:first-child), .accela-form .col-lg-10:not(:first-child), .accela-form .col-xs-11:not(:first-child), .accela-form .col-sm-11:not(:first-child), .accela-form .col-md-11:not(:first-child), .accela-form .col-lg-11:not(:first-child) {
+        padding-left: 5px;
+    }
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
