@@ -1,0 +1,22 @@
+<form class="navbar-form navbar-right" name="formsearch" role="search">
+  <div class="form-group search-group">
+    <input type="text" class="form-control search-query" name="searchkey" xxx-ng-model="formsearch.searchkey.value" xxx-placeholder="@XmlResourceManager.GetResourceString("Label/GlobalSearch_Placeholder", CurrentLang)">
+    <div class="btn-group search-condition">
+      <button class="btn btn-condition dropdown-toggle" data-toggle="dropdown"><span xxx-ng-bind="Language.Label.GlobalSearch_Permits"></span><i class="glyphicon glyphicon-chevron-down"></i></button>
+      <ul class="dropdown-menu">
+        <li><a href="javascript:;" class="cursor-default"><span xxx-ng-bind="Language.Label.GlobalSearch_Permits"></span></a></li>
+        <li><a href="javascript:;" class="cursor-default"><span xxx-ng-bind="Language.Label.GlobalSearch_Location"></span></a></li>
+        <li><a href="javascript:;" class="cursor-default"><span xxx-ng-bind="Language.Label.GlobalSearch_People"></span></a></li>
+      </ul>
+    </div>
+  </div>
+  <button type="submit" xxx-ng-controller="GlobalSearchController" xxx-ng-click="GlobalSearch();">
+    <i class="glyphicon glyphicon-search"></i>
+  </button>
+  <div class="form-group">
+    <label class="cursor-pointer" xxx-ng-click="$broadcast('OpenModal', { name: 'advancedSearch', width: '800px', title: Language.Label.GlobalSearch_Advanced_Search });" xxx-ng-bind="Language.Label.GlobalSearch_Advanced_Search"></label>
+
+  </div>
+</form>
+<div ng-include src="'views/partials/Permits/AdvancedSearch.html'"></div>
+

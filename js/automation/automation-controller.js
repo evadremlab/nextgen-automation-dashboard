@@ -38,7 +38,7 @@
         userName: 'dbalmer'
       });
 
-      DataService.get(CONFIG.CONSOLE.SERVICES.GET_AVAILABLE_CONSOLES, {});
+      //DataService.get(CONFIG.CONSOLE.SERVICES.GET_AVAILABLE_CONSOLES, {});
     }
   }
 })();

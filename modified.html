@@ -18,13 +18,18 @@
   <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico">
 
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
+  <!--<link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />-->
   <!-- endbower -->
 
-  <!--<link rel="stylesheet" href="styles/main.css" />-->
-  <link rel="stylesheet" href="styles/site.css" />
-  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" />
+  <link rel="stylesheet" href="styles/site-ar.css" />
   <link rel="stylesheet" href="styles/permits-solution.css" />
+  <link rel="stylesheet" href="styles/Site-responsive.css" />
+  <link rel="stylesheet" href="styles/site.css" />
+  <link rel="stylesheet" href="styles/inspector.css" />
+  <link rel="stylesheet" href="styles/permits.css" />
+  <link rel="stylesheet" href="styles/modalWindow.css" />
+  <link rel="stylesheet" href="styles/layout.css" />
 
   <script type="text/javascript" src="js/vendor/modernizr.custom.js"></script>
 
@@ -32,44 +37,17 @@
   <script type="text/javascript" src="js/core/angular-ui-ieshiv.js"></script>
   <script type="text/javascript" src="js/vendor/respond.min.js"></script>
   <![endif]-->
+
+  <!-- TODO: is this ok for production? typekit is a paid Adobe service -->
+  <script type="text/javascript" src="//use.typekit.net/grr3gwk.js"></script>
+  <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+
+  <style>
+    .typekit-badge { display: none !important; } /* hide typekit ico */
+  </style>
 </head>
-<body ng-cloak ng-controller="AutomationController as app" class="aa-body">
-  <header class="navbar" id="header">
-    <div class="container">
-      <div class=" navbar-default">
-        <div class="navbar-header">
-          <h1><a class="navbar-brand" href="#" xxx-ng-bind="Language.Label.Header_Brand">Language.Label.Header_Brand</a></h1>
-        </div>
-        <div class="collapse navbar-collapse">
-          <!--@Html.Partial("GlobalSearch")-->
-          <ul class="nav navbar-nav navbar-right user-nav visible-lg">
-            <li class="dropdown">
-              <!--@Html.Partial("CurrentUser")-->
-              <span xxx-ng-bind="Language.Label.Header_Hello +','">Language.Label.Header_Hello ???</span>
-              <a class="dropdown-toggle" href="javascript:;" data-toggle="dropdown">
-                loginId
-                <i class="glyphicon glyphicon-chevron-down"></i>
-              </a>
-              <ul class="dropdown-menu">
-                <li>logout link
-                  <!--@Html.ActionLink("{{Language.Label.Logout}}", "Logout", "Account")-->
-                </li>
-              </ul>
-              <!-- end: CurrentUser -->
-            </li>
-            <li class="header-date">
-              <span></span>
-              <a href="javascript:;"></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- CONTINUE HERE -->
-  <div ui-view=""><!-- this format is required for IE8 -->
-    <!-- content here -->
-  </div>
+<body ng-cloak ng-controller="AutomationController as app">
+  <div class="page" ng-include="'views/partials/main.html'"></div>
 
   <!-- bower:js -->
   <script src="bower_components/angular/angular.js"></script>
@@ -83,6 +61,8 @@
   <!-- endbower -->
 
   <script src="js/core/global.js"></script>
+  <script src="js/core/utils.js"></script>
+
   <script src="js/config.js"></script>
 
   <!-- define Angular 'accela.core' module -->
@@ -91,6 +71,7 @@
   <script src="js/core/underscore-wrapper.js"></script>
   <script src="js/core/directives/ensure-unique.js"></script>
   <script src="js/core/directives/focus.js"></script>
+  <script src="js/core/filters/customDateFilter.js"></script>
   <script src="js/core/services/data-service.js"></script>
   <script src="js/core/services/http-interceptor.js"></script>
   <script src="js/core/services/logging-service.js"></script>
@@ -104,8 +85,7 @@
   <!-- define Angular 'accela.automation' module -->
   <script src="js/automation/app.js"></script>
   <script src="js/automation/automation-controller.js"></script>
-
-  <script src="js/dashboard/dashboard-controller.js"></script>
+  <script src="js/automation/dashboard-controller.js"></script>
 
   <script src="js/console/controllers/console-controller.js"></script>
   <script src="js/console/controllers/console-page-controller.js"></script>

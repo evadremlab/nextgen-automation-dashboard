@@ -1,0 +1,27 @@
+<header class="navbar" id="header">
+  <div class="container">
+    <div class=" navbar-default">
+      <div class="navbar-header">
+        <h1><a class="navbar-brand" href="javascript:;" xxx-ng-bind="Language.Label.Header_Brand"></a></h1>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <!--@Html.Partial("GlobalSearch")-->
+        <div class="page" ng-include="'views/partials/GlobalSearch.html'"></div>
+        <ul class="nav navbar-nav navbar-right user-nav visible-lg">
+          <li class="dropdown">
+            <!--@Html.Partial("CurrentUser")-->
+            <div class="page" ng-include="'views/partials/CurrentUser.html'"></div>
+          </li>
+          <li class="header-date">
+            <span></span>
+            <a href="javascript:;"></a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</header>
+<!--@Html.Partial("Navigation")-->
+<div class="page" ng-include="'views/partials/Navigation.html'"></div>
