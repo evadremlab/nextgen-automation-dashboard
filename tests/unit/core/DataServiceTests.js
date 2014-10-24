@@ -7,23 +7,6 @@ describe('DataService:Tests', function() {
     AGENCY_PORTLETS: { mockPath: 'console/', endPoint: 'portlets' }
   };
 
-  function getMockData(serviceUrl) {
-    var mockData = {};
-    var xhr = Accela.Utils.createXHRObject();
-    // make synchronous request to load json
-    // 'base/' prefix is required to locate the file
-    // json files are defined in karma.conf.js under "files: [ { pattern : } ]"
-    xhr.open('GET', 'base/' + serviceUrl, false);
-    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    xhr.send(null);
-
-    if (xhr.status === 200) {
-      mockData = angular.fromJson(xhr.responseText);
-    }
-
-    return mockData;
-  }
-
   beforeEach(function() {
     module('accela.automation');
 
@@ -66,7 +49,7 @@ describe('DataService:Tests', function() {
     var serviceRequest = SERVICE_REQUEST.AGENCY_PORTLETS;
     var serviceUrl = service.getServiceUrl(serviceRequest);
 
-    $httpBackend.expect('POST', serviceUrl).respond(200, getMockData(serviceUrl));
+    $httpBackend.expect('POST', serviceUrl).respond(200, Accela.Utils.XmlHttp.getMockData(serviceUrl));
 
     service.get(serviceRequest).then(function(response) {
       console.log(JSON.stringify(response));

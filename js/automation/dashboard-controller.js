@@ -644,7 +644,6 @@
         limitTo: 9,
         list: mockActivityList,
         loadingMore: "Loading More..."
-        //toggleView: "Watch"
       },
       currentUser: [],
       myTasks: {

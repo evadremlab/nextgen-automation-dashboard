@@ -8,7 +8,7 @@
   /**
    * @ngInject
    */
-  function controller($rootScope, $scope, $location, $log) {
+  function controller($rootScope, $scope, $location, $log, $window) {
 
     // PRIVATE data
 
@@ -44,11 +44,6 @@
       }
     ];
 
-    $scope.$on("$routeChangeStart", function (next, current) {
-      $log.debug('$routeChangeStart() next: ' + JSON.stringify(next));
-      $scope.activeSubMenu = $location.path();
-    });
-
     // PUBLIC methods
 
     // CONSTRUCTOR
@@ -60,20 +55,63 @@
     function activate() {
       $log = $log.getInstance('MAIN-CONTROLLER');
 
+//      $(document).ready(function () {
+//        //   resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
+//        if (!resizeTimer) {
+//          resizeTimer = setTimeout(calcSpacesCount, 1000);
+//          $scope.GetSpaceList();
+//        }
+//        else {
+//          resizeTimer = null;
+//        }
+//      });
+//
 //      $(window).resize(function () {
 //        resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
 //      });
+
+      function resizeHandler() {
+        setTimeout(calcSpacesCount, 1000);
+      }
+
+      angular.element($window).bind('resize', _.debounce(resizeHandler, 300));
     }
 
-//    $rootScope.$on("refreshSpace", function (event) {
-//      $scope.GetSpaceList();
-//    });
-//
-//    $rootScope.$on("updateUserSpaces", function () {
-//      $scope.GetSpaceList();
-//    });
+    $scope.$on("$routeChangeStart", function (next, current) {
+      $log.info('$routeChangeStart EVENT, next: ' + JSON.stringify(next));
+      $scope.activeSubMenu = $location.path();
+    });
 
-//    $scope.GetSpaceList = function (funcName) {
+      $rootScope.$on("refreshSpace", function (event) {
+        $log.info('refreshSpace EVENT');
+//        $scope.GetSpaceList();
+      });
+
+      $rootScope.$on("updateUserSpaces", function () {
+        $log.info('updateUserSpaces EVENT');
+//        $scope.GetSpaceList();
+      });
+
+    // listening url change
+    $scope.$on("$locationChangeSuccess", function () {
+      $log.info('$locationChangeSuccess EVENT');
+//      var space = $scope.getSpaceById();
+//      if (space != null && space.SpaceType == "new") {
+//        var URL = $location.path();
+//        if (URL == "/" || space.URL == URL) {
+//          return;
+//        }
+//        var newSpace = $scope.setSpaceNameAndURL(space.Name, URL);
+//        if (newSpace.update) {
+//          SpaceService.updateSpace(newSpace.Name, newSpace.URL, space.ID, newSpace.SpaceType);
+//        }
+//      }
+//      $scope.setSpaceClick();
+    });
+
+
+    $scope.GetSpaceList = function (funcName) {
+      $log.info('$scope.GetSpaceList()');
 //      LoadingService.show();
 //      SpaceService.GetSpacesList(function (data) {
 //        if (data.result != 300) {
@@ -90,22 +128,11 @@
 //          }
 //        }
 //      });
-//    };
-
-    // ready
-//    $(document).ready(function () {
-//      //   resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
-//      if (!resizeTimer) {
-//        resizeTimer = setTimeout(calcSpacesCount, 1000);
-//        $scope.GetSpaceList();
-//      }
-//      else {
-//        resizeTimer = null;
-//      }
-//    });
+    };
 
     // create spaces
     $scope.CreateSpaceList = function (Name, URL, type) {
+      $log.info('$scope.CreateSpaceList()');
 //      SpaceService.Create(Name, URL, type, function (data) {
 //        $scope.GetSpaceList();
 //      });
@@ -113,6 +140,7 @@
 
     // delete space by space id
     $scope.DeleteSpaceList = function (spaceID) {
+      $log.info('$scope.DeleteSpaceList()');
 //      LoadingService.show();
 //
 //      SpaceService.deleteSpace(spaceID, function (data) {
@@ -121,23 +149,8 @@
 //      });
     };
 
-    // listening url change
-    $scope.$on("$locationChangeSuccess", function () {
-//      var space = $scope.getSpaceById();
-//      if (space != null && space.SpaceType == "new") {
-//        var URL = $location.path();
-//        if (URL == "/" || space.URL == URL) {
-//          return;
-//        }
-//        var newSpace = $scope.setSpaceNameAndURL(space.Name, URL);
-//        if (newSpace.update) {
-//          SpaceService.updateSpace(newSpace.Name, newSpace.URL, space.ID, newSpace.SpaceType);
-//        }
-//      }
-//      $scope.setSpaceClick();
-    });
-
     $scope.getSpaceById = function () {
+      $log.info('$scope.getSpaceById()');
 //      var space = $filter("filter")($scope.spaceList, function (item) {
 //        return item.ID == $rootScope.SpaceSelectedId;
 //      });
@@ -191,6 +204,7 @@
     };
 
     $rootScope.$on("spaceUpdateNameUrl", function (d, name, url, oldType , type) {
+      $log.info('spaceUpdateNameUrl EVENT');
 //      if ($rootScope.SpaceSelectedId == null) {
 //        $scope.setSpaceClick();
 //      }
@@ -206,11 +220,13 @@
     });
 
     $rootScope.$on("clickSpace", function (d, id, url) {
+      $log.info('clickSpace EVENT');
 //      $rootScope.SpaceSelectedId = id;
 //      $location.path(url);
     });
 
     $rootScope.$on("saveSearchResult", function (d, type, data, key, spaceType) {
+      $log.info('saveSearchResult EVENT');
 //      var space = $filter("filter")($scope.spaceList, function (item) {
 //        return item.ID == $rootScope.SpaceSelectedId;
 //      });
@@ -238,6 +254,7 @@
     });
 
     $scope.setSpaceClick = function () {
+      $log.info('$scope.setSpaceClick()');
 //      var space = $filter("filter")($scope.spaceList, function (item) {
 //        return item.URL == $location.path();
 //      });
@@ -270,6 +287,7 @@
     // spaces Action function
 
     $scope.SpaceAction = function (Action, spaceID) {
+      $log.info('$scope.SpaceAction()');
 //      switch (Action.toLowerCase()) {
 //        case "pin":
 //          $scope.PinSortID("pin", spaceID);
@@ -290,6 +308,7 @@
     };
 
     $scope.quickAdd = function (ID) {
+      $log.info('$scope.quickAdd()');
 //      var space = $filter("filter")($scope.spaceList, function (item) {
 //        return item.ID == ID;
 //      });
@@ -308,6 +327,7 @@
     };
 
     $scope.CloseSpaceList = function (ID) {
+      $log.info('$scope.CloseSpaceList()');
 //      $scope.spaceCloseAnimate(ID, function () { });
 //
 //      SpaceService.closeUserSpace(ID, function (data) {
@@ -317,6 +337,7 @@
     };
 
     $scope.PinSortID = function (pinType, spaceID) {
+      $log.info('$scope.PinSortID()');
 //      LoadingService.show();
 //      SpaceService.pinSortID(pinType, spaceID, function (data) {
 //        LoadingService.hide();
@@ -326,6 +347,7 @@
 
 
     $scope.DuplicateSpace = function (spaceID) {
+      $log.info('$scope.DuplicateSpace()');
 //      //$rootScope.SpaceSelectedId = 0;
 //      LoadingService.show();
 //      SpaceService.duplicateSpace(spaceID, function (data) {
@@ -345,6 +367,7 @@
     // space close animate
 
     $scope.spaceCloseAnimate = function (id, func) {
+      $log.info('$scope.spaceCloseAnimate()');
 //      if (id == null || id == 0) {
 //        return;
 //      }
@@ -358,6 +381,7 @@
 
     // add click space class
     $scope.setClickSpace = function (id) {
+      $log.info('$scope.setClickSpace()');
 //      $safeApply($rootScope, function () {
 //        if ($rootScope.clickID != id) {
 //          $rootScope.clickID = id;
@@ -425,6 +449,7 @@
     // public click function
 
     $scope.Operate = function (action, Url) {
+      $log.info('$scope.Operate()');
 //      //        $scope.CreateSpaceList(action, Url);
 //      switch (action.toLowerCase()) {
 //        case "permits":
@@ -440,8 +465,8 @@
 //      }
     };
 
-
     $scope.SetCurrentToEnd = function (ID, Nowindex) {
+      $log.info('$scope.SetCurrentToEnd()');
 //
 //      var selectedspace = $filter("filter")($scope.spaceList, function (item) {
 //        return item.ID == ID;
@@ -461,6 +486,7 @@
     };
 
     $scope.clickrouting = function (ID, routingurl, spaceType) {
+      $log.info('$scope.clickrouting()');
 //      $rootScope.SpaceSelectedId = ID;
 //
 //      $scope.setimgcss(ID, spaceType);
@@ -485,18 +511,24 @@
     };
 
     $scope.dblclick = function (ID, Name) {
+      $log.info('$scope.dblclick()');
 //      $("#" + ID).hide();
 //      $("#textarea_" + ID).show();
 //      $("#textarea_" + ID).trigger("focus");
+
+      Accela.$("#" + ID).addClass('hidden');
+      Accela.$("#textarea_" + ID).removeClass('hidden');
+      Accela.$("#textarea_" + ID).triggerHandler('focus');
     };
 
-
-//    $rootScope.$on("GetFilter", function () {
+    $rootScope.$on("GetFilter", function () {
+      $log.info('GetFilter EVENT');
 //      $scope.getSpaceFilter();
-//    });
+    });
 
     // new click function
     $scope.changeUrl = function (action) {
+      $log.info('$scope.changeUrl()');
 //      switch (action) {
 //        case "spaceNew":
 //          var name = $scope.setSpaceNewName("Untitled Space");
@@ -521,6 +553,7 @@
 
     // update space name
     $scope.UpdateSpaceList = function (ID, URL) {
+      $log.info('$scope.UpdateSpaceList()');
 //      LoadingService.show();
 //      var Name = document.getElementById("textarea_" + ID).value;
 //      Name = $.trim(Name);
@@ -532,6 +565,8 @@
 //      SpaceService.UpdateSpaceName(Name, ID, function (data) {
 //        $("#" + ID).show();
 //        $("#textarea_" + ID).hide();
+      Accela.$("#" + ID).removeClass('hidden');
+      Accela.$('#textarea_' + ID).addClass('hidden');
 //        $scope.GetSpaceList();
 //        LoadingService.hide();
 //      });
@@ -541,6 +576,7 @@
     // set filter function
 
     $scope.getSpaceFilter = function () {
+      $log.info('$scope.getSpaceFilter()');
 //      var space = $scope.getSpaceById();
 //      if (space != null && space.URL == $location.path() && space.SpaceType.toLowerCase() == "search") {
 //
@@ -554,6 +590,7 @@
     };
 
     var calcSpacesCount = function () {
+      $log.debug('calcSpacesCount()');
 //      var navHeight = $("#big-nav").height();
 //      var dashboradHeihght = $("#dashboardGroupDiv").height();
 //      var settingHeight = $("#nav-last-li").height();
@@ -580,6 +617,35 @@
 //
 //      $scope.lastSpaceWidth = spaceWidth;
 //      resizeTimer = null;
+      var navHeight = Accela.$("#big-nav").prop('offsetHeight');
+      var dashboardHeight = Accela.$("#dashboardGroupDiv").prop('offsetHeight');
+      var settingHeight = Accela.$("#nav-last-li").prop('offsetHeight');
+      var spaceWidth = Accela.$("#spaceGroupDiv").prop('offsetWidth');
+      var moreHeight = 30;
+
+      var liSpacesHeight = document.body.offsetWidth <= 768 ? 50 : 95;
+
+      var count = (navHeight - settingHeight - dashboardHeight - moreHeight) / liSpacesHeight - 1;
+
+      if ((count - $scope.showcount) > 1 || (count - $scope.showcount) < 0 || $scope.lastSpaceWidth != spaceWidth) {
+        $scope.showcount = Math.floor(count);
+        $log.info('$scope.showcount:' + $scope.showcount);
+//        LoadingService.show();
+//        SpaceService.GetSpacesList(function (data) {
+//          if (data.result != 300) {
+//            $safeApply($scope, function () {
+//              $scope.spaceList = data.result;
+//            });
+//          }
+//          LoadingService.hide();
+//        });
+      } else {
+        $log.info('no change');
+      }
+
+      $scope.lastSpaceWidth = spaceWidth;
     };
+
+    setTimeout(calcSpacesCount, 1000);
   }
 })();

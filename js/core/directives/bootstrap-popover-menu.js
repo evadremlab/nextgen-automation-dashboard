@@ -9,7 +9,6 @@ angular
   .directive("bsPopover", ["$compile", "$templateCache","$safeApply",
   function ($compile, $templateCache, $safeApply) {
     return {
-
       link: function (scope, element, attrs) {
         var template = attrs.template;
         var type = "click";

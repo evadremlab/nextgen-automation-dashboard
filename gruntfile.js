@@ -25,7 +25,7 @@ module.exports = function (grunt) {
   grunt.initConfig(loadTaskOptions('./build/tasks/'));
 
   grunt.registerTask('default', [
-    'wiredep',
+    'wiredep:new',
     'jshint:app',
 //    'karma:unit',
     'less:css',

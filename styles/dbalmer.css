@@ -1,0 +1,4 @@
+/* dbalmer@accela.com modifications to Permit Solution css */
+.space-menu-btn {
+  outline: 0 !important; /* remove dotted outline from menu link on spaces tile */
+}

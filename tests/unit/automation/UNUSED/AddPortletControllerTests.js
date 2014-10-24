@@ -1,6 +1,6 @@
 'use strict';
 
-describe('AddPortletController:Tests', function() {
+xdescribe('AddPortletController:Tests', function() {
   var ctrl, scope;
   var modalInstance;
 

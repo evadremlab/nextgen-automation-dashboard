@@ -1,6 +1,6 @@
 'use strict';
 
-describe('ConsolePageController:Tests', function() {
+xdescribe('ConsolePageController:Tests', function() {
   var ctrl, scope;
   var consoleManager;
   var stateParams;

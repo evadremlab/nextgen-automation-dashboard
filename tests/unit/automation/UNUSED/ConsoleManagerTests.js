@@ -1,6 +1,6 @@
 'use strict';
 
-describe('ConsoleManager:Tests', function() {
+xdescribe('ConsoleManager:Tests', function() {
   var mgr;
 
   beforeEach(function() {

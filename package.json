@@ -1,6 +1,6 @@
 {
   "name": "nextgen-automation-prototype",
-  "version": "0.10.23",
+  "version": "0.10.24",
   "description": "nextgen-automation-prototype",
   "main": "gruntfiles.js",
   "scripts": {

@@ -90,17 +90,13 @@
      * Using XMLHttpRequest instead of $http to avoid circular dependencies.
      */
     function writeLog(logData) {
-      var xhr = Accela.Utils.createXHRObject();
       var url = CONFIG.USE_MOCK_SERVICES ? 'mock-api/logClientMsg.json' : CONFIG.LOG_URL;
 
       angular.extend(logData, Accela.settings, {
         url: $window.location.href
       });
 
-      xhr.open('POST', url, true); // async request
-      xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-      xhr.setRequestHeader('accesskey', CONFIG.LOG_ACCESS_KEY);
-      xhr.send(JSON.stringify(logData));
+      Accela.Utils.XmlHttp.post(url, logData, CONFIG.LOG_ACCESS_KEY);
     }
   }
 

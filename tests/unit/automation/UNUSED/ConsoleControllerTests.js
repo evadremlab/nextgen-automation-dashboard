@@ -1,6 +1,6 @@
 'use strict';
 
-describe('ConsoleController:Tests', function() {
+xdescribe('ConsoleController:Tests', function() {
   var ctrl, scope;
 
   beforeEach(function() {

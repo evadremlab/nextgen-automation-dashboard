@@ -1,12 +1,12 @@
-(function() {
+(function(global) {
   'use strict';
 
   /**
    * MODIFIED FROM Permit Solution:
    * C:\Users\dbalmer\Documents\GitHub\Role-Based-UI\Accela.RBUI\Scripts\SDK\core\global.js
    */
-  if (!window.Accela) {
-    window.Accela = (function() {
+  if (!global.Accela) {
+    global.Accela = (function() {
       var settings = {
         agency: null,
         appId: null,
@@ -20,7 +20,7 @@
 
       function createNamespace(name, value) {
         var part, nso;
-        var node = window.Accela;
+        var node = global.Accela;
         var nameParts = name ? name.split('.') : [];
         for (var i = 0; i < nameParts.length; i++) {
           part = nameParts[i];
@@ -85,4 +85,4 @@
       };
     })();
   }
-})();
+})(window);

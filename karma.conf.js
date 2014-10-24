@@ -12,11 +12,13 @@ module.exports = function (config) {
       frameworks: ['jasmine'],
 
       files: [
+        'bower_components/jquery/jquery.js',
         'bower_components/angular/angular.js',
         'bower_components/angular-mocks/angular-mocks.js',
-        'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
         'bower_components/angular-ui-router/release/angular-ui-router.js',
         'bower_components/underscore/underscore.js',
+//        'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+        'js/vendor/bootstrap.min.js',
         'bower_components/angular-smart-table/dist/smart-table.min.js',
         'bower_components/stacktrace-js/stacktrace.js',
         'bower_components/sprintf/src/sprintf.js',
@@ -33,8 +35,8 @@ module.exports = function (config) {
 
       // list of files / patterns to exclude
       exclude: [
-        'js/vendor/*.js',
-        'js/core/services/UNUSED/*.js'
+//        'js/vendor/*.js',
+        'js/**/UNUSED/*.js'
       ],
 
       // web server port

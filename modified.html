@@ -17,10 +17,6 @@
   <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/favicon.ico">
   <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico">
 
-  <!-- bower:css -->
-  <!--<link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />-->
-  <!-- endbower -->
-
   <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" />
   <link rel="stylesheet" href="styles/site-ar.css" />
   <link rel="stylesheet" href="styles/permits-solution.css" />
@@ -30,6 +26,8 @@
   <link rel="stylesheet" href="styles/permits.css" />
   <link rel="stylesheet" href="styles/modalWindow.css" />
   <link rel="stylesheet" href="styles/layout.css" />
+
+  <link rel="stylesheet" href="styles/dbalmer.css" />
 
   <script type="text/javascript" src="js/vendor/modernizr.custom.js"></script>
 
@@ -53,7 +51,6 @@
   <script src="bower_components/jquery/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <!--<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>-->
   <script src="bower_components/underscore/underscore.js"></script>
   <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
   <script src="bower_components/stacktrace-js/stacktrace.js"></script>
@@ -61,7 +58,7 @@
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <!-- endbower -->
 
-  <script src="js/vendor/bootstrap.min.js"></script>
+  <!--<script src="js/vendor/bootstrap.min.js"></script>-->
 
   <script src="js/core/global.js"></script>
   <script src="js/core/utils.js"></script>
@@ -74,7 +71,10 @@
   <script src="js/core/underscore-wrapper.js"></script>
   <script src="js/core/directives/ensure-unique.js"></script>
   <script src="js/core/directives/focus.js"></script>
-  <script src="js/core/directives/bootstrap-popover-menu.js"></script>
+
+  <!-- requires jQuery and Bootstrap.js :-( -->
+  <!--<script src="js/core/directives/bootstrap-popover-menu.js"></script>-->
+
   <script src="js/core/filters/customDateFilter.js"></script>
   <script src="js/core/services/data-service.js"></script>
   <script src="js/core/services/http-interceptor.js"></script>
@@ -90,7 +90,10 @@
   <!-- define Angular 'accela.automation' module -->
   <script src="js/automation/app.js"></script>
   <script src="js/automation/automation-controller.js"></script>
+
+  <!-- requires jQuery -->
   <script src="js/automation/main-controller.js"></script>
+
   <script src="js/automation/dashboard-controller.js"></script>
 
   <script src="js/console/controllers/console-controller.js"></script>
