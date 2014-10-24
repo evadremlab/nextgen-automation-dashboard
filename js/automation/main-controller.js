@@ -19,9 +19,33 @@
     $scope.showcount = 0;
     $scope.lastSpaceWidth = 0;
     $scope.activeSubMenu = $location.path();
-    $scope.spaceList = [];
+
+    $scope.spaceList = [
+      {
+        ID: 1,
+        PinSortID: 0,
+        Name: 'fubar',
+        URL: '',
+        SpaceType: 'new'
+      },
+      {
+        ID: 2,
+        PinSortID: 0,
+        Name: 'Permits',
+        URL: '',
+        SpaceType: 'Permits'
+      },
+      {
+        ID: 3,
+        PinSortID: 0,
+        Name: 'SubPermits',
+        URL: '',
+        SpaceType: 'SubPermits'
+      }
+    ];
 
     $scope.$on("$routeChangeStart", function (next, current) {
+      $log.debug('$routeChangeStart() next: ' + JSON.stringify(next));
       $scope.activeSubMenu = $location.path();
     });
 
@@ -49,8 +73,7 @@
 //      $scope.GetSpaceList();
 //    });
 
-    // get space list
-    $scope.GetSpaceList = function (funcName) {
+//    $scope.GetSpaceList = function (funcName) {
 //      LoadingService.show();
 //      SpaceService.GetSpacesList(function (data) {
 //        if (data.result != 300) {
@@ -67,37 +90,14 @@
 //          }
 //        }
 //      });
-        $scope.spaceList = [
-          {
-            ID: 1,
-            PinSortID: 0,
-            Name: 'fubar',
-            URL: '',
-            SpaceType: 'new'
-          },
-          {
-            ID: 2,
-            PinSortID: 0,
-            Name: 'Permits',
-            URL: '',
-            SpaceType: 'Permits'
-          },
-          {
-            ID: 3,
-            PinSortID: 0,
-            Name: 'SubPermits',
-            URL: '',
-            SpaceType: 'SubPermits'
-          }
-        ];
-    };
+//    };
 
     // ready
 //    $(document).ready(function () {
 //      //   resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
 //      if (!resizeTimer) {
 //        resizeTimer = setTimeout(calcSpacesCount, 1000);
-        $scope.GetSpaceList();
+//        $scope.GetSpaceList();
 //      }
 //      else {
 //        resizeTimer = null;
@@ -138,13 +138,13 @@
     });
 
     $scope.getSpaceById = function () {
-      var space = $filter("filter")($scope.spaceList, function (item) {
-        return item.ID == $rootScope.SpaceSelectedId;
-      });
-      if (space==null || space.length <= 0) {
-        return space;
-      }
-      return space[0];
+//      var space = $filter("filter")($scope.spaceList, function (item) {
+//        return item.ID == $rootScope.SpaceSelectedId;
+//      });
+//      if (space==null || space.length <= 0) {
+//        return space;
+//      }
+//      return space[0];
     };
 
     $scope.setSpaceNameAndURL = function (name, URL) {

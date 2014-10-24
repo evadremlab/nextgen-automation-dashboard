@@ -2,18 +2,17 @@
   <header class="masthead">
     <div class="user float-left">
       <div class="user-name dropdown">
-        <a href class="dropdown-toggle" data-toggle="dropdown" id="linkUserName">
+        <a href class="dropdown-toggle" data-toggle="dropdown">
           {{dashboard.currentUser.fullName}}
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a href id="linkViewAccount"><i></i>View Account</a></li>
-          <li><a href id="linkUserPreferences"><i></i>Preferences</a></li>
-          <li><a href ng-click="userLogout();" id="linkUserLogout"><i></i>Logout</a></li>
+          <li><a href="#"><i></i>View Account</a></li>
+          <li><a href="#"><i></i>Preferences</a></li>
+          <li><a href="#" ng-click="userLogout()"><i></i>Logout</a></li>
         </ul>
         <span>Permit Technician</span>
       </div>
-      <div class="solution-name"></div>
     </div>
     <div class="day float-right">
       <div class="title">
@@ -28,7 +27,10 @@
       <span>PDT</span>
     </div>
     <div class="weather float-right">
-      <div class="title"><i class="icon-high-arrow"></i>&nbsp;{{dashboard.weather.high}}° &nbsp;&nbsp;&nbsp;<i class="icon-low-arrow"></i>&nbsp;{{dashboard.weather.low}}°</div>
+      <div class="title">
+        <i class="icon-high-arrow"></i>&nbsp;{{dashboard.weather.high}}&deg;
+        <i class="icon-low-arrow" style="margin-left:1em;"></i>&nbsp;{{dashboard.weather.low}}&deg;
+      </div>
       <span>{{dashboard.weather.outlook}}</span>
     </div>
   </header>
@@ -41,27 +43,36 @@
           <div class="sort-by float-left">
             <span class="float-left">Sort by:</span>
             <div class="dropdown float-left">
-              <button class="btn btn-default" type="button" data-toggle="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                 {{dashboard.myTasks.orderByText}}
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li role="presentation" ng-repeat="sort in dashboard.myTasks.sortBy"><a role="menuitem" tabindex="-1" ng-click="toggleMyTasksOrderBy(sort)" href>{{sort.text}}</a></li>
+                <li role="presentation" ng-repeat="sort in dashboard.myTasks.sortBy">
+                  <a role="menuitem" tabindex="-1" ng-click="toggleMyTasksOrderBy(sort)" href>{{sort.text}}</a>
+                </li>
               </ul>
             </div>
           </div>
           <div class="toggle-menu float-left">
             <div class="btn-group" ng-init="radioModel='Left'">
-              <button type="button" class="btn btn-default" ng-model="dashboard.myTasks.toggleView" btn-radio="'Grid'"><i class="icon-grid"></i></button>
-              <button type="button" class="btn btn-default" ng-model="dashboard.myTasks.toggleView" btn-radio="'List'"><i class="icon-list"></i></button>
+              <button type="button" class="btn btn-default" ng-model="dashboard.myTasks.toggleView" btn-radio="'Grid'">
+                <i class="icon-grid"></i>
+              </button>
+              <button type="button" class="btn btn-default" ng-model="dashboard.myTasks.toggleView" btn-radio="'List'">
+                <i class="icon-list"></i>
+              </button>
             </div>
           </div>
           <span loading show-model="dashboard.myTasks.loading" class="pull-right"></span>
         </header>
         <div class="tasks row" ng-class="{'list-view' : dashboard.myTasks.toggleView === 'List'}">
-          <div ng-class="{'col-xs-6' : dashboard.myTasks.toggleView === 'Grid', 'col-md-12' : dashboard.myTasks.toggleView ==='List'}" ng-repeat="task in myTasks | orderBy:dashboard.myTasks.orderByValue | limitTo:dashboard.myTasks.limitTo">
+          <div ng-class="{'col-xs-6' : dashboard.myTasks.toggleView === 'Grid', 'col-md-12' : dashboard.myTasks.toggleView ==='List'}"
+            ng-repeat="task in myTasks | orderBy:dashboard.myTasks.orderByValue | limitTo:dashboard.myTasks.limitTo">
             <div class="task">
-              <div class="title"><a href="#/PermitSummary/{{task.recordId.id}}" id="linkTask{{$index}}">{{task.recordId.customId}}</a></div>
+              <div class="title">
+                <a href="#/PermitSummary/{{task.recordId.id}}">{{task.recordId.customId}}</a>
+              </div>
               <div class="type display-ellipsis">
                 <div class="type-name display-ellipsis">{{task.permitType || '&nbsp;'}}</div>
                 <div class="project-name display-ellipsis">{{task.projectName || 'Project Name'}}</div>
@@ -73,7 +84,6 @@
               <div class="footer">
                 <div class="due-date">
                   <div class="title">Due</div>
-
                   <div class="value">
                     <div ng-if="task.dueDate!=null&&task.dueDate!=undefined">
                       <span>{{task.dueDate | customDateFilter:'MM/dd/yy'}}</span>
@@ -82,7 +92,6 @@
                       <span>NA</span>
                     </div>
                   </div>
-
                 </div>
                 <div class="assigned-to">
                   <div class="title">Assigned to</div>
@@ -93,7 +102,7 @@
           </div>
         </div>
         <footer ng-show="myTasks.length > dashboard.myTasks.minLength">
-          <a href ng-click="dashboard.myTasks.toggleLoading();" id="linkTasksToggleLoading">{{dashboard.myTasks.loadingMore}}</a>
+          <a href ng-click="dashboard.myTasks.toggleLoading()">{{dashboard.myTasks.loadingMore}}</a>
         </footer>
       </section>
       <section class="closed-spaces">
@@ -102,10 +111,14 @@
         </header>
         <ul class="spaces">
           <li ng-repeat="space in dashboard.userSpaces | limitTo:5">
-            <span class="float-left"><img class="icon-permit-gray" ng-src="/images/layout/{{space.imgsrc}}" /></span>
-            <a href class="float-left display-ellipsis" ng-click="reopenSpace(space)" id="linkClosedSpace{{$index}}">{{space.Name}}</a>
+            <span class="float-left">
+              <img class="icon-permit-gray" ng-src="/images/layout/{{space.imgsrc}}"/>
+            </span>
+            <a href class="float-left display-ellipsis" ng-click="reopenSpace($index)">{{space.Name}}</a>
             <span class="float-left">{{space.Name}}</span>
-            <span class="float-right"><i class="icon-close cursor-pointer" ng-click="deleteUserSpace(space)"></i></span>
+            <span class="float-right">
+              <i class="icon-close cursor-pointer" ng-click="deleteUserSpace($index)"></i>
+            </span>
             <span class="float-right">{{space.customCreatedDate}}</span>
           </li>
         </ul>
@@ -115,9 +128,9 @@
       <section class="search-bar">
         <form name="simpleSearchForm" accela-form>
           <div class="input-group">
-            <input type="text" class="form-control" name="txtKeyword" ng-model="dashboard.search.text" placeholder="Search..." ng-enter="globalSearch()" />
+            <input type="text" class="form-control" name="txtKeyword" ng-model="dashboard.search.text" placeholder="Search..." ng-enter="globalSearch()"/>
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button" id="simpleSearchBtn" ng-click="globalSearch()">
+                <button class="btn btn-default" type="button" ng-click="globalSearch()">
                   <i class="glyphicon glyphicon-search"></i>
                 </button>
             </span>
@@ -133,6 +146,7 @@
         <ul class="activity">
           <li ng-repeat="active in dashboard.activity.list | limitTo:dashboard.activity.limitTo">
             <a href class="badge pull-left">
+              <!-- TODO: move this into entity -->
               <i ng-class="{'icon-address':active.type=='address',
                                'icon-comments':active.type=='comments',
                                'icon-email':active.type=='email',
@@ -145,11 +159,10 @@
               <span class="description display-ellipsis"><a href>{{active.permitId}}</a></span>
               <span class="fragment">{{active.date}}</span>
             </div>
-
           </li>
         </ul>
         <footer>
-          <a href ng-click="toggleActivityLimitTo()" id="linkToggleActivityLoading">{{dashboard.activity.loadingMore}}</a>
+          <a href ng-click="toggleActivityLimitTo()">{{dashboard.activity.loadingMore}}</a>
         </footer>
       </section>
     </div>

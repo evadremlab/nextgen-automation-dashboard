@@ -6,7 +6,7 @@
       'ngResource',
       'smart-table',
       'ui.router',
-      'ui.bootstrap',
+//      'ui.bootstrap',
       'underscore'
     ])
     .constant('CONFIG', Accela.Config)

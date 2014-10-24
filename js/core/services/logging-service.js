@@ -44,7 +44,7 @@
       sendToServer('Debug', msg);
     }
 
-      function errorHandler(msg) {
+    function errorHandler(msg) {
       sendToServer('Error', msg);
     }
 
@@ -145,7 +145,10 @@
         info: prepareLogFn(_$log.info, prefix),
         debug: prepareLogFn(_$log.debug, prefix),
         warn: prepareLogFn(_$log.warn, prefix),
-        error: prepareLogFn(_$log.error, prefix)
+        error: prepareLogFn(_$log.error, prefix),
+        format: function(msg) {
+          return prefix + ' : ' + msg;
+        }
       };
 
       logInstance.debug('created');

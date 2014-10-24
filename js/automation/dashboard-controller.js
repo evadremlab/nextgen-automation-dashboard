@@ -8,7 +8,7 @@
   /**
    * @ngInject
    */
-  function controller($scope, $log) {
+  function controller($scope, $filter, $log) {
 
     // PRIVATE data
 
@@ -635,6 +635,10 @@
 
     // PUBLIC data
 
+    $scope.myTasks = [];
+
+    $scope.newSpaceLoading = false;
+
     $scope.dashboard = {
       activity: {
         limitTo: 9,
@@ -652,12 +656,13 @@
         orderByText: "Date Assigned",
         orderByValue: "assignedDate",
         sortBy: [
+          { text: 'Record ID', value: 'recordId.customId' },
           { text: 'Date Assigned', value: 'assignedDate' },
           { text: 'Date Due', value: 'dueDate' },
           { text: 'Priority', value: '' }
         ],
         toggleLoading: function () {
-          if ($scope.dashboard.myTasks.limitTo == 6) {
+          if ($scope.dashboard.myTasks.limitTo === 6) {
             $scope.dashboard.myTasks.limitTo = 10;
             $scope.dashboard.myTasks.loadingMore = "Click for Less";
           } else {
@@ -681,8 +686,6 @@
 
     // PUBLIC methods
 
-    $scope.newSpaceLoading = false;
-
     $scope.getCurrentUser = function () {
 //      UserService.Init().then(function (d) {
 //        $scope.dashboard.currentUser = UserService.user;
@@ -699,8 +702,6 @@
 //        $scope.dashboard.today = new Date();
 //      });
 //    }, 60000);
-
-    $scope.myTasks = [];
 
     $scope.getMyTasks = function () {
 //      LoadingService.show();
@@ -756,7 +757,7 @@
     $scope.toggleMyTasksOrderBy = function (sort) {
       $scope.dashboard.myTasks.orderByValue = sort.value;
       $scope.dashboard.myTasks.orderByText = sort.text;
-    }
+    };
 
     //get closed user spaces
     $scope.getSpaceList = function () {
@@ -794,32 +795,60 @@
 //          $scope.newSpaceLoading = false;
 //        }
 //        else {
-//          //$scope.getSpaceList();
+//          alert('oops');
 //        }
 //      });
 
       $scope.dashboard.userSpaces = mockClosedSpacesResponse.result;
+
+      _.each($scope.dashboard.userSpaces, function (v) {
+        v.CreatedDate = new Date(v.CreatedDate);
+        var customCreatedDate = v.CreatedDate;
+        var today = new Date();
+        var yesterday = new Date();
+        yesterday.setDate(today.getDate() - 1);
+        // TODO: use moment.js
+        if (customCreatedDate.getFullYear() === today.getFullYear() && customCreatedDate.getMonth() === today.getMonth()) {
+          if (customCreatedDate.getDate() === today.getDate()) {
+            customCreatedDate = "Today at " + $filter('date')(customCreatedDate, 'h:mm a');
+          } else if (customCreatedDate.getDate() === yesterday.getDate()) {
+            customCreatedDate = "Yesterday at " + $filter('date')(customCreatedDate, 'h:mm a');
+          } else {
+            customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
+          }
+        } else {
+          customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
+        }
+
+        v.customCreatedDate = customCreatedDate;
+
+        v.imgsrc = setImage(v.SpaceType);
+      });
+
       $scope.newSpaceLoading = false;
     };
 
     $scope.getSpaceList();
 
-    $scope.deleteUserSpace = function (space) {
+    $scope.deleteUserSpace = function (index) {
+        var space = $scope.dashboard.userSpaces[index];
 //      SpaceService.deleteSpace(space.ID, function (data) {
-//        if (data.result == 200) {
+//        if (data.result === 200) {
 //          //console.log(angular.toJson(data));
 //          $scope.getSpaceList();
 //        }
 //      });
+      $scope.dashboard.userSpaces.splice(index, 1);
     };
 
-    $scope.reopenSpace = function (space) {
+    $scope.reopenSpace = function (index) {
+      var space = $scope.dashboard.userSpaces[index];
 //      SpaceService.reopenUserSpace(space.ID, function (data) {
-//        if (data.result == "PinFull") {
+//        if (data.result === "PinFull") {
 //          alertTipsController.show("Danger", "The Pinned WorkSpace are full: can't add new space!");
 //        }
 //        $rootScope.$broadcast("refreshSpace");
-//        if (data.result != "300") {
+//        if (data.result !== "300") {
 //          $rootScope.$broadcast("clickSpace", data.result.ID, data.result.URL);
 //        }
 //      });
@@ -837,7 +866,7 @@
     };
 
     $scope.toggleActivityLimitTo = function () {
-      if ($scope.dashboard.activity.limitTo == 9) {
+      if ($scope.dashboard.activity.limitTo === 9) {
         $scope.dashboard.activity.loadingMore = "Loading Less...";
         $scope.dashboard.activity.limitTo = 20;
       } else {
@@ -846,10 +875,19 @@
       }
     };
 
-    $scope.setImage = function (spaceType) {
-      spaceType = spaceType == null ? "null" : spaceType;
-      var imgsrc = "untitled_icon_selected.png";
-      switch (spaceType.toLowerCase()) {
+    // CONSTRUCTOR
+
+    activate();
+
+    // PRIVATE methods
+
+    function activate() {
+      $log = $log.getInstance('DASHBOARD-CONTROLLER');
+    }
+
+    function setImage(spaceType) {
+      var imgsrc;
+      switch ((spaceType || '').toLowerCase()) {
         case "permits":
         case "submitpermits":
           imgsrc = "permits_icon_selected.png";
@@ -865,16 +903,6 @@
           break;
       }
       return imgsrc;
-    };
-
-    // CONSTRUCTOR
-
-    activate();
-
-    // PRIVATE methods
-
-    function activate() {
-      $log = $log.getInstance('DASHBOARD-CONTROLLER');
     }
   }
 })();

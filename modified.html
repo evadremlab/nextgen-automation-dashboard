@@ -50,15 +50,18 @@
   <div class="page" ng-include="'views/partials/main.html'"></div>
 
   <!-- bower:js -->
+  <script src="bower_components/jquery/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <!--<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>-->
   <script src="bower_components/underscore/underscore.js"></script>
   <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
   <script src="bower_components/stacktrace-js/stacktrace.js"></script>
   <script src="bower_components/sprintf/src/sprintf.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <!-- endbower -->
+
+  <script src="js/vendor/bootstrap.min.js"></script>
 
   <script src="js/core/global.js"></script>
   <script src="js/core/utils.js"></script>
@@ -71,11 +74,13 @@
   <script src="js/core/underscore-wrapper.js"></script>
   <script src="js/core/directives/ensure-unique.js"></script>
   <script src="js/core/directives/focus.js"></script>
+  <script src="js/core/directives/bootstrap-popover-menu.js"></script>
   <script src="js/core/filters/customDateFilter.js"></script>
   <script src="js/core/services/data-service.js"></script>
   <script src="js/core/services/http-interceptor.js"></script>
   <script src="js/core/services/logging-service.js"></script>
   <script src="js/core/services/modal-dialog-service.js"></script>
+  <script src="js/core/services/safe-apply.js"></script>
 
   <!-- define Accela.Entity classes -->
   <script src="js/core/entities/portlet.js"></script>
