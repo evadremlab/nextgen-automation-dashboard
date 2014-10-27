@@ -32,14 +32,14 @@
 
   .info-number {
     color: #cc0000 !important;
-    font-size: 18px !important;
+    font-size: @font18 !important;
     xxx-dbb-font-family: "proxima-nova",sans-serif;
     font-style: normal;
     font-weight: 600;
   }
 
   .info-number:first-letter {
-    font-size: 18px;
+    font-size: @font18;
   }
 
 .main-nav {
@@ -49,7 +49,7 @@
 .main-nav span {
   color: #666;
   display: block;
-  font-size: 24px;
+  font-size: @font24;
   line-height: 1;
   margin-bottom: 10px;
   text-align: center;
@@ -83,7 +83,7 @@
   text-align: center;
   color: #333;
   display: block;
-  font-size: 12px;
+  font-size: @font12;
   xxx-dbb-font-family: "proxima-nova",sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -134,14 +134,14 @@
   margin-right: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: 12px;
+  font-size: @font12;
   xxx-dbb-font-family: "proxima-nova",sans-serif;
   font-style: normal;
   font-weight: 600;
 }
 
 .main-nav .li-space-new .space-new b {
-  font-size: 14px;
+  font-size: @font14;
   font-weight: 600;
   line-height: 26px;
 }
@@ -273,7 +273,7 @@
 }
 
 #tiny-nav span {
-  font-size: 20px;
+  font-size: @font20;
 }
 
 #tiny-toggle {
@@ -353,4 +353,20 @@
   #nav-last-li .col-md-6 {
     padding-bottom: 8px;
   }
+}
+.space-more {
+  border-radius: 10px;
+  display: inline-block;
+  font-size: @font12;
+  font-weight: 600;
+  height: 15px;
+  line-height: 14px;
+  margin-top: 5px;
+  padding: 0 10px;
+}
+
+/* dbalmer@accela.com modifications to Permit Solution css */
+
+.space-menu-btn {
+  outline: 0 !important; /* remove dotted outline from menu link on spaces tile */
 }

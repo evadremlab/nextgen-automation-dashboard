@@ -32,7 +32,7 @@
 .btn-create {
     height: 30px;
     xxx-background: url("/content/images/btn-adv-search.png") repeat-x !important;
-  background: url("../images/btn-adv-search.png") repeat-x !important;
+  background: url("../../images/btn-adv-search.png") repeat-x !important;
     color: #fff;
     /*border-color: #dc6700 !important;*/
     border: 0;

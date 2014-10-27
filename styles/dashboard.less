@@ -2,10 +2,6 @@
 /* Dashboard
 ============================================================================= */
 
-.dashboard > .row > .col-md-4 {
-  /*background: #fafafa;*/
-}
-
 .dashboard a {
   color: #66b2e7;
 }
@@ -15,9 +11,9 @@
     color: #66b2e7;
   }
 
-.my-tasks,
-.closed-spaces,
 .activity-watch,
+.closed-spaces,
+.my-tasks,
 .search-bar {
   padding: 28px 5px 0px 5px;
 }
@@ -61,29 +57,29 @@ section.search-bar {
     color: #999999;
   }
 
-.my-tasks > header,
+.activity-watch > header,
 .closed-spaces > header,
-.activity-watch > header {
+.my-tasks > header {
   padding-left: 15px;
   line-height: 24px;
   margin-bottom: 20px;
   min-height: 24px;
 }
 
-  .my-tasks > header:before,
-  .my-tasks > header:after,
+  .activity-watch > header:before,
+  .activity-watch > header:after,
   .closed-spaces > header:before,
   .closed-spaces > header:after,
-  .activity-watch > header:before,
-  .activity-watch > header:after {
+  .my-tasks > header:before,
+  .my-tasks > header:after {
     display: table;
     content: " ";
   }
 
-  .my-tasks > header > .title,
+  .activity-watch > header > .title,
   .closed-spaces > header > .title,
-  .activity-watch > header > .title {
-    font-size: 24px;
+  .my-tasks > header > .title  {
+    font-size: @font24;
     padding-right: 20px;
     font-style: normal;
     font-weight: 300;
@@ -92,7 +88,7 @@ section.search-bar {
 
   .my-tasks .counter {
     background: #e6e6e6;
-    font-size: 14px;
+    font-size: @font14;
     font-weight: 600;
     font-style: normal;
     xxx-dbb-font-family: "proxima-nova";
@@ -108,7 +104,7 @@ section.search-bar {
     margin-left: 10px;
     color: #000000;
     font-weight: 600;
-    font-size: 14px;
+    font-size: @font14;
     margin-right: 10px;
   }
 
@@ -129,8 +125,8 @@ section.search-bar {
       margin-top: 1px;
     }
 
-  .my-tasks .toggle-menu .btn-group,
-  .activity-watch > header > .btn-group {
+  .activity-watch > header > .btn-group,
+  .my-tasks .toggle-menu .btn-group {
     margin-top: -5px;
   }
 
@@ -170,7 +166,7 @@ section.search-bar {
         color: #66b2e7;
         font-weight: 400;
         font-style: normal;
-        font-size: 22px;
+        font-size: @font22;
         line-height: 26px;
         padding-top: 13px;
         height: 35px;
@@ -188,7 +184,7 @@ section.search-bar {
       }
 
         .my-tasks .tasks .task > .type > .type-name {
-          font-size: 14px;
+          font-size: @font14;
           color: #333333;
           font-weight: 600;
           display: block;
@@ -196,7 +192,7 @@ section.search-bar {
         }
 
         .my-tasks .tasks .task > .type > .project-name {
-          font-size: 14px;
+          font-size: @font14;
           color: #333333;
           font-weight: 400;
           line-height: 18px;
@@ -216,7 +212,7 @@ section.search-bar {
       }
 
         .my-tasks .tasks .task > .status > .status-name {
-          font-size: 14px;
+          font-size: @font14;
           font-weight: 600;
           font-style: normal;
           line-height: 18px;
@@ -224,7 +220,7 @@ section.search-bar {
         }
 
         .my-tasks .tasks .task > .status > .status-date {
-          font-size: 12px;
+          font-size: @font12;
           font-weight: 600;
           font-style: normal;
           line-height: 18px;
@@ -250,7 +246,7 @@ section.search-bar {
 
         .my-tasks .tasks .task > .footer .due-date > .title,
         .my-tasks .tasks .task > .footer .assigned-to > .title {
-          font-size: 12px;
+          font-size: @font12;
           font-weight: 600;
           line-height: 18px;
           color: #666666;
@@ -258,7 +254,7 @@ section.search-bar {
 
         .my-tasks .tasks .task > .footer .due-date > .value,
         .my-tasks .tasks .task > .footer .assigned-to > .value {
-          font-size: 14px;
+          font-size: @font14;
           font-weight: 600;
           line-height: 18px;
           color: #333333;
@@ -279,7 +275,6 @@ section.search-bar {
       padding-left: 13px;
     }
 
-      /*.my-tasks .tasks.list-view .task > .type, */
       .my-tasks .tasks.list-view .task > .type {
         height: 57px;
       }
@@ -298,7 +293,7 @@ section.search-bar {
     line-height: 23px;
     padding-right: 10px;
     margin-left: 15px;
-    font-size: 12px;
+    font-size: @font12;
   }
 
 .closed-spaces .spaces {
@@ -360,7 +355,8 @@ section.search-bar {
     text-align: left;
     margin-right: 2px;
     float: left;
-    width: calc(100% - 52px);
+    /* width: calc(100% - 52px); */
+    width: calc(100% - 45px); /* modified by Dave to adjust for Open Sans */
   }
 
     .activity .active-body > span {
@@ -369,29 +365,29 @@ section.search-bar {
 
     .activity .active-body .title,
     .activity .active-body .description {
-      font-size: 14px;
+      font-size: @font14;
       font-weight: 600;
       color: #333333;
     }
 
     .activity .active-body .description2 {
-      font-size: 14px;
+      font-size: @font14;
       color: #66b2e7;
     }
 
     .activity .active-body .fragment {
-      font-size: 12px;
+      font-size: @font12;
       color: #999999;
     }
 
     .activity .active-body .fragment2 {
-      font-size: 12px;
+      font-size: @font12;
       color: #000;
     }
 
     .activity .active-body .fragment a {
       color: #66b2e7;
-      font-size: 12px;
+      font-size: @font12;
     }
 
 /* Space New
@@ -496,7 +492,7 @@ section.search-bar {
 
       #spaceNew .content .table > thead:first-child > tr:first-child > td {
         color: #005587;
-        font-size: 14px;
+        font-size: @font14;
         font-weight: 700;
       }
 
