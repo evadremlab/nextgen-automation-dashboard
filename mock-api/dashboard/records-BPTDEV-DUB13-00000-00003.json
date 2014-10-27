@@ -3,7 +3,7 @@
     "code": "OK",
     "comment": "https://apps-apis.dev.accela.com/v4/records/BPTDEV-DUB13-00000-00003"
   },
-  "result": [
+  "content": [
     {
       "name": "New 3600 SF detached SFR with open concept, 4 bedrooms & 4 bathrooms, 3 car garage, finished basement, and 500 SF deck",
       "id": "BPTDEV-DUB13-00000-00003",

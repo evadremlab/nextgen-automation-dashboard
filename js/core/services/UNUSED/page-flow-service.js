@@ -29,7 +29,7 @@
     }
 
     function fetch(serviceRequest, data) {
-      PageDataService.get(serviceRequest, data)
+      DataService.get(serviceRequest, data)
         .then(dataLoaded, dataFailedToLoad);
     }
 
@@ -62,7 +62,6 @@
      */
     function dataFailedToLoad(error) {
       // already logged by HttpInterceptor
-      alert(error.customErrorMessage);
     }
   }
 })();

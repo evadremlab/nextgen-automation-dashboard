@@ -20,7 +20,7 @@
           </ul>
         </li>
         <li>
-          <ul class="list-unstyled no-bottom-boder">
+          <ul class="list-unstyled no-bottom-border">
             <li><img src="/images/layout/maps_icon.png" title="Map icon" /></li>
             <li><a>Maps</a></li>
           </ul>
@@ -41,7 +41,7 @@
           <div class="row">
             <div class="col-md-7 text-left">
               <button type="button" id="btnSpaceNew" class="space-new" ng-click="changeUrl('spaceNew');">
-                <div style="color:#e17d00; font-size:13px; top:0;" class="glyphicon glyphicon-plus"></div>
+                <div style="color:#e17d00; top:0;" class="glyphicon glyphicon-plus"></div>
                 <b>New</b>
               </button>
             </div>
@@ -78,7 +78,7 @@
         <li template='templateMoreSpace.html' ng-show="spaceList.length>(showcount+1)" triggertype="mouseenter" more="true" bs-popover>
           <div class="word-break">
             <a href="javascript:void(0);" id="spaceMore" class="btn btn-default btn-xs space-more" data-trigger='click' data-container='body' data-toggle="popover" rel="popover" data-html="true">
-              <i class="li-space-hot-title">{{spaceList.length-showcount-1}}</i>
+              <i class="li-space-hot-title">{{spaceList.length - showcount - 1}}</i>
               more
             </a>
           </div>

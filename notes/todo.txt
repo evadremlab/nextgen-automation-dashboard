@@ -1,3 +1,8 @@
+Permit Solution is being served in IE=edge mode and font is displayed correctly
+when using IE=EmulateIE8 proxima-nova font is larger and italic
+could be that Adobe is serving a wrong font because of emulation mode?
+
+
 ng-app="accela-automation"
 
 DashboardController
@@ -9,7 +14,7 @@ using some embedded templates eg:
 
 has a hidden div called "AlertMsg" that appears in the top left
 
-step 1 identify resources
+step 1 identify resources (PARTIAL)
   css needed for:
     header ("proximia-nova" font);
       http://permits.cloudapp.net/Content/Site.css
@@ -23,8 +28,8 @@ step 1 identify resources
     Recently Closed Spaces
     modal dialogs
       http://permits.cloudapp.net/Content/Site.css
-step 2 create WebStorm app without .NET dependencies
-step 3 clone dashboard using mock data
+step 2 create WebStorm app without .NET dependencies (DONE)
+step 3 clone dashboard using mock data (DONE)
 
 /js/core				<-- contains components shared between AA and ACA
 	logging-service.js (DONE)
@@ -46,7 +51,7 @@ keep what I like from Permit Solution:
 
 
 Core
-  interval refresh
+  interval refresh (TBD)
   logging (DONE)
   error handling (DONE)
   modal dialogs - for messaging and forms (DONE)

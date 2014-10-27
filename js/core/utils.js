@@ -11,7 +11,7 @@
     return angular.element(document.querySelector(selector));
   });
   Accela.module('$$', function(selector) {
-    // usage: Accela.$('#big-nav').toggleClass('hidden');
+    // usage: Accela.$('.row').toggleClass('hidden');
     return angular.element(document.querySelectorAll(selector));
   });
 
@@ -42,11 +42,16 @@
        * Make synchronous request to load json files
        * defined in karma.conf.js under "files: [ { pattern : } ]"
        */
-      getMockData: function(serviceUrl) {
+      getMockData: function(serviceUrl, isUnitTesting) {
         var data = {};
         var xhr = createXHRObject();
 
-        xhr.open('GET', 'base/' + serviceUrl, false); // 'base/' prefix required to locate files
+        if (isUnitTesting) {
+          xhr.open('GET', 'base/' + serviceUrl, false); // 'base/' prefix required to locate files
+        } else {
+          xhr.open('GET', serviceUrl, false);
+        }
+
         xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
         xhr.send(null);
 

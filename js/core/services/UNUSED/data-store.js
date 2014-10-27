@@ -1,6 +1,10 @@
 (function() {
   'use strict';
 
+  angular
+    .module('accela.core')
+    .factory('DataStore', dataStore);
+
   /**
    * For sharing AUTOMATION data between controllers.
    *
@@ -8,11 +12,7 @@
    *
    * @ngInject
    */
-  angular
-    .module('accela.core')
-    .factory('DataStore', dataStore);
-
-  function dataStore($log, $cacheFactory, CONFIG) {
+  function dataStore($log, $cacheFactory, CONFIG, _) {
 
     // PRIVATE data
 
@@ -83,9 +83,9 @@
       cache = data[storeId];
 
       if (values) {
-        if (storeId == CONFIG.DATASTORE.CONSOLE) {
+        if (storeId === CONFIG.DATASTORE.CONSOLE) {
           initializeConsoleData(cache, values);
-        } else if (storeId == CONFIG.DATASTORE.SPEAR_FORM) {
+        } else if (storeId === CONFIG.DATASTORE.SPEAR_FORM) {
           initializeSpearFormData(cache, values);
         }
       }
@@ -114,14 +114,14 @@
         case 'locations':
           var locations = [];
           _.each(values, function(jsonLocation) {
-            locations.push(new accela.core.automation.entity.location(jsonLocation));
-          })
+//            locations.push(new Accela.core.automation.entity.location(jsonLocation));
+          });
           cache.put(propName, locations);
           break;
         case 'people':
           var people = [];
           _.each(values, function(jsonPerson) {
-            people.push(new accela.core.automation.entity.person(jsonPerson));
+//            people.push(new accela.core.automation.entity.person(jsonPerson));
           });
           cache.put(propName, people);
           break;

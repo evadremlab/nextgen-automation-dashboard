@@ -1,10 +1,6 @@
 (function () {
   'use strict';
 
-  angular
-    .module('accela.automation')
-    .factory('ConsoleManager', service);
-
   // SEE: https://github.com/idanush/ngdocs/wiki/API-Docs-Syntax
 
   /**
@@ -304,4 +300,8 @@
       }
     }
   }
+
+  angular
+    .module('accela.automation')
+    .factory('ConsoleManager', service);
 })();

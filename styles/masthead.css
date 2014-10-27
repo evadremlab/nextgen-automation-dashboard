@@ -1,0 +1,63 @@
+
+/* MASTHEAD - containing user info
+============================================================================= */
+
+.masthead {
+  height: 90px;
+  border-bottom: 1px solid #e0e0e0;
+  xxx-dbb-font-family: "proxima-nova";
+}
+
+.masthead > .user {
+  margin-top: 30px;
+  /*padding-top:13px;*/
+  padding-left: 21px;
+}
+
+.masthead .day, .masthead .time, .masthead .weather {
+  margin-top: 20px;
+  padding-left: 18px;
+  height: 70px;
+}
+
+.masthead .weather {
+  padding-right: 56px;
+}
+
+.masthead .time, .masthead .day {
+  border-left: 1px solid #e0e0e0;
+  padding-right: 42px;
+}
+
+.masthead .user .user-name > a {
+  font-weight: 600;
+  color: #005587;
+  font-size: 16px;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+.masthead .user .user-name > span {
+  display: block;
+  color: #333333;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.masthead .day .title, .masthead .time .title, .masthead .weather .title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #666666;
+  line-height: 18px;
+  font-style: normal;
+  margin-top: 13px;
+}
+
+.masthead .day span, .masthead .time span, .masthead .weather span {
+  font-size: 12px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 18px;
+  font-style: normal;
+  font-weight: 600;
+}

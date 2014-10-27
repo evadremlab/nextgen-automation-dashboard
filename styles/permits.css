@@ -104,14 +104,14 @@
         color: #66b2e7;
         text-decoration: none;
         font-size: 14px;
-        font-family: "proxima-nova";
+        xxx-dbb-font-family: "proxima-nova";
         font-weight: 600;
         display: block;
     }
 
     .accela-dropdown .content-item > span {
         font-size: 12px;
-        font-family: "proxima-nova";
+        xxx-dbb-font-family: "proxima-nova";
         font-weight: 400;
     }
 
@@ -379,7 +379,7 @@
     color: #666666;
     line-height: 32px;
     font-size: 12px;
-    font-family: "proxima-Nova";
+    xxx-dbb-font-family: "proxima-nova";
     margin-left: 0px;
 }
 
@@ -393,7 +393,7 @@
             padding-right: 20px;
             line-height: 18px;
             font-size: 12px;
-            font-family: "proxima-nova";
+            xxx-dbb-font-family: "proxima-nova";
             color: #666666;
         }
 
@@ -411,7 +411,7 @@
 .view-history-link a {
     color: #66b2e7;
     font-size: 12px;
-    font-family: 'proxima-nova';
+    xxx-dbb-font-family: 'proxima-nova';
     font-style: normal;
     font-weight: 700;
     margin-right: 10px;
@@ -816,7 +816,7 @@
         font-size: 12px;
         line-height: 15px;
         color: #666666;
-        font-family: "proxima-nova";
+        xxx-dbb-font-family: "proxima-nova";
         font-weight: 400;
         display: block;
         text-align: left;
@@ -873,7 +873,7 @@
     border: none;
     line-height: 19px;
     font-size: 14px;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
     color: #000000;
     width: 100%;
     font-weight: 600;
@@ -1916,49 +1916,49 @@
 }
 
 .font-14-regular {
-    font-family: "proxima-nova",sans-serif;
+    xxx-dbb-font-family: "proxima-nova",sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
 }
 
 .font-16-regular {
-    font-family: "proxima-nova",sans-serif;
+    xxx-dbb-font-family: "proxima-nova",sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
 }
 
 .font-12-regular {
-    font-family: "proxima-nova",sans-serif;
+    xxx-dbb-font-family: "proxima-nova",sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
 }
 
 .font-24-light {
-    font-family: "proxima-nova",sans-serif;
+    xxx-dbb-font-family: "proxima-nova",sans-serif;
     font-style: normal;
     font-weight: 300;
     font-size: 24px;
 }
 
 .font-12-semibold {
-    font-family: "proxima-nova",sans-serif;
+    xxx-dbb-font-family: "proxima-nova",sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
 }
 
 .font-13-semibold {
-    font-family: "proxima-nova",sans-serif;
+    xxx-dbb-font-family: "proxima-nova",sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
 }
 
 .font-14-semibold {
-    font-family: "proxima-nova",sans-serif;
+    xxx-dbb-font-family: "proxima-nova",sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -1966,7 +1966,7 @@
 
 
 .font-14-blod {
-    font-family: "proxima-nova",sans-serif;
+    xxx-dbb-font-family: "proxima-nova",sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -2372,7 +2372,7 @@
 .my-summary .summary-title {
     text-decoration: none;
     font-size: 24px;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
     font-weight: 300;
     color: #999999;
     display: block;
@@ -2388,7 +2388,7 @@
     color: #666666;
     line-height: 32px;
     font-size: 12px;
-    font-family: "proxima-Nova";
+    xxx-dbb-font-family: "proxima-nova";
     padding-right: 18px;
     padding-left: 10px;
     margin-top: 10px;
@@ -2396,13 +2396,13 @@
 }
 
 .summary-activity, .summary-items {
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
     padding: 20px 20px 10px 10px;
 }
 
 
     .summary-items:last-child {
-        font-family: "proxima-nova";
+        xxx-dbb-font-family: "proxima-nova";
     }
 
     .summary-activity > header {
@@ -2645,7 +2645,7 @@
             font-weight: 600;
             color: #666;
             font-size: 16px;
-            font-family: "proxima-nova";
+            xxx-dbb-font-family: "proxima-nova";
         }
 
     .permit_summary > .create-content ul {
@@ -2743,7 +2743,7 @@
         .permit_summary .content-item > .title {
             text-decoration: none;
             font-size: 16px;
-            font-family: "proxima-nova";
+            xxx-dbb-font-family: "proxima-nova";
             font-weight: 600;
             display: block;
         }
@@ -2751,7 +2751,7 @@
         .permit_summary .content-item > span {
             color: #666;
             font-size: 14px;
-            font-family: "proxima-nova";
+            xxx-dbb-font-family: "proxima-nova";
             font-weight: 400;
         }
 
@@ -2761,7 +2761,7 @@
 }
 /** PermitSummary Record Detail**/
 .my-record {
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
     padding-bottom: 60px;
 }
 
@@ -2996,21 +2996,21 @@
     font-size: 12px;
     color: #66b2e7;
     font-weight: 600;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
 }
 
 .font-blue-14 {
     font-size: 14px;
     color: #66b2e7;
     font-weight: 600;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
 }
 
 .font-blue-18 {
     font-size: 18px;
     color: #66b2e7;
     font-weight: 600;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
 }
 
 .font-333-14 {
@@ -3023,26 +3023,26 @@
     font-size: 16px;
     font-weight: 600;
     color: #333333;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
 }
 
 .font-333-16-400 {
     font-size: 16px;
     font-weight: 400;
     color: #333333;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
 }
 
 .font-333-20 {
     font-size: 20px;
     font-weight: 600;
     color: #333333;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
 }
 
 .my-record .activity {
     padding-left: 0px;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
 }
 
     .my-record .activity .badge > i {
@@ -3061,7 +3061,7 @@
 }
 
 .record-items {
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
     padding: 10px 0;
 }
 
@@ -3211,7 +3211,7 @@
     color: #000000;
     line-height: 6px;
     vertical-align: middle;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
 }
 
 /* Permit Location  ===========================================================================================*/
@@ -3486,7 +3486,7 @@
     position: relative;
     padding-left: 0;
     z-index: 0;
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
 }
 
     .masthead-workflow .list-unstyled:after {
@@ -3922,7 +3922,7 @@
 
 /*start permit people*/
 .permit-people {
-    font-family: "proxima-nova";
+    xxx-dbb-font-family: "proxima-nova";
 }
 
     .permit-people .primary {
@@ -4184,7 +4184,7 @@
         font-size: 12px;
         line-height: 15px;
         color: #666666;
-        font-family: "proxima-nova";
+        xxx-dbb-font-family: "proxima-nova";
         font-weight: 600;
     }
 

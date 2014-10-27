@@ -9,15 +9,16 @@
   angular
     .module('accela.core')
     .filter('customDateFilter', ['$filter', function ($filter) {
-    return function (originDate, formatString) {
-      var formatDate=null;
-      if (originDate instanceof Date) {
-        formatDate = originDate;
-      } else {
-        if (originDate)
-          formatDate = new Date(originDate.toString().replace(/-/g, "/"));
-      }
-      return formatDate==null ? "" : $filter("date")(formatDate, formatString);
-    }
+      return function (originDate, formatString) {
+        var formatDate = null;
+        if (originDate instanceof Date) {
+          formatDate = originDate;
+        } else {
+          if (originDate) {
+            formatDate = new Date(originDate.toString().replace(/-/g, '/'));
+          }
+        }
+        return formatDate === null ? '' : $filter('date')(formatDate, formatString);
+      };
   }]);
 })();

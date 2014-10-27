@@ -49,7 +49,7 @@ describe('DataService:Tests', function() {
     var serviceRequest = SERVICE_REQUEST.AGENCY_PORTLETS;
     var serviceUrl = service.getServiceUrl(serviceRequest);
 
-    $httpBackend.expect('POST', serviceUrl).respond(200, Accela.Utils.XmlHttp.getMockData(serviceUrl));
+    $httpBackend.expect('POST', serviceUrl).respond(200, Accela.Utils.XmlHttp.getMockData(serviceUrl, true));
 
     service.get(serviceRequest).then(function(response) {
       console.log(JSON.stringify(response));

@@ -12,6 +12,7 @@
 
     // PRIVATE data
 
+    /*jshint validthis: true */
     var vm = this;
     
     var config = CONFIG.CONSOLE;
@@ -41,10 +42,6 @@
     vm.rightPortlet = function(portlet) {
       return portlet.display === 'right';
     };
-
-    // CONSTRUCTOR
-
-    activate();
 
     // PRIVATE methods
 
@@ -131,5 +128,9 @@
     function notify(msg) {
       ModalDialog.message({ className: 'error', title: 'Console Customization', msg: msg });
     }
+
+    // CONSTRUCTOR
+
+    activate();
   }
 })();

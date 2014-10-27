@@ -1,3 +1,6 @@
+/**
+ * Controller for left navigation section.
+ */
 (function() {
   'use strict';
 
@@ -8,19 +11,13 @@
   /**
    * @ngInject
    */
-  function controller($rootScope, $scope, $location, $log, $window) {
+  function controller($rootScope, $scope, $filter, $location, $log, $window) {
 
     // PRIVATE data
 
     var resizeTimer = null;
 
-    // PUBLIC data
-
-    $scope.showcount = 0;
-    $scope.lastSpaceWidth = 0;
-    $scope.activeSubMenu = $location.path();
-
-    $scope.spaceList = [
+    var mockSpaceList = [
       {
         ID: 1,
         PinSortID: 0,
@@ -44,61 +41,38 @@
       }
     ];
 
+    // PUBLIC data
+
+    $scope.showcount = 0;
+    $scope.lastSpaceWidth = 0;
+    $scope.activeSubMenu = $location.path();
+
+    $scope.spaceList = [];
+
     // PUBLIC methods
 
-    // CONSTRUCTOR
-
-    activate();
-
-    // PRIVATE methods
-
-    function activate() {
-      $log = $log.getInstance('MAIN-CONTROLLER');
-
-//      $(document).ready(function () {
-//        //   resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
-//        if (!resizeTimer) {
-//          resizeTimer = setTimeout(calcSpacesCount, 1000);
-//          $scope.GetSpaceList();
-//        }
-//        else {
-//          resizeTimer = null;
-//        }
-//      });
-//
-//      $(window).resize(function () {
-//        resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
-//      });
-
-      function resizeHandler() {
-        setTimeout(calcSpacesCount, 1000);
-      }
-
-      angular.element($window).bind('resize', _.debounce(resizeHandler, 300));
-    }
-
-    $scope.$on("$routeChangeStart", function (next, current) {
+    $scope.$on('$routeChangeStart', function (next, current) {
       $log.info('$routeChangeStart EVENT, next: ' + JSON.stringify(next));
       $scope.activeSubMenu = $location.path();
     });
 
-      $rootScope.$on("refreshSpace", function (event) {
+      $rootScope.$on('refreshSpace', function (event) {
         $log.info('refreshSpace EVENT');
 //        $scope.GetSpaceList();
       });
 
-      $rootScope.$on("updateUserSpaces", function () {
+      $rootScope.$on('updateUserSpaces', function () {
         $log.info('updateUserSpaces EVENT');
 //        $scope.GetSpaceList();
       });
 
     // listening url change
-    $scope.$on("$locationChangeSuccess", function () {
+    $scope.$on('$locationChangeSuccess', function () {
       $log.info('$locationChangeSuccess EVENT');
 //      var space = $scope.getSpaceById();
-//      if (space != null && space.SpaceType == "new") {
+//      if (space != null && space.SpaceType == 'new') {
 //        var URL = $location.path();
-//        if (URL == "/" || space.URL == URL) {
+//        if (URL == '/' || space.URL == URL) {
 //          return;
 //        }
 //        var newSpace = $scope.setSpaceNameAndURL(space.Name, URL);
@@ -112,6 +86,8 @@
 
     $scope.GetSpaceList = function (funcName) {
       $log.info('$scope.GetSpaceList()');
+      $scope.spaceList = mockSpaceList;
+      $scope.setSpaceClick();
 //      LoadingService.show();
 //      SpaceService.GetSpacesList(function (data) {
 //        if (data.result != 300) {
@@ -151,7 +127,7 @@
 
     $scope.getSpaceById = function () {
       $log.info('$scope.getSpaceById()');
-//      var space = $filter("filter")($scope.spaceList, function (item) {
+//      var space = $filter('filter')($scope.spaceList, function (item) {
 //        return item.ID == $rootScope.SpaceSelectedId;
 //      });
 //      if (space==null || space.length <= 0) {
@@ -162,37 +138,37 @@
 
     $scope.setSpaceNameAndURL = function (name, URL) {
       var newName = name;
-      var url = URL.split("/")[1];
+      var url = URL.split('/')[1];
       var update = true;
-      var type = "new";
+      var type = 'new';
       switch (url) {
-        case "Permits":
-          newName = "Permits";
-          type = "Permits";
+        case 'Permits':
+          newName = 'Permits';
+          type = 'Permits';
           break;
-        case "Inspections":
-          newName = "Inspections";
-          type = "Inspections";
+        case 'Inspections':
+          newName = 'Inspections';
+          type = 'Inspections';
           break;
-        case "Intake":
-          newName = "New Application";
+        case 'Intake':
+          newName = 'New Application';
           break;
-        case "SpaceNew":
-          newName = "Untitled Space";
+        case 'SpaceNew':
+          newName = 'Untitled Space';
           break;
-        case "InspectionSummary":
+        case 'InspectionSummary':
           update = false;
           break;
-        case "FinalizePermits":
+        case 'FinalizePermits':
           update = false;
           break;
-        case "SubmissionComplete":
+        case 'SubmissionComplete':
           update = false;
           break;
         default:
           update = false;
-          //newName = $scope.setSpaceNewName("Untitled Space");
-          //URL = "/SpaceNew";
+          //newName = $scope.setSpaceNewName('Untitled Space');
+          //URL = '/SpaceNew';
           break;
       }
       var space = {};
@@ -203,7 +179,7 @@
       return space;
     };
 
-    $rootScope.$on("spaceUpdateNameUrl", function (d, name, url, oldType , type) {
+    $rootScope.$on('spaceUpdateNameUrl', function (d, name, url, oldType , type) {
       $log.info('spaceUpdateNameUrl EVENT');
 //      if ($rootScope.SpaceSelectedId == null) {
 //        $scope.setSpaceClick();
@@ -211,7 +187,7 @@
 //      if ($rootScope.SpaceSelectedId != null) {
 //        var space = $scope.getSpaceById();
 //        if (space != null && space.SpaceType == oldType) {
-//          var urlTmp = url == "" ? space.URL : url;
+//          var urlTmp = url == '' ? space.URL : url;
 //          SpaceService.updateSpace(name, urlTmp, $rootScope.SpaceSelectedId, type);
 //
 //          $scope.setClickSpace($rootScope.SpaceSelectedId);
@@ -219,29 +195,29 @@
 //      }
     });
 
-    $rootScope.$on("clickSpace", function (d, id, url) {
+    $rootScope.$on('clickSpace', function (d, id, url) {
       $log.info('clickSpace EVENT');
 //      $rootScope.SpaceSelectedId = id;
 //      $location.path(url);
     });
 
-    $rootScope.$on("saveSearchResult", function (d, type, data, key, spaceType) {
+    $rootScope.$on('saveSearchResult', function (d, type, data, key, spaceType) {
       $log.info('saveSearchResult EVENT');
-//      var space = $filter("filter")($scope.spaceList, function (item) {
+//      var space = $filter('filter')($scope.spaceList, function (item) {
 //        return item.ID == $rootScope.SpaceSelectedId;
 //      });
-//      //var searchKey = "";
+//      //var searchKey = '';
 //
 //      var name = type;
 //      if (space==null || space.length < 1) {
 //        return;
 //      }
 //
-//      data["SearchType"] = type;
-//      data["permitschecked"] = key;
+//      data['SearchType'] = type;
+//      data['permitschecked'] = key;
 //
 //      SpaceService.addFilter($rootScope.SpaceSelectedId, data, function (data) {
-//        var nameTmp = space[0].Name.split("(")[0];
+//        var nameTmp = space[0].Name.split('(')[0];
 //        if (nameTmp != name) {
 //          $scope.setClickSpace($rootScope.SpaceSelectedId);
 //          var newName = $scope.setSpaceNewName(name.substr(0, 30));
@@ -255,32 +231,32 @@
 
     $scope.setSpaceClick = function () {
       $log.info('$scope.setSpaceClick()');
-//      var space = $filter("filter")($scope.spaceList, function (item) {
-//        return item.URL == $location.path();
-//      });
-//      if ($rootScope.SpaceSelectedId != null) {
-//
-//        var selectSpace = $filter("filter")($scope.spaceList, function (item) {
-//          return item.ID == $rootScope.SpaceSelectedId;
-//        });
-//        if (selectSpace != null && selectSpace.length > 0 && selectSpace[0].SpaceType == "new") {
-//          $scope.getSpaceFilter();
-//          return;
-//        }
-//
-//        for (var i in space) {
-//          if (space[i].ID == $rootScope.SpaceSelectedId) {
-//            $scope.getSpaceFilter();
-//            return;
-//          }
-//        }
-//      }
-//      if (space != null && space.length > 0) {
-//        $rootScope.SpaceSelectedId = space[0].ID;
-//        $scope.getSpaceFilter();
-//      } else {
-//        $rootScope.SpaceSelectedId = 0;
-//      }
+      var space = $filter('filter')($scope.spaceList, function (item) {
+        return item.URL == $location.path();
+      });
+      if ($rootScope.SpaceSelectedId != null) {
+
+        var selectSpace = $filter('filter')($scope.spaceList, function (item) {
+          return item.ID == $rootScope.SpaceSelectedId;
+        });
+        if (selectSpace != null && selectSpace.length > 0 && selectSpace[0].SpaceType == 'new') {
+          $scope.getSpaceFilter();
+          return;
+        }
+
+        for (var i in space) {
+          if (space[i].ID == $rootScope.SpaceSelectedId) {
+            $scope.getSpaceFilter();
+            return;
+          }
+        }
+      }
+      if (space != null && space.length > 0) {
+        $rootScope.SpaceSelectedId = space[0].ID;
+        $scope.getSpaceFilter();
+      } else {
+        $rootScope.SpaceSelectedId = 0;
+      }
     };
 
     // *********************************************************************
@@ -289,19 +265,19 @@
     $scope.SpaceAction = function (Action, spaceID) {
       $log.info('$scope.SpaceAction()');
 //      switch (Action.toLowerCase()) {
-//        case "pin":
-//          $scope.PinSortID("pin", spaceID);
+//        case 'pin':
+//          $scope.PinSortID('pin', spaceID);
 //          break;
-//        case "unpin":
-//          $scope.PinSortID("unpin", spaceID);
+//        case 'unpin':
+//          $scope.PinSortID('unpin', spaceID);
 //          break;
-//        case "duplicate":
+//        case 'duplicate':
 //          $scope.DuplicateSpace(spaceID);
 //          break;
-//        case "close":
+//        case 'close':
 //          $scope.CloseSpaceList(spaceID);
 //          break;
-//        case "quickadd":
+//        case 'quickadd':
 //          $scope.quickAdd(spaceID);
 //          break;
 //      }
@@ -309,18 +285,18 @@
 
     $scope.quickAdd = function (ID) {
       $log.info('$scope.quickAdd()');
-//      var space = $filter("filter")($scope.spaceList, function (item) {
+//      var space = $filter('filter')($scope.spaceList, function (item) {
 //        return item.ID == ID;
 //      });
-//      var newURL = space[0].URL.replace("PermitSummary", "SubmissionComplete/submited");
+//      var newURL = space[0].URL.replace('PermitSummary', 'SubmissionComplete/submited');
 //      $location.url(newURL);
 //      // $location.url(space.URL);
-//      $rootScope.$broadcast("showQuickAdd");
+//      $rootScope.$broadcast('showQuickAdd');
     };
 
     $scope.isPermitRecord = function (spaceType) {
       var flag = false;
-      if (spaceType == "submitPermit") {
+      if (spaceType == 'submitPermit') {
         flag = true;
       }
       return flag;
@@ -332,7 +308,7 @@
 //
 //      SpaceService.closeUserSpace(ID, function (data) {
 //        $scope.GetSpaceList();
-//        $rootScope.$broadcast("userSpaceClose");
+//        $rootScope.$broadcast('userSpaceClose');
 //      });
     };
 
@@ -372,10 +348,10 @@
 //        return;
 //      }
 //
-//      var space = $("#space_" + id);
-//      space.css("z-index", "-10");
-//      space.animate({ marginTop: "-95", opacity: "0" }, {
-//        speed: "normal", easing: "swing", queue: false, complete: func
+//      var space = $('#space_' + id);
+//      space.css('z-index', '-10');
+//      space.animate({ marginTop: '-95', opacity: '0' }, {
+//        speed: 'normal', easing: 'swing', queue: false, complete: func
 //      });
     };
 
@@ -393,44 +369,44 @@
       var subStr = str;
       var len = 20;
       if (str.length > len) {
-        subStr = str.substring(0, len / 2) + "-" + str.substring(len / 2, len) + "...";
+        subStr = str.substring(0, len / 2) + '-' + str.substring(len / 2, len) + '...';
       }
       return subStr;
     };
 
     $scope.setimgcss = function (ID, spaceType) {
-      var imgsrc = "";
+      var imgsrc = '';
 
-      spaceType = spaceType == null ? "null" : spaceType;
+      spaceType = spaceType == null ? 'null' : spaceType;
 
       switch (spaceType.toLowerCase()) {
-        case "permits":
-        case "submitpermits":
-          imgsrc = $rootScope.SpaceSelectedId == ID ? "permits_icon_default.png" : "permits_icon_selected.png";
+        case 'permits':
+        case 'submitpermits':
+          imgsrc = $rootScope.SpaceSelectedId == ID ? 'permits_icon_default.png' : 'permits_icon_selected.png';
           break;
-        case "people":
-          imgsrc = $rootScope.SpaceSelectedId == ID ? "people_icon_default.png" : "people_icon_selected.png";
+        case 'people':
+          imgsrc = $rootScope.SpaceSelectedId == ID ? 'people_icon_default.png' : 'people_icon_selected.png';
           break;
-        case "search":
-          imgsrc = $rootScope.SpaceSelectedId == ID ? "search_icon_default.png" : "search_icon_selected.png";
+        case 'search':
+          imgsrc = $rootScope.SpaceSelectedId == ID ? 'search_icon_default.png' : 'search_icon_selected.png';
           break;
         default:
-          imgsrc = $rootScope.SpaceSelectedId == ID ? "untitled_icon_default.png" : "untitled_icon_selected.png";
+          imgsrc = $rootScope.SpaceSelectedId == ID ? 'untitled_icon_default.png' : 'untitled_icon_selected.png';
           break;
       }
       return imgsrc;
-    }
+    };
 
     // set repeat name
     $scope.setSpaceNewName = function (name) {
       var count = -1;
       for (var i in $scope.spaceList) {
         var spaceName = $scope.spaceList[i].Name;
-        var spaceNames = spaceName.split("(");
+        var spaceNames = spaceName.split('(');
         var realName = spaceNames[0];
         if (realName == name) {
           if (spaceNames.length > 1) {
-            var countTmp = spaceNames[1].split(")")[0];
+            var countTmp = spaceNames[1].split(')')[0];
             count = parseInt(count) > parseInt(countTmp) ? count : countTmp;
           } else {
             count = count == -1 ? 0 : count;
@@ -438,12 +414,12 @@
         }
       }
       count++;
-      return count == 0 ? name : name + "(" + count + ")";
+      return count == 0 ? name : name + '(' + count + ')';
     };
 
     $scope.locationGoto = function (url) {
       $location.path(url);
-    }
+    };
 
     // *********************************************************************
     // public click function
@@ -452,13 +428,13 @@
       $log.info('$scope.Operate()');
 //      //        $scope.CreateSpaceList(action, Url);
 //      switch (action.toLowerCase()) {
-//        case "permits":
-//          $location.path("/#/Intake");
+//        case 'permits':
+//          $location.path('/#/Intake');
 //          break;
-//        case "inspections":
+//        case 'inspections':
 //          break;
-//        case "People":
-//        case "locations":
+//        case 'People':
+//        case 'locations':
 //          break;
 //        default:
 //          break;
@@ -468,7 +444,7 @@
     $scope.SetCurrentToEnd = function (ID, Nowindex) {
       $log.info('$scope.SetCurrentToEnd()');
 //
-//      var selectedspace = $filter("filter")($scope.spaceList, function (item) {
+//      var selectedspace = $filter('filter')($scope.spaceList, function (item) {
 //        return item.ID == ID;
 //      });
 //
@@ -492,7 +468,7 @@
 //      $scope.setimgcss(ID, spaceType);
 //
 //      if (routingurl == $location.path()) {
-//        if (spaceType.toLowerCase() == "new" || spaceType.toLowerCase() == "search") {
+//        if (spaceType.toLowerCase() == 'new' || spaceType.toLowerCase() == 'search') {
 //
 //          SpaceService.GetFilter($rootScope.SpaceSelectedId, function (data) {
 //            if (data.result.length < 1) {
@@ -500,7 +476,7 @@
 //            } else {
 //              if (data.result.length > 0) {
 //                var searchData = JSON.parse(data.result[0].Conditions);
-//                $rootScope.$broadcast("SpaceAutoSearch", searchData);
+//                $rootScope.$broadcast('SpaceAutoSearch', searchData);
 //              }
 //            }
 //          });
@@ -512,16 +488,16 @@
 
     $scope.dblclick = function (ID, Name) {
       $log.info('$scope.dblclick()');
-//      $("#" + ID).hide();
-//      $("#textarea_" + ID).show();
-//      $("#textarea_" + ID).trigger("focus");
+//      $('#' + ID).hide();
+//      $('#textarea_' + ID).show();
+//      $('#textarea_' + ID).trigger('focus');
 
-      Accela.$("#" + ID).addClass('hidden');
-      Accela.$("#textarea_" + ID).removeClass('hidden');
-      Accela.$("#textarea_" + ID).triggerHandler('focus');
+      Accela.$('#' + ID).addClass('hidden');
+      Accela.$('#textarea_' + ID).removeClass('hidden');
+      Accela.$('#textarea_' + ID).triggerHandler('focus');
     };
 
-    $rootScope.$on("GetFilter", function () {
+    $rootScope.$on('GetFilter', function () {
       $log.info('GetFilter EVENT');
 //      $scope.getSpaceFilter();
     });
@@ -530,10 +506,10 @@
     $scope.changeUrl = function (action) {
       $log.info('$scope.changeUrl()');
 //      switch (action) {
-//        case "spaceNew":
-//          var name = $scope.setSpaceNewName("Untitled Space");
-//          var url = "/SpaceNew";
-//          var type = "new";
+//        case 'spaceNew':
+//          var name = $scope.setSpaceNewName('Untitled Space');
+//          var url = '/SpaceNew';
+//          var type = 'new';
 //          SpaceService.Create(name, url, type, function (data) {
 //            $scope.GetSpaceList(function () {
 //              $rootScope.SpaceSelectedId = data.result[0].ID;
@@ -555,17 +531,17 @@
     $scope.UpdateSpaceList = function (ID, URL) {
       $log.info('$scope.UpdateSpaceList()');
 //      LoadingService.show();
-//      var Name = document.getElementById("textarea_" + ID).value;
+//      var Name = document.getElementById('textarea_' + ID).value;
 //      Name = $.trim(Name);
-//      if (Name == "") {
+//      if (Name == '') {
 //        $scope.GetSpaceList();
 //        return;
 //      }
 //
 //      SpaceService.UpdateSpaceName(Name, ID, function (data) {
-//        $("#" + ID).show();
-//        $("#textarea_" + ID).hide();
-      Accela.$("#" + ID).removeClass('hidden');
+//        $('#' + ID).show();
+//        $('#textarea_' + ID).hide();
+      Accela.$('#' + ID).removeClass('hidden');
       Accela.$('#textarea_' + ID).addClass('hidden');
 //        $scope.GetSpaceList();
 //        LoadingService.hide();
@@ -578,23 +554,23 @@
     $scope.getSpaceFilter = function () {
       $log.info('$scope.getSpaceFilter()');
 //      var space = $scope.getSpaceById();
-//      if (space != null && space.URL == $location.path() && space.SpaceType.toLowerCase() == "search") {
+//      if (space != null && space.URL == $location.path() && space.SpaceType.toLowerCase() == 'search') {
 //
 //        SpaceService.GetFilter(space.ID, function (data) {
 //          if (data.result.length > 0) {
 //            var searchData = JSON.parse(data.result[0].Conditions);
-//            $rootScope.$broadcast("SpaceAutoSearch", searchData);
+//            $rootScope.$broadcast('SpaceAutoSearch', searchData);
 //          }
 //        });
 //      }
     };
 
-    var calcSpacesCount = function () {
+    function calcSpacesCount() {
       $log.debug('calcSpacesCount()');
-//      var navHeight = $("#big-nav").height();
-//      var dashboradHeihght = $("#dashboardGroupDiv").height();
-//      var settingHeight = $("#nav-last-li").height();
-//      var spaceWidth = $($("#spaceGroupDiv").find("li")[0]).width();
+//      var navHeight = $('#big-nav').height();
+//      var dashboradHeihght = $('#dashboardGroupDiv').height();
+//      var settingHeight = $('#nav-last-li').height();
+//      var spaceWidth = $($('#spaceGroupDiv').find('li')[0]).width();
 //      var moreHeight = 30;
 //
 //      var liSpacesHeight = $(document).width() <= 768 ? 50 : 95;
@@ -617,10 +593,10 @@
 //
 //      $scope.lastSpaceWidth = spaceWidth;
 //      resizeTimer = null;
-      var navHeight = Accela.$("#big-nav").prop('offsetHeight');
-      var dashboardHeight = Accela.$("#dashboardGroupDiv").prop('offsetHeight');
-      var settingHeight = Accela.$("#nav-last-li").prop('offsetHeight');
-      var spaceWidth = Accela.$("#spaceGroupDiv").prop('offsetWidth');
+      var navHeight = Accela.$('#big-nav').prop('offsetHeight');
+      var dashboardHeight = Accela.$('#dashboardGroupDiv').prop('offsetHeight');
+      var settingHeight = Accela.$('#nav-last-li').prop('offsetHeight');
+      var spaceWidth = Accela.$('#spaceGroupDiv').prop('offsetWidth');
       var moreHeight = 30;
 
       var liSpacesHeight = document.body.offsetWidth <= 768 ? 50 : 95;
@@ -644,8 +620,41 @@
       }
 
       $scope.lastSpaceWidth = spaceWidth;
-    };
+    }
 
-    setTimeout(calcSpacesCount, 1000);
+    // PRIVATE methods
+
+    function activate() {
+      $log = $log.getInstance('MAIN-CONTROLLER');
+
+//      $(document).ready(function () {
+//        //   resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
+//        if (!resizeTimer) {
+//          resizeTimer = setTimeout(calcSpacesCount, 1000);
+//          $scope.GetSpaceList();
+//        }
+//        else {
+//          resizeTimer = null;
+//        }
+//      });
+//
+//      $(window).resize(function () {
+//        resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
+//      });
+
+      function resizeHandler() {
+        setTimeout(calcSpacesCount, 1000);
+      }
+
+      angular.element($window).bind('resize', _.debounce(resizeHandler, 500));
+
+      setTimeout(calcSpacesCount, 1000);
+
+      $scope.GetSpaceList();
+    }
+
+    // CONSTRUCTOR
+
+    activate();
   }
 })();

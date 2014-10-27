@@ -12,6 +12,7 @@
 
     // PRIVATE data
 
+    /*jshint validthis: true */
     var vm = this;
 
     var availablePortlets;
@@ -31,10 +32,6 @@
     vm.doPortletAction = doPortletAction;
     vm.applyPageChanges = applyPageChanges;
     vm.isUniquePage = ConsoleManager.isUniquePage;
-
-    // CONSTRUCTOR
-
-    activate();
 
     // PRIVATE methods
 
@@ -127,5 +124,9 @@
     function notify(msg) {
       ModalDialog.message({ className: 'error', title: 'Console Customization', msg: msg });
     }
+
+    // CONSTRUCTOR
+
+    activate();
   }
 })();

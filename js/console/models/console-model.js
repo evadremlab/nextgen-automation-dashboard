@@ -16,7 +16,7 @@
 
     // PRIVATE data
 
-    var portletFactory = Accela.Entity.Portlet(CONFIG);
+    var portletFactory = Accela.Entity.Portlet(CONFIG, _);
     var pageFactory = Accela.Entity.ConsolePage(portletFactory, _);
     var consoleFactory = Accela.Entity.UserConsole(pageFactory, _);
 

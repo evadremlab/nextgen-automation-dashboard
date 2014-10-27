@@ -4,7 +4,7 @@
   /**
    * PORTLET - dependency injection handled by ConsoleModel.
    */
-  Accela.module('Entity.Portlet', function(CONFIG) {
+  Accela.module('Entity.Portlet', function(CONFIG, _) {
 
     // PRIVATE data
 
@@ -36,14 +36,14 @@
      */
     Portlet.prototype.getUrl = function() {
       return CONFIG.USE_MOCK_PORTLETS ? 'mock-portlet.html' : this.url;
-    }
+    };
 
     /**
      * Extract English language title.
      */
     Portlet.prototype.localizedTitle = function() {
       return this.title.split('$$')[0].split(':')[0];
-    }
+    };
 
     /**
      * Replace internal properties with those expected by the server.

@@ -4,6 +4,6 @@ module.exports = {
     reporter: require('jshint-stylish')
   },
   app: {
-    src: ['js/*.js']
+    src: ['js/**/*.js']
   }
 };

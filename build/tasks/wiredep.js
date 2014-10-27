@@ -1,11 +1,8 @@
 module.exports = {
   old: {
-    src: ['index.html']
+    src: ['prototype.html']
   },
   new: {
-    src: ['modified.html'],
-    exclude: [
-      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js'
-    ]
+    src: ['index.html']
   }
 };

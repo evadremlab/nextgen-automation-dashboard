@@ -8,7 +8,7 @@
   /**
    * @ngInject
    */
-  function httpInterceptor($rootScope, $log, $q, LoggingService) {
+  function httpInterceptor($rootScope, $log, $q, LoggingService, _) {
 
     // PRIVATE data
 

@@ -12,6 +12,7 @@
 
     // PRIVATE data
 
+    /*jshint validthis: true */
     var vm = this;
 
     // PUBLIC data
@@ -37,14 +38,14 @@
       portlet.isSelected = $event.target.checked;
     };
 
-    // CONSTRUCTOR
-
-    activate();
-
     // PRIVATE methods
 
     function activate() {
       $log = $log.getInstance('ADD-PORTLET-CONTROLLER');
     }
+
+    // CONSTRUCTOR
+
+    activate();
   }
 })();

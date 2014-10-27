@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width,initial-scale=1" name="viewport">
-  <meta content="IE=EmulateIE8" http-equiv="X-UA-Compatible">
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"><!-- breaks Adobe fonts-->
+  <!--<meta http-equiv="X-UA-Compatible" content="IE=Edge">--><!-- works with Open Sans -->
 
   <!-- remove for production -->
   <meta http-equiv="cache-control" content="max-age=0" />
@@ -17,11 +18,18 @@
   <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/favicon.ico">
   <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico">
 
-  <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
-  <!-- endbower -->
+  <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" />
+  <link rel="stylesheet" href="styles/core.css" />
+  <link rel="stylesheet" href="styles/icons.css" />
+  <link rel="stylesheet" href="styles/masthead.css" />
+  <link rel="stylesheet" href="styles/sidenav.css" />
+  <link rel="stylesheet" href="styles/dashboard.css" />
 
-  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/site-ar.css" />
+  <link rel="stylesheet" href="styles/permits-solution.css" />
+  <!--<link rel="stylesheet" href="styles/Site-responsive.css" />-->
+
+  <link rel="stylesheet" href="styles/dbalmer.css" />
 
   <script type="text/javascript" src="js/vendor/modernizr.custom.js"></script>
 
@@ -29,31 +37,20 @@
   <script type="text/javascript" src="js/core/angular-ui-ieshiv.js"></script>
   <script type="text/javascript" src="js/vendor/respond.min.js"></script>
   <![endif]-->
+
+  <!-- TODO: is this ok for production? typekit is a paid Adobe service -->
+  <!-- http://stackoverflow.com/questions/11390511/custom-font-sometimes-renders-in-italics-in-ie8-ie7 -->
+  <script type="text/javascript" src="//use.typekit.net/grr3gwk.js"></script>
+  <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+
+  <style>
+    .typekit-badge { display: none !important; } /* hide typekit ico */
+  </style>
 </head>
-<body ng-cloak ng-controller="AutomationController as app" class="aa-body">
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a href="#" class="navbar-brand" ui-sref="home">
-          <span ng-bind="app.CONFIG.PROJECT_NAME"></span>
-          <span class="badge" ng-bind="app.CONFIG.CURRENT_VERSION"></span>
-        </a>
-      </div>
-    </div>
-  </nav>
-  <div class="aa-side-nav">
-    <div ng-repeat="tile in app.CONFIG.NAVIGATION.TILES">
-      <div class="aa-tile" ng-bind="tile.text" ng-show="tile.visible" ui-sref="{{tile.state}}"></div>
-    </div>
-    <div ng-repeat="button in app.CONFIG.NAVIGATION.BUTTONS">
-      <button type="button" class="btn btn-default btn-block" ng-bind="button.text" ng-show="button.visible" ui-sref="{{button.state}}"></button>
-    </div>
-  </div>
-  <div class="container-fluid" style="margin-left:100px;">
-    <div ui-view=""><!-- this format is required for IE8 -->
-      <!-- content here -->
-    </div>
-  </div>
+<body ng-cloak ng-controller="AutomationController as app">
+  <div class="page" ng-include="'views/partials/main.html'"></div>
 
   <!-- bower:js -->
   <script src="bower_components/jquery/jquery.js"></script>
@@ -65,7 +62,10 @@
   <script src="bower_components/stacktrace-js/stacktrace.js"></script>
   <script src="bower_components/sprintf/src/sprintf.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
   <!-- endbower -->
+
+  <!--<script src="js/vendor/bootstrap.min.js"></script>-->
 
   <script src="js/core/global.js"></script>
   <script src="js/core/utils.js"></script>
@@ -76,12 +76,20 @@
   <script src="js/core/accela.js"></script>
   <script src="js/core/stacktrace-wrapper.js"></script>
   <script src="js/core/underscore-wrapper.js"></script>
+
+  <script src="js/core/directives/bind-once.js"></script>
   <script src="js/core/directives/ensure-unique.js"></script>
   <script src="js/core/directives/focus.js"></script>
+
+  <!-- requires jQuery and Bootstrap.js :-( -->
+  <!--<script src="js/core/directives/bootstrap-popover-menu.js"></script>-->
+
+  <script src="js/core/filters/customDateFilter.js"></script>
   <script src="js/core/services/data-service.js"></script>
   <script src="js/core/services/http-interceptor.js"></script>
   <script src="js/core/services/logging-service.js"></script>
   <script src="js/core/services/modal-dialog-service.js"></script>
+  <script src="js/core/services/safe-apply.js"></script>
 
   <!-- define Accela.Entity classes -->
   <script src="js/core/entities/portlet.js"></script>
@@ -92,7 +100,10 @@
   <script src="js/automation/app.js"></script>
   <script src="js/automation/automation-controller.js"></script>
 
-  <script src="js/dashboard/dashboard-controller.js"></script>
+  <!-- requires jQuery -->
+  <script src="js/automation/main-controller.js"></script>
+
+  <script src="js/automation/dashboard-controller.js"></script>
 
   <script src="js/console/controllers/console-controller.js"></script>
   <script src="js/console/controllers/console-page-controller.js"></script>

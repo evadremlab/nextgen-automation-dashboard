@@ -12,6 +12,7 @@
 
     // PRIVATE data
 
+    /*jshint validthis: true */
     var vm = this;
 
     // PUBLIC data
@@ -19,10 +20,6 @@
     vm.CONFIG = CONFIG;
 
     // PUBLIC methods
-
-    // CONSTRUCTOR
-
-    activate();
 
     // PRIVATE methods
 
@@ -40,5 +37,9 @@
 
       //DataService.get(CONFIG.CONSOLE.SERVICES.GET_AVAILABLE_CONSOLES, {});
     }
+
+    // CONSTRUCTOR
+
+    activate();
   }
 })();
