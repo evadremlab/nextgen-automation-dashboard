@@ -28,8 +28,8 @@ module.exports = function (grunt) {
     'wiredep:new',
     'jshint:app',
 //    'karma:unit',
-//    'less:css',
-//    'autoprefixer:css',
+    'less:css',
+    'autoprefixer:css',
 //    'ngAnnotate:app',
     'concurrent:dev'
   ]);

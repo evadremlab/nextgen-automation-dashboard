@@ -1,39 +1,5 @@
 <div class="dashboard" ng-controller="DashboardController">
-  <header class="masthead">
-    <div class="user float-left">
-      <div class="user-name dropdown">
-        <a href class="dropdown-toggle" data-toggle="dropdown">
-          {{dashboard.currentUser.fullName}}
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#"><i></i>View Account</a></li>
-          <li><a href="#"><i></i>Preferences</a></li>
-          <li><a href="#" ng-click="userLogout()"><i></i>Logout</a></li>
-        </ul>
-        <span>Permit Technician</span>
-      </div>
-    </div>
-    <div class="day float-right">
-      <div class="title">
-        {{dashboard.today | date:'MMM dd, yyyy'}}
-      </div>
-      <span>{{dashboard.today | date:'EEEE'}}</span>
-    </div>
-    <div class="time float-right">
-      <div class="title">
-        {{dashboard.today | customDateFilter:'HH:mm a'}}
-      </div>
-      <span>PDT</span>
-    </div>
-    <div class="weather float-right">
-      <div class="title">
-        <i class="icon-high-arrow"></i>&nbsp;{{dashboard.weather.high}}&deg;
-        <i class="icon-low-arrow" style="margin-left:1em;"></i>&nbsp;{{dashboard.weather.low}}&deg;
-      </div>
-      <span>{{dashboard.weather.outlook}}</span>
-    </div>
-  </header>
+  <header class="masthead" ng-include="'views/partials/masthead.html'"></header>
   <div class="row">
     <div class="col-md-8">
       <section class="my-tasks">
@@ -110,7 +76,7 @@
           <div class="title float-left">Recently Closed Spaces</div>
         </header>
         <ul class="spaces">
-          <li ng-repeat="space in dashboard.userSpaces | limitTo:5">
+          <li ng-repeat="space in dashboard.userSpaces | limitTo:2"><!-- was limitTo:5 -->
             <span class="float-left">
               <img class="icon-permit-gray" ng-src="/images/layout/{{space.imgsrc}}"/>
             </span>

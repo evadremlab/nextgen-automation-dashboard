@@ -20,7 +20,6 @@
 
   <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" />
   <link rel="stylesheet" href="styles/main.css" />
-  <link rel="stylesheet" href="styles/icons.css" />
 
   <script type="text/javascript" src="js/vendor/modernizr.custom.js"></script>
 
@@ -30,9 +29,13 @@
   <![endif]-->
 
   <!-- TODO: is this ok for production? typekit is a paid Adobe service -->
+  <!-- Permit Solution is being served in IE=edge mode and font is displayed correctly -->
+  <!-- when using IE=EmulateIE8 proxima-nova font is larger and italic -->
+  <!-- could be that Adobe is serving a wrong font because of emulation mode? -->
   <!-- http://stackoverflow.com/questions/11390511/custom-font-sometimes-renders-in-italics-in-ie8-ie7 -->
-  <script type="text/javascript" src="//use.typekit.net/grr3gwk.js"></script>
-  <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+
+  <!--<script type="text/javascript" src="//use.typekit.net/grr3gwk.js"></script>-->
+  <!--<script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>-->
 
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
 
@@ -44,7 +47,7 @@
   <div class="page" ng-include="'views/partials/main.html'"></div>
 
   <!-- bower:js -->
-  <script src="bower_components/jquery/jquery.js"></script>
+  <!--<script src="bower_components/jquery/jquery.js"></script>-->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -92,15 +95,15 @@
   <script src="js/automation/automation-controller.js"></script>
 
   <!-- requires jQuery -->
-  <script src="js/automation/main-controller.js"></script>
+  <script src="js/automation/sidenav-controller.js"></script>
 
-  <script src="js/automation/dashboard-controller.js"></script>
+  <script src="js/automation/dashboard/dashboard-controller.js"></script>
 
-  <script src="js/console/controllers/console-controller.js"></script>
-  <script src="js/console/controllers/console-page-controller.js"></script>
-  <script src="js/console/controllers/add-portlet-controller.js"></script>
-  <script src="js/console/directives/portlet-iframe.js"></script>
-  <script src="js/console/models/console-model.js"></script>
-  <script src="js/console/services/console-manager.js"></script>
+  <script src="js/automation/console/controllers/console-controller.js"></script>
+  <script src="js/automation/console/controllers/console-page-controller.js"></script>
+  <script src="js/automation/console/controllers/add-portlet-controller.js"></script>
+  <script src="js/automation/console/directives/portlet-iframe.js"></script>
+  <script src="js/automation/console/models/console-model.js"></script>
+  <script src="js/automation/console/services/console-manager.js"></script>
 </body>
 </html>

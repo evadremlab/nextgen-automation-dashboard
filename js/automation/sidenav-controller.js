@@ -6,7 +6,7 @@
 
   angular
     .module('accela.automation')
-    .controller('MainController', controller);
+    .controller('SideNavController', controller);
 
   /**
    * @ngInject
@@ -20,10 +20,10 @@
     var mockSpaceList = [
       {
         ID: 1,
-        PinSortID: 0,
-        Name: 'fubar',
+        PinSortID: 1,
+        Name: 'Search',
         URL: '',
-        SpaceType: 'new'
+        SpaceType: 'search'
       },
       {
         ID: 2,
@@ -594,7 +594,7 @@
 //      $scope.lastSpaceWidth = spaceWidth;
 //      resizeTimer = null;
       var navHeight = Accela.$('#big-nav').prop('offsetHeight');
-      var dashboardHeight = Accela.$('#dashboardGroupDiv').prop('offsetHeight');
+      var dashboardHeight = Accela.$('#tileGroupDiv').prop('offsetHeight');
       var settingHeight = Accela.$('#nav-last-li').prop('offsetHeight');
       var spaceWidth = Accela.$('#spaceGroupDiv').prop('offsetWidth');
       var moreHeight = 30;

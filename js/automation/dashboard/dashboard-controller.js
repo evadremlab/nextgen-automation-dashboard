@@ -20,13 +20,13 @@
 
     $scope.dashboard = {
       activity: {
-        limitTo: 9,
+        limitTo: 2, // was 9,
         list: Accela.Utils.XmlHttp.getMockData('mock-api/dashboard/getActivityList.json').content,
         loadingMore: 'Loading More...'
       },
       currentUser: [],
       myTasks: {
-        limitTo: 6,
+        limitTo: 2, // was 6,
         loading: false,
         loadingMore: 'Click for More',
         maxLength: 10,

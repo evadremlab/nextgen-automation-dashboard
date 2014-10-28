@@ -20,7 +20,7 @@
 
             if (portlet.onload) { // these are legacy javascript functions, NOT AngularJS
               try {
-                eval(portlet.onload);
+                eval(portlet.onload); // jshint ignore:line
               } catch (ex) {
                 throw new Error(sprintf('EXCEPTION calling portlet.onload for %s : %s', portlet.url, ex.message));
               }

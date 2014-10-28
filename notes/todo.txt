@@ -1,9 +1,11 @@
-Permit Solution is being served in IE=edge mode and font is displayed correctly
-when using IE=EmulateIE8 proxima-nova font is larger and italic
-could be that Adobe is serving a wrong font because of emulation mode?
+main.html --> MainController
+  sidenav.html
+  dashboard.html --> DashboardController
+    masthead.html (only appears on dashboard page)
 
-
-ng-app="accela-automation"
+AutomationController
+  SideNavController
+    DashboardController
 
 DashboardController
 C:\Users\dbalmer\Documents\GitHub\Role-Based-UI\Accela.RBUI\AppViews\Common\dashboard.html
@@ -14,27 +16,14 @@ using some embedded templates eg:
 
 has a hidden div called "AlertMsg" that appears in the top left
 
-step 1 identify resources (PARTIAL)
-  css needed for:
-    header ("proximia-nova" font);
-      http://permits.cloudapp.net/Content/Site.css
-      http://permits.cloudapp.net/Content/permits-solution.css
-    sidenav
-      http://permits.cloudapp.net/content/layout/images
-      http://permits.cloudapp.net/Content/layout/layout.css
-    Current Tasks
-      http://permits.cloudapp.net/Content/permits-solution.css
-    Recent Activity
-    Recently Closed Spaces
-    modal dialogs
-      http://permits.cloudapp.net/Content/Site.css
+step 1 identify resources (DONE)
 step 2 create WebStorm app without .NET dependencies (DONE)
 step 3 clone dashboard using mock data (DONE)
 
 /js/core				<-- contains components shared between AA and ACA
 	logging-service.js (DONE)
 
-/js/core/entities/			<-- contains data models shared between AA and ACA
+/js/core/entities/			<-- contains data models shared between AA and ACA (STARTED)
 /js/automation
 	app.js (DONE)
 	config.js (DONE)
@@ -54,7 +43,7 @@ Core
   interval refresh (TBD)
   logging (DONE)
   error handling (DONE)
-  modal dialogs - for messaging and forms (DONE)
+  modal dialogs - for messaging and forms (STARTED)
 AutomationController
   notifications
   maps

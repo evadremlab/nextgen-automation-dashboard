@@ -1,0 +1,91 @@
+<div id="tileGroupDiv">
+  <ul class="text-center">
+    <li>
+      <!-- remove class "active" when we have a controller  -->
+      <ul class="list-unstyled active" ng-class="{'active' : activeSubMenu=='/'}">
+        <li>
+          <a href="#">
+            <i class="icon-user"></i>
+          </a>
+        </li>
+        <li><a href="#">Dashboard</a></li>
+      </ul>
+    </li>
+    <li>
+      <ul class="list-unstyled">
+        <li class="notification"><span class="info-number">16</span></li>
+        <li><a>Notifications</a></li>
+      </ul>
+    </li>
+    <li>
+      <ul class="list-unstyled no-bottom-border">
+        <li><img src="/images/layout/maps_icon.png" title="Map icon" /></li>
+        <li><a>Maps</a></li>
+      </ul>
+    </li>
+    <li class="li-space-new">
+      <div class="row">
+        <div class="col-md-7 text-left">
+          <button type="button" class="space-new" ui-sref="console">
+            <b>Console</b>
+          </button>
+        </div>
+        <div class="col-md-5 hidden" style="padding-top:12px; xxx-display:none;" placement='right' template='templateSpaceNew.html' bs-popover>
+          <a data-toggle="popover" class="isfixed" data-trigger='click' data-container='body' rel="popover" data-html="true" href="javascript:void(0);"><div class="caret">  </div></a>
+        </div>
+      </div>
+    </li>
+    <li class="li-space-new">
+      <div class="row">
+        <div class="col-md-7 text-left">
+          <button type="button" id="btnSpaceNew" class="space-new" ng-click="changeUrl('spaceNew');">
+            <div style="color:#e17d00; top:0;" class="glyphicon glyphicon-plus"></div>
+            <b>New</b>
+          </button>
+        </div>
+        <div class="col-md-5 hidden" style="padding-top:12px; xxx-display:none;" placement='right' template='templateSpaceNew.html' bs-popover>
+          <a data-toggle="popover" class="isfixed" data-trigger='click' data-container='body' rel="popover" data-html="true" href="javascript:void(0);"><div class="caret">  </div></a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="spaces-group" id="spaceGroupDiv">
+  <ul class="text-center">
+    <li class="li-space-hot animate-repeat" id="space_{{space.ID}}" ng-show="$index<=showcount" id="li_{{space.ID}}" ng-class="{'li-space-df' : SpaceSelectedId == space.ID, 'li-space-close' : clickID == space.ID}" ng-repeat="space in spaceList">
+      <div class="unpin li-space-hot-title">
+        <div class="unpin-img" title="Unpin" ng-show="space.PinSortID!=0" ng-click="setClickSpace(space.ID); SpaceAction('Unpin', space.ID);">
+          <img alt="Unpin" src="/images/layout/pinned_icon.png" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 word-break">
+          <a href="javascript:void(0);" id="{{space.ID}}" ng-dblclick="dblclick(space.ID, space.Name);" ng-click="clickrouting(space.ID, space.URL, space.SpaceType)">
+            <div><img id="imgspace{{space.ID}}" class="imgspace" ng-src="/images/layout/{{setimgcss(space.ID, space.SpaceType);}}" /></div>
+            <div class="li-space-hot-title space-name" title="{{space.Name}}">{{substring(space.Name);}}</div>
+          </a>
+          <textarea id="textarea_{{space.ID}}" cols="13" ng-blur="UpdateSpaceList(space.ID)" xxx-style="display:none;" class="hidden">{{space.Name}}</textarea>
+        </div>
+        <div template='NewSpacePin.html' pin="true" pinsortid="{{space.PinSortID}}" spacetype="{{space.SpaceType}}" bs-popover class="space-menu-btn-group">
+          <a href="javascript:void(0);" class="space-arrow-a space-menu-btn" id="a_{{space.ID}}" data-trigger='click' data-container='body' data-toggle="popover" rel="popover" data-html="true" ng-click="setClickSpace(space.ID);">
+            <i class="caret"></i>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li template='templateMoreSpace.html' ng-show="spaceList.length>(showcount+1)" triggertype="mouseenter" more="true" bs-popover>
+      <div class="word-break">
+        <a href="javascript:void(0);" id="spaceMore" class="btn btn-default btn-xs space-more" data-trigger='click' data-container='body' data-toggle="popover" rel="popover" data-html="true">
+          <i class="li-space-hot-title">{{spaceList.length - showcount - 1}}</i>
+          more
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
+<div id="nav-last-li">
+  <ul>
+    <li class="col-md-6"><a href="#" ng-click="userLogout();"><img src="/images/layout/settings_icon.png" alt="Setting" /></a></li>
+    <li class="col-md-6"><a href="#"><img src="/images/layout/help_icon.png" alt="Help" /></a></li>
+  </ul>
+</div>

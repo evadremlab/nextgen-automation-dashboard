@@ -1,0 +1,33 @@
+<div class="user float-left">
+  <div class="user-name dropdown">
+    <a href class="dropdown-toggle" data-toggle="dropdown">
+      {{dashboard.currentUser.fullName}}
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#"><i></i>View Account</a></li>
+      <li><a href="#"><i></i>Preferences</a></li>
+      <li><a href="#" ng-click="userLogout()"><i></i>Logout</a></li>
+    </ul>
+    <span>Permit Technician</span>
+  </div>
+</div>
+<div class="day float-right">
+  <div class="title">
+    {{dashboard.today | date:'MMM dd, yyyy'}}
+  </div>
+  <span>{{dashboard.today | date:'EEEE'}}</span>
+</div>
+<div class="time float-right">
+  <div class="title">
+    {{dashboard.today | customDateFilter:'HH:mm a'}}
+  </div>
+  <span>PDT</span>
+</div>
+<div class="weather float-right">
+  <div class="title">
+    <i class="icon-high-arrow"></i>&nbsp;{{dashboard.weather.high}}&deg;
+    <i class="icon-low-arrow" style="margin-left:1em;"></i>&nbsp;{{dashboard.weather.low}}&deg;
+  </div>
+  <span>{{dashboard.weather.outlook}}</span>
+</div>

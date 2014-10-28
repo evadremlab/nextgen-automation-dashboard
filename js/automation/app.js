@@ -15,7 +15,7 @@
           controller: 'ConsoleController',
           templateUrl: 'views/console/index.html'
         },
-        // in these nested views, omit the controller property
+        // in this nested view, omit the controller property
         // so that Angular will use the existing ConsoleController
         customize: {
           name: 'console.customize',
@@ -36,10 +36,7 @@
 
       $stateProvider
         .state('home', {
-          url: '/',
-          controllerAs: 'dashboard',
-          controller: 'DashboardController',
-          templateUrl: 'views/automation/dashboard.html'
+          url: '/'
         })
         .state(consoleState.home)
         .state(consoleState.customize)
