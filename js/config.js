@@ -27,15 +27,14 @@
         'SAVE_USER_CONSOLE': { mockPath: 'console/', endPoint: 'saveUserConsole' }
       }
     },
-    'NAVIGATION' : { /* used in index.html */
-      'TILES': [
-        { text: 'Dashboard', visible: true, state: 'home' },
-        { text: 'Notifications', visible: true, state: 'home' },
-        { text: 'Maps', visible: true, state: 'home' }
-      ],
-      'BUTTONS': [
-        { text: 'Console', visible: true, state: 'console' }
-      ]
+    'DASHBOARD': {
+      'SERVICES': {
+        'GET_ACTIVITY_LIST': { mockPath: 'dashboard/', endPoint: 'getActivityList' },
+        'GET_USER_PROFILE': { mockPath: 'dashboard/', endPoint: 'getUserProfile' },
+        'GET_USER_SPACES': { mockPath: 'dashboard/', endPoint: 'getUserSpaces' },
+        'GET_USER_CLOSED_SPACES': { mockPath: 'dashboard/', endPoint: 'getUserClosedSpaces' },
+        'GET_WORKFLOW_TASKS': { mockPath: 'dashboard/', endPoint: 'getWorkflowTasks' }
+      }
     }
   });
 })();

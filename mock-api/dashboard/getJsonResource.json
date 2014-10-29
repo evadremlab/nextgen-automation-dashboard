@@ -1,9 +1,10 @@
 {
   "status": {
     "code": "OK",
-    "comment": "http://permits.cloudapp.net/PageBase/GetJsonResource?time=0.3853061950913451"
+    "comment": "used for internationalization",
+    "from": "http://permits.cloudapp.net/PageBase/GetJsonResource?time=0.3853061950913451"
   },
-  "content" {
+  "content": {
     "LangOption": {
       "MessageBox": {
         "LoginUserMsg_Cn": "Login failed",

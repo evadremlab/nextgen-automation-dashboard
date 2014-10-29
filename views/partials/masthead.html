@@ -1,7 +1,7 @@
 <div class="user float-left">
   <div class="user-name dropdown">
-    <a href class="dropdown-toggle" data-toggle="dropdown">
-      {{dashboard.currentUser.fullName}}
+    <a href class="dropdown-toggle" data-toggle="dropdown"
+       bind-once="" ng-bind="dashboard.currentUser.fullName">
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
@@ -9,7 +9,7 @@
       <li><a href="#"><i></i>Preferences</a></li>
       <li><a href="#" ng-click="userLogout()"><i></i>Logout</a></li>
     </ul>
-    <span>Permit Technician</span>
+    <span bind-once="" ng-bind="dashboard.currentUser.role"></span>
   </div>
 </div>
 <div class="day float-right">

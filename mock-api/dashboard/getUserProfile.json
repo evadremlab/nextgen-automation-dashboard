@@ -1,0 +1,28 @@
+{
+  "status": {
+    "code": "OK",
+    "comment": "http://permits.cloudapp.net/SolutionAdmin/getUserInfo",
+    "another comment": "added role, this was hardcoded on the page"
+  },
+  "content": {
+    "id": "ADMIN",
+    "value": "ADMIN",
+    "firstName": "Ella",
+    "lastName": "Cunningham",
+    "fullName": "Ella Cunningham",
+    "role": "Permit Technician",
+    "serviceProviderCode": "BPTDEV",
+    "department": {
+      "id": "BPTDEV-BUILDING-NA-NA-NA-NA-NA",
+      "serviceProviderCode": "BPTDEV",
+      "group": "NA",
+      "office": "NA",
+      "bureau": "NA",
+      "section": "NA",
+      "division": "NA",
+      "agency": "BUILDING",
+      "text": "Building Department",
+      "value": "BPTDEV/BUILDING/NA/NA/NA/NA/NA"
+    }
+  }
+}

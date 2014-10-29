@@ -1,35 +1,13 @@
-main.html --> MainController
-  sidenav.html
-  dashboard.html --> DashboardController
-    masthead.html (only appears on dashboard page)
-
-AutomationController
-  SideNavController
-    DashboardController
-
-DashboardController
-C:\Users\dbalmer\Documents\GitHub\Role-Based-UI\Accela.RBUI\AppViews\Common\dashboard.html
+main.html         --> MainController
+  sidenav.html    --> SideNavController
+  dashboard.html  --> DashboardController
+    masthead.html     (only appears on the dashboard page)
 
 using some embedded templates eg:
   <script id="templateSpaceNew.html" type="text/ng-template">
 </script>
 
 has a hidden div called "AlertMsg" that appears in the top left
-
-step 1 identify resources (DONE)
-step 2 create WebStorm app without .NET dependencies (DONE)
-step 3 clone dashboard using mock data (DONE)
-
-/js/core				<-- contains components shared between AA and ACA
-	logging-service.js (DONE)
-
-/js/core/entities/			<-- contains data models shared between AA and ACA (STARTED)
-/js/automation
-	app.js (DONE)
-	config.js (DONE)
-
-also need to share UI layout
-
 
 keep what I like from Permit Solution:
 
@@ -38,30 +16,36 @@ keep what I like from Permit Solution:
   javascript modules (ie: "Accela.module("foo", {}); // but use revealing module pattern
     eg: C:\Users\dbalmer\Documents\GitHub\Role-Based-UI\Accela.RBUI\Scripts\SDK\PermitSDK\address.js
 
+step 1 identify resources (DONE)
+step 2 create WebStorm app without .NET dependencies (DONE)
+step 3 clone dashboard using mock data (DONE)
 
-Core
+Provided by Accela.Core
+used by Accela.Automation
+
+Core - contains components shared between AA and ACA
+  entities (STARTED)
+  error handling (DONE)
   interval refresh (TBD)
   logging (DONE)
-  error handling (DONE)
   modal dialogs - for messaging and forms (STARTED)
+  models - Angularized entities (STARTED)
 AutomationController
+  ???
+SideNavController
   notifications
   maps
   New
-DashboardController
     spaces
     "n more" popover
     help link
     settings link
-ConsoleController
-  CurrentTasksController
-    sort
+DashboardController
+  current tasks
+  recent activity
+  recently closed spaces
+    sort (DONE)
     search (is this part of Current Tasks?)
-    switch view (grid/list)
-    click for more/less
-  RecentActivityController
-    loading more/less
-  RecentlyClosedSpacesController
-    close
-
-each should be an independent component
+    switch view (grid/list) (DONE)
+    click for more/less (DONE)
+ConsoleController

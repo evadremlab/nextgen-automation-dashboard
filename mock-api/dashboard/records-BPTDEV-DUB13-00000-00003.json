@@ -1,7 +1,8 @@
 {
   "status": {
     "code": "OK",
-    "comment": "https://apps-apis.dev.accela.com/v4/records/BPTDEV-DUB13-00000-00003"
+    "comment": "used to populate a single Task Card",
+    "from": "https://apps-apis.dev.accela.com/v4/records/BPTDEV-DUB13-00000-00003"
   },
   "content": [
     {

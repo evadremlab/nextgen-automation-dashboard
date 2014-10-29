@@ -14,8 +14,10 @@
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li role="presentation" ng-repeat="sort in dashboard.myTasks.sortBy">
-                  <a role="menuitem" tabindex="-1" ng-click="toggleMyTasksOrderBy(sort)" href>{{sort.text}}</a>
+                <li role="presentation" ng-repeat="sort in dashboard.myTasks.sortBy" bind-once="">
+                  <a href="" role="menuitem" tabindex="-1"
+                     bind-once="" ng-bind="sort.text"
+                     ng-click="toggleMyTasksOrderBy(sort)"></a>
                 </li>
               </ul>
             </div>
@@ -37,7 +39,8 @@
             ng-repeat="task in myTasks | orderBy:dashboard.myTasks.orderByValue | limitTo:dashboard.myTasks.limitTo">
             <div class="task">
               <div class="title">
-                <a href="#/PermitSummary/{{task.recordId.id}}">{{task.recordId.customId}}</a>
+                <a href="#/PermitSummary/{{task.recordId.id}}"
+                   bind-once="" ng-bind="task.recordId.customId"></a>
               </div>
               <div class="type display-ellipsis">
                 <div class="type-name display-ellipsis">{{task.permitType || '&nbsp;'}}</div>
@@ -51,7 +54,7 @@
                 <div class="due-date">
                   <div class="title">Due</div>
                   <div class="value">
-                    <div ng-if="task.dueDate!=null&&task.dueDate!=undefined">
+                    <div ng-if="task.dueDate != null && task.dueDate != undefined">
                       <span>{{task.dueDate | customDateFilter:'MM/dd/yy'}}</span>
                     </div>
                     <div ng-if="!task.dueDate">

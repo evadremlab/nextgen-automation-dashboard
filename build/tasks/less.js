@@ -4,7 +4,8 @@ module.exports = {
       strictImports: true
     },
     files: {
-      'styles/main.css': 'styles/main.less'
+      'styles/app.css': 'styles/less/app.less',
+      'styles/app-ie.css': 'styles/less/app-ie.less',
     }
   }
 };

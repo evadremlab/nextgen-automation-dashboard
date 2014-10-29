@@ -8,7 +8,7 @@
     .config(function ($stateProvider, $urlRouterProvider) {
 
       var consoleState = {
-        home : {
+        'home' : {
           name: 'console',
           url: '/console',
           controllerAs: 'vm',
@@ -17,12 +17,12 @@
         },
         // in this nested view, omit the controller property
         // so that Angular will use the existing ConsoleController
-        customize: {
+        'customize': {
           name: 'console.customize',
           url: '/customize',
           templateUrl: 'views/console/customize.html'
         },
-        editPage: {
+        'editPage': {
           name: 'console.editPage',
           url: '/edit',
           controllerAs: 'vmPage',
@@ -36,7 +36,8 @@
 
       $stateProvider
         .state('home', {
-          url: '/'
+          url: '/',
+          templateUrl: 'views/partials/dashboard.html'
         })
         .state(consoleState.home)
         .state(consoleState.customize)

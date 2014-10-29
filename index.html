@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en" dir="ltr" id="ng-app" ng-app="accela.automation" ng-strict-di="" xmlns:ng="http://angularjs.org">
+<!-- TODO: set lang and dir from server -->
+<html class="no-js" lang="en" dir="ltr" id="ng-app" ng-app="accela.automation" ng-strict-di="" xmlns:ng="http://angularjs.org">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width,initial-scale=1" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"><!-- breaks Adobe fonts-->
-  <!--<meta http-equiv="X-UA-Compatible" content="IE=Edge">--><!-- works with Open Sans -->
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"><!-- breaks Adobe fonts-->
+  <!--<meta http-equiv="X-UA-Compatible" content="IE=Edge">-->
 
   <!-- remove for production -->
   <meta http-equiv="cache-control" content="max-age=0" />
@@ -18,33 +19,50 @@
   <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/favicon.ico">
   <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico">
 
+  <!-- TODO: if RTL language, serve bootstrap-rtl.css -->
   <link rel="stylesheet" href="styles/bootstrap/bootstrap.css" />
-  <link rel="stylesheet" href="styles/main.css" />
+  <!--<link rel="stylesheet" href="styles/main.css" />-->
 
-  <script type="text/javascript" src="js/vendor/modernizr.custom.js"></script>
+  <script type="text/javascript" src="js/vendor/modernizr-2.5.3.js"></script>
 
   <!--[if lt IE 9]>
   <script type="text/javascript" src="js/core/angular-ui-ieshiv.js"></script>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+  <link rel="stylesheet" href="styles/app-ie.css" />
   <script type="text/javascript" src="js/vendor/respond.min.js"></script>
   <![endif]-->
 
-  <!-- TODO: is this ok for production? typekit is a paid Adobe service -->
-  <!-- Permit Solution is being served in IE=edge mode and font is displayed correctly -->
-  <!-- when using IE=EmulateIE8 proxima-nova font is larger and italic -->
-  <!-- could be that Adobe is serving a wrong font because of emulation mode? -->
-  <!-- http://stackoverflow.com/questions/11390511/custom-font-sometimes-renders-in-italics-in-ie8-ie7 -->
+  <!--[if (gte IE 9) | (!IE)]><!-->
+  <script type="text/javascript" src="//use.typekit.net/grr3gwk.js"></script>
+  <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+  <link rel="stylesheet" href="styles/app.css" />
+  <!--<![endif]-->
 
-  <!--<script type="text/javascript" src="//use.typekit.net/grr3gwk.js"></script>-->
-  <!--<script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>-->
-
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
-
-  <style>
-    .typekit-badge { display: none !important; } /* hide typekit ico */
-  </style>
+  <!-- TODO: get locale specific files -->
+  <!--<script type="text/javascript" src="js/i18n/angular-locale_en-us.js.js")"></script>-->
 </head>
-<body ng-cloak ng-controller="AutomationController as app">
-  <div class="page" ng-include="'views/partials/main.html'"></div>
+<body ng-cloak ng-controller="AutomationController">
+  <div class="page">
+    <div id="big-nav" class="main-nav"
+         ng-include="'views/partials/sidenav.html'"></div>
+
+    <div xxx-ng-controller="ConfirmController">
+      <div xxx-ng-view class="page-content"></div>
+      <div xxx-ng-include src="'/AppViews/Common/Confirm.html'"></div>
+      <div xxx-ng-include src="'/AppViews/Common/MessageBox.html'"></div>
+    </div>
+
+    <div class="page-content" ui-view=""></div>
+
+    <!-- <script type="text/ng-template" id="templateSpaceNew.html"> -->
+    <!-- temporarily moved to /views/templates/templateSpaceNew.js -->
+
+  </div>
+
+  <!-- ui-bootstrap-tpls.min.js == (ui-bootstrap.min.js + html templates) -->
+  <!-- If you only included ui-bootstrap.min.js, you will also need to provide your own html templates -->
+
+  <!-- i18n should be done on the server -->
 
   <!-- bower:js -->
   <!--<script src="bower_components/jquery/jquery.js"></script>-->
@@ -90,20 +108,25 @@
   <script src="js/core/entities/console-page.js"></script>
   <script src="js/core/entities/user-console.js"></script>
 
+  <script src="js/core/entities/user-activity.js"></script>
+  <script src="js/core/entities/user-profile.js"></script>
+  <script src="js/core/entities/user-space.js"></script>
+  <script src="js/core/entities/workflow-task.js"></script>
+
   <!-- define Angular 'accela.automation' module -->
   <script src="js/automation/app.js"></script>
-  <script src="js/automation/automation-controller.js"></script>
+  <script src="js/automation/controllers/automation-controller.js"></script>
+  <!-- requires jQuery for sidenav -->
 
-  <!-- requires jQuery -->
-  <script src="js/automation/sidenav-controller.js"></script>
+  <script src="js/automation/controllers/dashboard-controller.js"></script>
+  <script src="js/automation/models/dashboard-model.js"></script>
+  <script src="js/automation/services/dashboard-manager.js"></script>
 
-  <script src="js/automation/dashboard/dashboard-controller.js"></script>
-
-  <script src="js/automation/console/controllers/console-controller.js"></script>
-  <script src="js/automation/console/controllers/console-page-controller.js"></script>
-  <script src="js/automation/console/controllers/add-portlet-controller.js"></script>
-  <script src="js/automation/console/directives/portlet-iframe.js"></script>
-  <script src="js/automation/console/models/console-model.js"></script>
-  <script src="js/automation/console/services/console-manager.js"></script>
+  <script src="js/console/controllers/console-controller.js"></script>
+  <script src="js/console/controllers/console-page-controller.js"></script>
+  <script src="js/console/controllers/add-portlet-controller.js"></script>
+  <script src="js/console/directives/portlet-iframe.js"></script>
+  <script src="js/console/models/console-model.js"></script>
+  <script src="js/console/services/console-manager.js"></script>
 </body>
 </html>

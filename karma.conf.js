@@ -18,7 +18,7 @@ module.exports = function (config) {
         'bower_components/angular-ui-router/release/angular-ui-router.js',
         'bower_components/underscore/underscore.js',
 //        'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-        'js/vendor/bootstrap.min.js',
+        'js/vendor/UNUSED/bootstrap.min.js',
         'bower_components/angular-smart-table/dist/smart-table.min.js',
         'bower_components/stacktrace-js/stacktrace.js',
         'bower_components/sprintf/src/sprintf.js',
