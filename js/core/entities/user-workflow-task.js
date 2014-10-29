@@ -4,11 +4,11 @@
   /**
    * WORKFLOW TASK - dependency injection handled by UserModel.
    */
-  Accela.module('Entity.WorkflowTask', function() {
+  Accela.module('Entity.UserWorkflowTask', function() {
 
     // DEFINE class
 
-    function WorkflowTask(data) {
+    function UserWorkflowTask(data) {
       this.dueDate = data.dueDate || null;
       this.comment = data.comment || null;
       this.serviceProviderCode = data.serviceProviderCode || null;
@@ -34,10 +34,10 @@
     /**
      * Constructor for objects of this class
      */
-    WorkflowTask.build = function (data) {
-      return new WorkflowTask(data || {});
+    UserWorkflowTask.build = function (data) {
+      return new UserWorkflowTask(data || {});
     };
 
-    return WorkflowTask;
+    return UserWorkflowTask;
   });
 })();

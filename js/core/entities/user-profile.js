@@ -15,16 +15,16 @@
       this.serviceProviderCode = data.serviceProviderCode || null;
       this.email = null;
       this.department = {
-        "id": data.department.id || null,
-        "serviceProviderCode": data.department.serviceProviderCode || null,
-        "group": data.department.group || null,
-        "bureau": data.department.bureau || null,
-        "division": data.department.division || null,
-        "section": data.department.section || null,
-        "office": data.department.office || null,
-        "agency": data.department.agency || null,
-        "text": data.department.text || null,
-        "value": data.department.value || null
+        id: data.department.id || null,
+        serviceProviderCode: data.department.serviceProviderCode || null,
+        group: data.department.group || null,
+        bureau: data.department.bureau || null,
+        division: data.department.division || null,
+        section: data.department.section || null,
+        office: data.department.office || null,
+        agency: data.department.agency || null,
+        text: data.department.text || null,
+        value: data.department.value || null
       };
       this.fullName = data.fullName || null;
       this.phoneNumber = null;
@@ -37,9 +37,9 @@
       this.password = null;
       this.userGroups = [
         {
-          "moduleName": null,
-          "id": null,
-          "name": null
+          moduleName: null,
+          id: null,
+          name: null
         }
       ];
       this.title = null;

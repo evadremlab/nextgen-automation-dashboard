@@ -7,7 +7,7 @@
 
   /**
    * @description
-   * Provides Angularized Console data model for dependency injection.
+   * Provides Angularized data model for dependency injection.
    * Entities are defined in /js/core/entities
    *
    * @ngInject

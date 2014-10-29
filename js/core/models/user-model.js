@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('accela.automation')
-    .factory('DashboardModel', service);
+    .module('accela.core')
+    .factory('UserModel', service);
 
   /**
    * @description
-   * Provides Angularized Dashboard data model for dependency injection.
+   * Provides Angularized data model for dependency injection.
    * Entities are defined in /js/core/entities
    *
    * @ngInject
@@ -19,7 +19,7 @@
     var userActivityFactory = Accela.Entity.UserActivity();
     var userProfileFactory = Accela.Entity.UserProfile();
     var userSpaceFactory = Accela.Entity.UserSpace();
-    var workflowTaskFactory = Accela.Entity.WorkflowTask();
+    var workflowTaskFactory = Accela.Entity.UserWorkflowTask();
 
     // PUBLIC interface
 
@@ -27,7 +27,7 @@
       UserActivity: userActivityFactory,
       UserProfile: userProfileFactory,
       UserSpace: userSpaceFactory,
-      WorkflowTask: workflowTaskFactory
+      UserWorkflowTask: workflowTaskFactory
     };
   }
 })();

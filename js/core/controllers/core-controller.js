@@ -2,13 +2,13 @@
   'use strict';
 
   angular
-    .module('accela.automation')
-    .controller('AutomationController', controller);
+    .module('accela.core')
+    .controller('CoreController', controller);
 
   /**
    * @ngInject
    */
-  function controller($rootScope, $scope, $filter, $location, $log, $window, DashboardManager, CONFIG) {
+  function controller($rootScope, $scope, $filter, $location, $log, $window, LoggingService, UserManager, CONFIG) {
 
     // PRIVATE data
 
@@ -22,6 +22,10 @@
     $scope.spaceList = [];
 
     // EVENT handlers
+
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+      $scope.activeSubMenu = $location.path();
+    });
 
 //    // listening url change
 //    $scope.$on('$locationChangeSuccess', function () {
@@ -40,14 +44,10 @@
 ////      $scope.setSpaceClick();
 //    });
 
-    // DONE
-    $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-      $scope.activeSubMenu = $location.path();
-    });
-
-    // TODO: move this into some higher level controller
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
-      $log.warn(sprintf('$stateChangeError : %s : %s' + JSON.stringify(toState), JSON.stringify(error)));
+      var msg = sprintf('$stateChangeError : %s : %s' + JSON.stringify(toState), JSON.stringify(error));
+      $log.warn(msg);
+      LoggingService.error(msg);
     });
 
     $rootScope.$on('clickSpace', function (d, id, url) {
@@ -115,7 +115,7 @@
     $scope.GetSpaceList = function (funcName) {
       $log.info('$scope.GetSpaceList()');
 
-      DashboardManager.getUserSpaces().then(function(data) {
+      UserManager.getUserSpaces().then(function(data) {
         $scope.spaceList = data;
       });
 
@@ -137,7 +137,6 @@
 //        }
 //      });
     };
-
     // create spaces
     $scope.CreateSpaceList = function (Name, URL, type) {
       $log.info('$scope.CreateSpaceList()');
@@ -547,6 +546,43 @@
 //      }
     };
 
+    // PRIVATE methods
+
+    function activate() {
+      $log = $log.getInstance('CORE-CONTROLLER');
+
+      Accela.init({
+        appId: CONFIG.APP_ID,
+        appSecret: CONFIG.APP_SECRET,
+        appVersion: CONFIG.CURRENT_VERSION,
+        envName: 'TEST',
+        agency: 'BPTDEV',
+        userName: 'dbalmer'
+      });
+
+////      $(document).ready(function () {
+////        //   resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
+////        if (!resizeTimer) {
+////          resizeTimer = setTimeout(calcSpacesCount, 1000);
+////          $scope.GetSpaceList();
+////        }
+////        else {
+////          resizeTimer = null;
+////        }
+////      });
+
+      function resizeHandler() {
+        setTimeout(calcSpacesCount, 1000);
+//        resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
+      }
+
+      angular.element($window).bind('resize', _.debounce(resizeHandler, 500));
+
+      setTimeout(calcSpacesCount, 1000);
+//
+////      $scope.GetSpaceList();
+    }
+
     function calcSpacesCount() {
       $log.info('calcSpacesCount()');
 //      var navHeight = $('#big-nav').height();
@@ -603,46 +639,6 @@
       }
 
       $scope.lastSpaceWidth = spaceWidth;
-    }
-
-    // PRIVATE methods
-
-    function activate() {
-      $log = $log.getInstance('AUTOMATION-CONTROLLER');
-
-      Accela.init({
-        appId: CONFIG.APP_ID,
-        appSecret: CONFIG.APP_SECRET,
-        appVersion: CONFIG.CURRENT_VERSION,
-        envName: 'TEST',
-        agency: 'BPTDEV',
-        userName: 'dbalmer'
-      });
-
-//      $(document).ready(function () {
-//        //   resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
-//        if (!resizeTimer) {
-//          resizeTimer = setTimeout(calcSpacesCount, 1000);
-//          $scope.GetSpaceList();
-//        }
-//        else {
-//          resizeTimer = null;
-//        }
-//      });
-//
-//      $(window).resize(function () {
-//        resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
-//      });
-
-      function resizeHandler() {
-        setTimeout(calcSpacesCount, 1000);
-      }
-
-      angular.element($window).bind('resize', _.debounce(resizeHandler, 500));
-
-      setTimeout(calcSpacesCount, 1000);
-
-      $scope.GetSpaceList();
     }
 
     // CONSTRUCTOR

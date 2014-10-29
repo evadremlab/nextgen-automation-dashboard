@@ -27,7 +27,7 @@
         'SAVE_USER_CONSOLE': { mockPath: 'console/', endPoint: 'saveUserConsole' }
       }
     },
-    'DASHBOARD': {
+    'USER': {
       'SERVICES': {
         'GET_ACTIVITY_LIST': { mockPath: 'dashboard/', endPoint: 'getActivityList' },
         'GET_USER_PROFILE': { mockPath: 'dashboard/', endPoint: 'getUserProfile' },

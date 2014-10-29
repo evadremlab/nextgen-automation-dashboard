@@ -1,36 +1,34 @@
 (function () {
   'use strict';
 
-  // SEE: https://github.com/idanush/ngdocs/wiki/API-Docs-Syntax
-
   angular
-    .module('accela.automation')
-    .factory('DashboardManager', service);
+    .module('accela.core')
+    .factory('UserManager', service);
 
   /**
    * @ngInject
    **/
-  function service($log, $q, CONFIG, DashboardModel, DataService, _) {
+  function service($log, $q, UserModel, DataService, CONFIG, _) {
 
     // PRIVATE data
 
-    var model = DashboardModel;
-    var config = CONFIG.DASHBOARD;
+    var model = UserModel;
+    var config = CONFIG.USER;
 
     // PUBLIC interface
 
     return {
-      getActivityList: getActivityList,
-      getUserProfile: getUserProfile,
-      getUserSpaces: getUserSpaces,
-      getUserClosedSpaces: getUserClosedSpaces,
-      getWorkflowTasks: getWorkflowTasks
+      getActivityList: getActivityList,         // dashboard
+      getUserProfile: getUserProfile,           // sidenav and masthead
+      getUserSpaces: getUserSpaces,             // sidenav
+      getUserClosedSpaces: getUserClosedSpaces, // dashboard
+      getWorkflowTasks: getWorkflowTasks        // dashboard
     };
 
     // PRIVATE methods
 
     function activate() {
-      $log = $log.getInstance('DASHBOARD-MANAGER');
+      $log = $log.getInstance('USER-MANAGER');
     }
 
     function getActivityList() {
@@ -113,7 +111,30 @@
     }
 
     function getUserClosedSpaces() {
-      //GET_USER_CLOSED_SPACES
+      var data = {};
+      var params = {};
+      var deferred = $q.defer();
+
+      DataService.get(config.SERVICES.GET_USER_CLOSED_SPACES, data, params)
+        .then(function(response) {
+          var list = [];
+          var status = response.data.status;
+          var content = response.data.content;
+
+          if (status.code === 'OK') {
+            _.each(content, function(data) {
+              list.push(model.UserSpace.build(data));
+            });
+
+            deferred.resolve(list);
+          } else {
+            deferred.reject(status.message);
+          }
+        }, function(error) { // already reported by HttpInterceptor
+          deferred.reject(error.customErrorMessage);
+        });
+
+      return deferred.promise;
     }
 
     function getWorkflowTasks() {
@@ -129,7 +150,7 @@
 
           if (status.code === 'OK') {
             _.each(content, function(data) {
-              list.push(model.WorkflowTask.build(data));
+              list.push(model.UserWorkflowTask.build(data));
             });
 
             deferred.resolve(list);

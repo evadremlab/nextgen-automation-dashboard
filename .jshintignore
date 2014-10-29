@@ -2,4 +2,5 @@ js/automation/main-controller.js
 js/console/directives/portlet-iframe.js
 js/core/directives/bootstrap-popover-menu.js
 js/core/entities/user-console.js
+js/i18n/*.js
 js/vendor/*.js

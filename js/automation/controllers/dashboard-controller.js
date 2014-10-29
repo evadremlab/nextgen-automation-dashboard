@@ -8,7 +8,7 @@
   /**
    * @ngInject
    */
-  function controller($scope, $filter, $log, DashboardManager, _) {
+  function controller($scope, $filter, $log, UserManager, _) {
 
     // PRIVATE data
 
@@ -70,7 +70,7 @@
 //      }, function (e) {
 //      });
 
-      DashboardManager.getUserProfile().then(function(data) {
+      UserManager.getUserProfile().then(function(data) {
         $scope.dashboard.currentUser = data;
       });
     };
@@ -133,7 +133,7 @@
 
 //      $scope.dashboard.myTasks.showMore = myTasks.length > $scope.dashboard.myTasks.limitTo;
 
-      DashboardManager.getWorkflowTasks().then(function(data) {
+      UserManager.getWorkflowTasks().then(function(data) {
 
         _.each(data, function(item, value) {
           item.permitType = recordDetail.type.text;
@@ -160,65 +160,32 @@
       $scope.newSpaceLoading = true;
       $scope.dashboard.userSpaces = [];
 
-//      SpaceService.GetUserCloseSpace(function (data) {
-//        if (data.result != 300) {
-//          $scope.dashboard.userSpaces = data.result;
-//          $.each($scope.dashboard.userSpaces, function (i, v) {
-//            v.CreatedDate = new Date(v.CreatedDate);
-//            var customCreatedDate = v.CreatedDate;
-//            var today = new Date();
-//            var yesterday = new Date();
-//            yesterday.setDate(today.getDate() - 1);
-//            if (customCreatedDate.getFullYear() == today.getFullYear() && customCreatedDate.getMonth() == today.getMonth()) {
-//              if (customCreatedDate.getDate() == today.getDate()) {
-//                customCreatedDate = 'Today at ' + $filter('date')(customCreatedDate, 'h:mm a');
-//              } else if (customCreatedDate.getDate() == yesterday.getDate()) {
-//                customCreatedDate = 'Yesterday at ' + $filter('date')(customCreatedDate, 'h:mm a');
-//              } else {
-//                customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
-//              }
-//            } else {
-//              customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
-//            }
-//
-//
-//            v.customCreatedDate = customCreatedDate;
-//
-//            // add by arno  set Image
-//            v.imgsrc = $scope.setImage(v.SpaceType);
-//          });
-//
-//          $scope.newSpaceLoading = false;
-//        }
-//        else {
-//          alert('oops');
-//        }
-//      });
+      UserManager.getUserClosedSpaces().then(function(data) {
+        $scope.dashboard.userSpaces = data;
 
-      $scope.dashboard.userSpaces = Accela.Utils.XmlHttp.getMockData('mock-api/dashboard/getUserClosedSpaces.json').content;
-
-      _.each($scope.dashboard.userSpaces, function (v) {
-        v.CreatedDate = new Date(v.CreatedDate);
-        var customCreatedDate = v.CreatedDate;
-        var today = new Date();
-        var yesterday = new Date();
-        yesterday.setDate(today.getDate() - 1);
-        // TODO: use moment.js
-        if (customCreatedDate.getFullYear() === today.getFullYear() && customCreatedDate.getMonth() === today.getMonth()) {
-          if (customCreatedDate.getDate() === today.getDate()) {
-            customCreatedDate = 'Today at ' + $filter('date')(customCreatedDate, 'h:mm a');
-          } else if (customCreatedDate.getDate() === yesterday.getDate()) {
-            customCreatedDate = 'Yesterday at ' + $filter('date')(customCreatedDate, 'h:mm a');
+        _.each($scope.dashboard.userSpaces, function (v) {
+          v.CreatedDate = new Date(v.CreatedDate);
+          var customCreatedDate = v.CreatedDate;
+          var today = new Date();
+          var yesterday = new Date();
+          yesterday.setDate(today.getDate() - 1);
+          // TODO: use moment.js
+          if (customCreatedDate.getFullYear() === today.getFullYear() && customCreatedDate.getMonth() === today.getMonth()) {
+            if (customCreatedDate.getDate() === today.getDate()) {
+              customCreatedDate = 'Today at ' + $filter('date')(customCreatedDate, 'h:mm a');
+            } else if (customCreatedDate.getDate() === yesterday.getDate()) {
+              customCreatedDate = 'Yesterday at ' + $filter('date')(customCreatedDate, 'h:mm a');
+            } else {
+              customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
+            }
           } else {
             customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
           }
-        } else {
-          customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
-        }
 
-        v.customCreatedDate = customCreatedDate;
+          v.customCreatedDate = customCreatedDate;
 
-        v.imgsrc = setImage(v.SpaceType);
+          v.imgsrc = setImage(v.SpaceType);
+        });
       });
 
       $scope.newSpaceLoading = false;
@@ -280,7 +247,7 @@
     function activate() {
       $log = $log.getInstance('DASHBOARD-CONTROLLER');
 
-      DashboardManager.getActivityList().then(function(data) {
+      UserManager.getActivityList().then(function(data) {
         $scope.dashboard.activity.list = data;
       });
     }
