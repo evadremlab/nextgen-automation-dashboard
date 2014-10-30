@@ -7,7 +7,7 @@
       return {
         restrict: 'A',
         scope: false,
-        templateUrl: 'views/console/partials/portlet-iframe.html',
+        templateUrl: 'views/automation/console/portlet-iframe.html',
         link: function(scope, elem, attrs) {
           var portlet = attrs.portletIframe;
 

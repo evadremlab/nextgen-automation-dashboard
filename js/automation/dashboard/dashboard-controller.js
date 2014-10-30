@@ -14,6 +14,8 @@
 
     // PUBLIC data
 
+    $scope.fubar = 'tbd';
+
     $scope.myTasks = [];
 
     $scope.newSpaceLoading = false;

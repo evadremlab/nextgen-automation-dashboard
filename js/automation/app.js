@@ -13,21 +13,21 @@
           url: '/console',
           controllerAs: 'vm',
           controller: 'ConsoleController',
-          templateUrl: 'views/console/index.html'
+          templateUrl: 'views/automation/console/index.html'
         },
         // in this nested view, omit the controller property
         // so that Angular will use the existing ConsoleController
         'customize': {
           name: 'console.customize',
           url: '/customize',
-          templateUrl: 'views/console/customize.html'
+          templateUrl: 'views/automation/console/customize.html'
         },
         'editPage': {
           name: 'console.editPage',
           url: '/edit',
           controllerAs: 'vmPage',
           controller: 'ConsolePageController',
-          templateUrl: 'views/console/edit-page.html',
+          templateUrl: 'views/automation/console/edit-page.html',
           params: { // required for $stateParams
             page: ''
           }
@@ -37,7 +37,7 @@
       $stateProvider
         .state('home', {
           url: '/',
-          templateUrl: 'views/partials/dashboard.html'
+          templateUrl: 'views/automation/dashboard/dashboard.html'
         })
         .state(consoleState.home)
         .state(consoleState.customize)

@@ -65,7 +65,7 @@
 
       DataService.get(config.SERVICES.GET_USER_PROFILE, data, params)
         .then(function(response) {
-          var userProfile = {};
+          var userProfile;
           var status = response.data.status;
           var content = response.data.content;
 

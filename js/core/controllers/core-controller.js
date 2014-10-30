@@ -50,6 +50,7 @@
       LoggingService.error(msg);
     });
 
+    // TODO: replace this with $state.go('xxx')
     $rootScope.$on('clickSpace', function (d, id, url) {
       $log.info('clickSpace EVENT');
 //      $rootScope.SpaceSelectedId = id;
@@ -579,8 +580,8 @@
       angular.element($window).bind('resize', _.debounce(resizeHandler, 500));
 
       setTimeout(calcSpacesCount, 1000);
-//
-////      $scope.GetSpaceList();
+
+      $scope.GetSpaceList();
     }
 
     function calcSpacesCount() {

@@ -32,7 +32,7 @@
     function message(options) {
       var modalInstance = $modal.open({
         size: 'sm',
-        templateUrl: 'views/core/modals/message.html',
+        templateUrl: 'views/automation/core/message.html',
         controller: function($modalInstance) {
           if (!options.className) {
             options.className = 'default';
@@ -48,7 +48,7 @@
     function addPortlet(options) {
        var modalInstance = $modal.open({
         size: 'lg',
-        templateUrl: 'views/console/modals/add-portlet.html',
+        templateUrl: 'views/automation/console/add-portlet.html',
         controller: options.controller,
         controllerAs: 'dlg',
         resolve: {
