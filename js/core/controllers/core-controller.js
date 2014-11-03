@@ -1,27 +1,6 @@
 (function() {
   'use strict';
 
-  angular.
-    module('accela.core')
-    .directive("dbbTooltip", function($compile) {
-      return {
-        restrict: 'A',
-        priority: 1001, // compiles first
-        terminal: true, // prevent lower priority directives to compile after it
-        compile: function(el, attrs) {
-          el.removeAttr('dbb-tooltip'); // necessary to avoid infinite compile loop
-          el.attr('tooltip', attrs.dbbTooltip);
-          el.attr('tooltip-trigger', 'mouseenter');
-          el.attr('tooltip-placement', 'right');
-          el.attr('tooltip-popup-delay', '500');
-          var fn = $compile(el);
-          return function(scope){
-            fn(scope);
-          };
-        }
-      };
-    });
-
   angular
     .module('accela.core')
     .controller('CoreController', controller);
@@ -43,8 +22,11 @@
 
     // EVENT handlers
 
-    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-      $scope.activeSubMenu = $location.path();
+    // TODO: replace this with $state.go('xxx')
+    $rootScope.$on('clickSpace', function (d, id, url) {
+      $log.info('clickSpace EVENT');
+//      $rootScope.SpaceSelectedId = id;
+//      $location.path(url);
     });
 
 //    // listening url change
@@ -63,19 +45,6 @@
 ////      }
 ////      $scope.setSpaceClick();
 //    });
-
-    $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
-      var msg = sprintf('$stateChangeError : %s : %s' + JSON.stringify(toState), JSON.stringify(error));
-      $log.warn(msg);
-      LoggingService.error(msg);
-    });
-
-    // TODO: replace this with $state.go('xxx')
-    $rootScope.$on('clickSpace', function (d, id, url) {
-      $log.info('clickSpace EVENT');
-//      $rootScope.SpaceSelectedId = id;
-//      $location.path(url);
-    });
 
     $rootScope.$on('refreshSpace', function (event) {
       $log.info('refreshSpace EVENT');
@@ -126,6 +95,16 @@
 //      }
     });
 
+    $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+      var msg = sprintf('$stateChangeError : %s : %s' + JSON.stringify(toState), JSON.stringify(error));
+      $log.warn(msg);
+      LoggingService.error(msg);
+    });
+
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+      $scope.activeSubMenu = $location.path();
+    });
+
     $rootScope.$on('updateUserSpaces', function () {
       $log.info('updateUserSpaces EVENT');
 //        $scope.GetSpaceList();
@@ -133,33 +112,6 @@
 
     // PUBLIC methods
 
-    $scope.GetSpaceList = function (funcName) {
-      $log.info('$scope.GetSpaceList()');
-
-      UserManager.getUserSpaces().then(function(data) {
-        $scope.spaceList = data;
-        $timeout(calcSpacesCount, 10);
-      });
-
-//      $scope.setSpaceClick();
-//      LoadingService.show();
-//      SpaceService.GetSpacesList(function (data) {
-//        if (data.result != 300) {
-//          $safeApply($scope, function () {
-//            $scope.spaceList = data.result;
-//          });
-//
-//          $scope.setSpaceClick();
-//
-//          LoadingService.hide();
-//
-//          if (funcName instanceof Function) {
-//            funcName();
-//          }
-//        }
-//      });
-    };
-    // create spaces
     $scope.CreateSpaceList = function (Name, URL, type) {
       $log.info('$scope.CreateSpaceList()');
 //      SpaceService.Create(Name, URL, type, function (data) {
@@ -187,6 +139,63 @@
 //        return space;
 //      }
 //      return space[0];
+    };
+
+    $scope.GetSpaceList = function (funcName) {
+      $log.info('$scope.GetSpaceList()');
+
+      UserManager.getUserSpaces().then(function(data) {
+        $scope.spaceList = data;
+        $timeout(calcSpacesCount, 10);
+      });
+
+//      $scope.setSpaceClick();
+//      LoadingService.show();
+//      SpaceService.GetSpacesList(function (data) {
+//        if (data.result != 300) {
+//          $safeApply($scope, function () {
+//            $scope.spaceList = data.result;
+//          });
+//
+//          $scope.setSpaceClick();
+//
+//          LoadingService.hide();
+//
+//          if (funcName instanceof Function) {
+//            funcName();
+//          }
+//        }
+//      });
+    };
+
+    $scope.setSpaceClick = function () {
+      $log.info('$scope.setSpaceClick()');
+//      var space = $filter('filter')($scope.spaceList, function (item) {
+//        return item.URL == $location.path();
+//      });
+//      if ($rootScope.SpaceSelectedId != null) {
+//
+//        var selectSpace = $filter('filter')($scope.spaceList, function (item) {
+//          return item.ID == $rootScope.SpaceSelectedId;
+//        });
+//        if (selectSpace != null && selectSpace.length > 0 && selectSpace[0].SpaceType == 'new') {
+//          $scope.getSpaceFilter();
+//          return;
+//        }
+//
+//        for (var i in space) {
+//          if (space[i].ID == $rootScope.SpaceSelectedId) {
+//            $scope.getSpaceFilter();
+//            return;
+//          }
+//        }
+//      }
+//      if (space != null && space.length > 0) {
+//        $rootScope.SpaceSelectedId = space[0].ID;
+//        $scope.getSpaceFilter();
+//      } else {
+//        $rootScope.SpaceSelectedId = 0;
+//      }
     };
 
     $scope.setSpaceNameAndURL = function (name, URL) {
@@ -230,36 +239,6 @@
       space.SpaceType = type;
       space.update = update;
       return space;
-    };
-
-    $scope.setSpaceClick = function () {
-      $log.info('$scope.setSpaceClick()');
-      var space = $filter('filter')($scope.spaceList, function (item) {
-        return item.URL == $location.path();
-      });
-      if ($rootScope.SpaceSelectedId != null) {
-
-        var selectSpace = $filter('filter')($scope.spaceList, function (item) {
-          return item.ID == $rootScope.SpaceSelectedId;
-        });
-        if (selectSpace != null && selectSpace.length > 0 && selectSpace[0].SpaceType == 'new') {
-          $scope.getSpaceFilter();
-          return;
-        }
-
-        for (var i in space) {
-          if (space[i].ID == $rootScope.SpaceSelectedId) {
-            $scope.getSpaceFilter();
-            return;
-          }
-        }
-      }
-      if (space != null && space.length > 0) {
-        $rootScope.SpaceSelectedId = space[0].ID;
-        $scope.getSpaceFilter();
-      } else {
-        $rootScope.SpaceSelectedId = 0;
-      }
     };
 
     // *********************************************************************

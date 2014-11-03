@@ -1,6 +1,6 @@
 <div id="tileGroupDiv">
   <ul class="text-center">
-    <li dbb-tooltip="Dashboard">
+    <li sidenav-tooltip="Dashboard">
       <ul class="list-unstyled active" ng-class="{'active' : activeSubMenu === '/'}">
         <li>
           <a href="#">
@@ -10,13 +10,13 @@
         <li><a href="#">Dashboard</a></li>
       </ul>
     </li>
-    <li dbb-tooltip="Notifications">
+    <li sidenav-tooltip="Notifications">
       <ul class="list-unstyled">
         <li class="notification"><span class="info-number">16</span></li>
         <li><a>Notifications</a></li>
       </ul>
     </li>
-    <li dbb-tooltip="Maps">
+    <li sidenav-tooltip="Maps">
       <ul class="list-unstyled no-bottom-border">
         <li><img src="/images/layout/maps_icon.png" /></li>
         <li><a>Maps</a></li>
@@ -30,7 +30,7 @@
           </button>
         </div>
         <div class="col-md-5 hidden" style="padding-top:12px; xxx-display:none;" placement='right' template='templateSpaceNew.html' bs-popover>
-          <a data-toggle="popover" class="isfixed" data-trigger='click' data-container='body' rel="popover" data-html="true" href="javascript:void(0);"><div class="caret">  </div></a>
+          <a data-toggle="popover" class="isfixed" data-trigger='click' data-container='body' rel="popover" data-html="true" href="#" xxx-href="javascript:void(0);"><div class="caret">  </div></a>
         </div>
       </div>
     </li>
@@ -43,7 +43,7 @@
           </button>
         </div>
         <div class="col-md-5 hidden" style="padding-top:12px; xxx-display:none;" placement='right' template='templateSpaceNew.html' bs-popover>
-          <a data-toggle="popover" class="isfixed" data-trigger='click' data-container='body' rel="popover" data-html="true" href="javascript:void(0);"><div class="caret">  </div></a>
+          <a data-toggle="popover" class="isfixed" data-trigger='click' data-container='body' rel="popover" data-html="true" href="#" xxx-href="javascript:void(0);"><div class="caret">  </div></a>
         </div>
       </div>
     </li>
@@ -53,20 +53,20 @@
   <ul class="text-center">
     <li class="li-space-hot animate-repeat" id="space_{{space.ID}}" ng-show="($index + 1) <= showcount" id="li_{{space.ID}}" ng-class="{'li-space-df' : SpaceSelectedId == space.ID, 'li-space-close' : clickID == space.ID}" ng-repeat="space in spaceList">
       <div class="unpin li-space-hot-title">
-        <div class="unpin-img" ng-show="space.PinSortID!=0" ng-click="setClickSpace(space.ID); SpaceAction('Unpin', space.ID);" tooltip="Unpin" tooltip-trigger="mouseenter" tooltip-placement="right" tooltip-popup-delay="500">
+        <div class="unpin-img" ng-show="space.PinSortID!=0" ng-click="setClickSpace(space.ID); SpaceAction('Unpin', space.ID);" sidenav-tooltip="Unpin" xxx-tooltip="Unpin" xxx-tooltip-trigger="mouseenter" xxx-tooltip-placement="right" xxx-tooltip-popup-delay="500">
           <img alt="Unpin" src="/images/layout/pinned_icon.png" />
         </div>
       </div>
       <div class="row">
         <div class="col-md-12 word-break">
-          <a href="javascript:void(0);" id="{{space.ID}}" ng-dblclick="dblclick(space.ID, space.Name);" ng-click="clickrouting(space.ID, space.URL, space.SpaceType)">
+          <a href="#" xxx-href="javascript:void(0);" id="{{space.ID}}" ng-dblclick="dblclick(space.ID, space.Name);" ng-click="clickrouting(space.ID, space.URL, space.SpaceType)">
             <div><img id="imgspace{{space.ID}}" class="imgspace" ng-src="/images/layout/{{setimgcss(space.ID, space.SpaceType);}}" /></div>
             <div class="li-space-hot-title space-name">{{substring(space.Name);}}<span class="sr-only">{{space.Name}}</span></div>
           </a>
           <!--<textarea id="textarea_{{space.ID}}" cols="13" ng-blur="UpdateSpaceList(space.ID)" xxx-style="display:none;" class="hidden">{{space.Name}}</textarea>-->
         </div>
-        <div template='NewSpacePin.html' pin="true" pinsortid="{{space.PinSortID}}" spacetype="{{space.SpaceType}}" bs-popover class="space-menu-btn-group" tooltip="menu here" tooltip-trigger="mouseenter" tooltip-placement="right" tooltip-popup-delay="500">
-          <a href="javascript:void(0);" class="space-arrow-a space-menu-btn" id="a_{{space.ID}}" data-trigger='click' data-container='body' data-toggle="popover" rel="popover" data-html="true" ng-click="setClickSpace(space.ID);">
+        <div xxx-template='NewSpacePin.html' xxx-pin="true" xxx-pinsortid="{{space.PinSortID}}" xxx-spacetype="{{space.SpaceType}}" xxx-bs-popover class="space-menu-btn-group" sidenav-tooltip="menu here" xxx-tooltip="menu here" xxx-tooltip-trigger="mouseenter" xxx-tooltip-placement="right" xxx-tooltip-popup-delay="500">
+          <a href="#" xxx-href="javascript:void(0);" class="space-arrow-a space-menu-btn" id="a_{{space.ID}}" xxx-data-trigger='click' xxx-data-container='body' xxx-data-toggle="popover" xxx-rel="popover" xxx-data-html="true" ng-click="setClickSpace(space.ID);">
             <i class="caret"></i>
           </a>
         </div>
@@ -74,7 +74,7 @@
     </li>
     <li class="dropdown" template='templateMoreSpace.html' ng-show="spaceList.length > showcount" triggertype="mouseenter" more="true" bs-popover xxx-dbb-tooltip="menu here">
       <div class="word-break">
-        <a href="javascript:void(0);" id="spaceMore" class="btn btn-default btn-xs space-more dropdown-toggle" data-toggle="dropdown" xxx-data-trigger='click' xxx-data-container='body' xxx-data-toggle="popover" xxx-rel="popover" xxx-data-html="true">
+        <a href="#" xxx-href="javascript:void(0);" id="spaceMore" class="btn btn-default btn-xs space-more dropdown-toggle" data-toggle="dropdown" xxx-data-trigger='click' xxx-data-container='body' xxx-data-toggle="popover" xxx-rel="popover" xxx-data-html="true">
           <i class="li-space-hot-title">{{spaceList.length - showcount}}</i>
           more
         </a>

@@ -500,9 +500,6 @@ body {
   left: 100px;
   /* would depend on width of "owner" */
 }
-.side-dropdown-menu:hover {
-  display: block;
-}
 /* MAIN NAV (MAIN SIDEBAR)
 ============================================================================= */
 #big-nav {
@@ -511,6 +508,9 @@ body {
   width: 100px;
   z-index: 99999;
   background: #39444d;
+}
+#big-nav a {
+  outline: none !important;
 }
 #big-nav > ul > li > a {
   padding: 15px 0 20px;
