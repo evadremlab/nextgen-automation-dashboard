@@ -1,6 +1,27 @@
 (function() {
   'use strict';
 
+  angular.
+    module('accela.core')
+    .directive("dbbTooltip", function($compile) {
+      return {
+        restrict: 'A',
+        priority: 1001, // compiles first
+        terminal: true, // prevent lower priority directives to compile after it
+        compile: function(el, attrs) {
+          el.removeAttr('dbb-tooltip'); // necessary to avoid infinite compile loop
+          el.attr('tooltip', attrs.dbbTooltip);
+          el.attr('tooltip-trigger', 'mouseenter');
+          el.attr('tooltip-placement', 'right');
+          el.attr('tooltip-popup-delay', '500');
+          var fn = $compile(el);
+          return function(scope){
+            fn(scope);
+          };
+        }
+      };
+    });
+
   angular
     .module('accela.core')
     .controller('CoreController', controller);
@@ -8,7 +29,7 @@
   /**
    * @ngInject
    */
-  function controller($rootScope, $scope, $filter, $location, $log, $window, LoggingService, UserManager, CONFIG) {
+  function controller($rootScope, $scope, $filter, $location, $log, $timeout, $window, LoggingService, UserManager, CONFIG) {
 
     // PRIVATE data
 
@@ -17,7 +38,6 @@
     // PUBLIC data
 
     $scope.activeSubMenu = $location.path();
-    $scope.lastSpaceWidth = 0;
     $scope.showcount = 0;
     $scope.spaceList = [];
 
@@ -118,6 +138,7 @@
 
       UserManager.getUserSpaces().then(function(data) {
         $scope.spaceList = data;
+        $timeout(calcSpacesCount, 10);
       });
 
 //      $scope.setSpaceClick();
@@ -573,73 +594,30 @@
 ////      });
 
       function resizeHandler() {
-        setTimeout(calcSpacesCount, 1000);
+        $timeout(calcSpacesCount, 500);
 //        resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
       }
 
       angular.element($window).bind('resize', _.debounce(resizeHandler, 500));
 
-      setTimeout(calcSpacesCount, 1000);
-
       $scope.GetSpaceList();
     }
 
     function calcSpacesCount() {
-      $log.info('calcSpacesCount()');
-//      var navHeight = $('#big-nav').height();
-//      var dashboradHeihght = $('#dashboardGroupDiv').height();
-//      var settingHeight = $('#nav-last-li').height();
-//      var spaceWidth = $($('#spaceGroupDiv').find('li')[0]).width();
-//      var moreHeight = 30;
-//
-//      var liSpacesHeight = $(document).width() <= 768 ? 50 : 95;
-//
-//      var count = (navHeight - settingHeight - dashboradHeihght - moreHeight) / liSpacesHeight-1;
-//
-//      if ((count - $scope.showcount) > 1 || (count - $scope.showcount) < 0 || $scope.lastSpaceWidth != spaceWidth) {
-//        $scope.showcount = Math.floor(count);
-//
-//        LoadingService.show();
-//        SpaceService.GetSpacesList(function (data) {
-//          if (data.result != 300) {
-//            $safeApply($scope, function () {
-//              $scope.spaceList = data.result;
-//            });
-//          }
-//          LoadingService.hide();
-//        });
-//      }
-//
-//      $scope.lastSpaceWidth = spaceWidth;
-//      resizeTimer = null;
-
-      var navHeight = Accela.$('#big-nav').prop('offsetHeight');
-      var dashboardHeight = Accela.$('#tileGroupDiv').prop('offsetHeight');
-      var settingHeight = Accela.$('#nav-last-li').prop('offsetHeight');
-      var spaceWidth = Accela.$('#spaceGroupDiv').prop('offsetWidth');
       var moreHeight = 30;
+      var navHeight = Accela.$('#big-nav').prop('offsetHeight');
+      var tileHeight = Accela.$('#tileGroupDiv').prop('offsetHeight');
+      var footerHeight = Accela.$('#nav-last-li').prop('offsetHeight');
+      var spaceWidth = Accela.$('#spaceGroupDiv').prop('offsetWidth');
+      var spaceHeight = document.body.offsetWidth <= 768 ? 50 : 95;
+      var availableHeight = navHeight - tileHeight - footerHeight;
+      var viewableCount = Math.floor(availableHeight / spaceHeight);
 
-      var liSpacesHeight = document.body.offsetWidth <= 768 ? 50 : 95;
-
-      var count = (navHeight - settingHeight - dashboardHeight - moreHeight) / liSpacesHeight - 1;
-
-      if ((count - $scope.showcount) > 1 || (count - $scope.showcount) < 0 || $scope.lastSpaceWidth != spaceWidth) {
-        $scope.showcount = Math.floor(count);
-        $log.debug('$scope.showcount:' + $scope.showcount);
-//        LoadingService.show();
-//        SpaceService.GetSpacesList(function (data) {
-//          if (data.result != 300) {
-//            $safeApply($scope, function () {
-//              $scope.spaceList = data.result;
-//            });
-//          }
-//          LoadingService.hide();
-//        });
-      } else {
-        $log.info('no change');
+      if (viewableCount < $scope.spaceList.length) { // need to account for "x more" space
+        viewableCount = Math.floor((availableHeight-= moreHeight) / spaceHeight);
       }
 
-      $scope.lastSpaceWidth = spaceWidth;
+      $scope.showcount = viewableCount;
     }
 
     // CONSTRUCTOR
