@@ -5,3 +5,4 @@ dist/
 docs/
 js/i18n/
 node_modules/
+styles/*.css
