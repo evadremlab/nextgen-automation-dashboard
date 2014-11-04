@@ -362,81 +362,49 @@
   }
 }
 
-/* MODIFIED BY DAVE
+/* ADDED BY dbalmer@accela.com
 ============================================================================= */
-.space-menu-btn-group ul {
-  display: block;
-  position: relative;
-  left: 2em;
-  top: -5.5em;
+.side-context-menu {
+  position: absolute;
   min-width: 6em;
   height: auto !important;
   background-color: #fff !important;
+  /* HACK - align with Space icon */
+  left: 7.5em;
+  top: 1em;
 }
-  .space-menu-btn-group ul li a {
+  #side-context-menu-more { /* HACK - align with more pill */
+    left: 7.7em;
+    top: -0.5em;
+  }
+  .side-context-menu li a {
     color: #000 !important;
     padding: 3px 5px;
   }
-  .space-menu-btn-group ul li:hover a {
+  .side-context-menu li:hover a {
     color: #000 !important;
   }
-.space-menu-btn-group ul:after,
-.space-menu-btn-group ul:before {
-  right: 100%;
+
+.side-context-menu:after,
+.side-context-menu:before {
+  position: absolute;
   top: 50%;
+  right: 100%;
   border: solid transparent;
   content: " ";
   height: 0;
   width: 0;
-  position: absolute;
   pointer-events: none;
 }
-.space-menu-btn-group ul:before {
+
+.side-context-menu:before {
   border-right-color: #cacaca;
   border-width: 12px;
   margin-top: -12px;
 }
-.space-menu-btn-group ul:after {
+
+.side-context-menu:after {
   border-right-color: #fff;
   border-width: 10px;
   margin-top: -10px;
 }
-/*
-.dbb-space-menu {
-  display: block;
-  position: relative;
-  left: 2em;
-  top: -5.5em;
-  min-width: 6em;
-  height: auto !important;
-  background-color: #fff !important;
-}
-.dbb-space-menu li a {
-  color: #000 !important;
-  padding: 3px 5px;
-}
-.dbb-space-menu li:hover a {
-  color: #000 !important;
-}
-.dbb-space-menu:after,
-.dbb-space-menu:before {
-  right: 100%;
-  top: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-.dbb-space-menu:before {
-  border-right-color: #cacaca;
-  border-width: 12px;
-  margin-top: -12px;
-}
-.dbb-space-menu:after {
-  border-right-color: #fff;
-  border-width: 10px;
-  margin-top: -10px;
-}
-*/

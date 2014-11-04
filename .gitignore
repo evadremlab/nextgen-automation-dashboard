@@ -3,4 +3,5 @@ bower_components/
 coverage/
 dist/
 docs/
+js/i18n/
 node_modules/

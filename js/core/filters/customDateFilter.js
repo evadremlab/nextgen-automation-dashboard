@@ -8,7 +8,7 @@
 
   angular
     .module('accela.core')
-    .filter('customDateFilter', ['$filter', function ($filter) {
+    .filter('customDateFilter', function ($filter) {
       return function (originDate, formatString) {
         var formatDate = null;
         if (originDate instanceof Date) {
@@ -20,5 +20,5 @@
         }
         return formatDate === null ? '' : $filter('date')(formatDate, formatString);
       };
-  }]);
+  });
 })();
