@@ -1,3 +1,33 @@
+
+Signup for creative cloud account
+
+============================================================================================================
+
+First sprint includes:
+  Application Bar
+    should hide after initial load
+  Menu Bar
+    Dashboard tile
+    Maps tile
+    Search tile
+      will expand to same size as Maps on click
+    New tile
+      what new thing is part of the first sprint?
+  Task Cards
+  Global Search
+
+The space reserved for the "Recent Activity" will be taken by Task Cards for now
+
+InVision prototype is sized to iPad landscape
+  -- UX will provide guidance on handling desktop layout
+
+Font is TBD, will not be using "Proxima-Nova"
+
+Pin a space by selecting "Pin" from popover menu
+Unpin a space by selecting "Unpin" from popover menu, or clicking on the pin icon
+
+============================================================================================================
+
 REMOVED FROM index.html:
   <!--<script src="js/vendor/bootstrap.min.js"></script>-->
 

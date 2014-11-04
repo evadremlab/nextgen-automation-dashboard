@@ -39,6 +39,9 @@
           url: '/',
           templateUrl: 'views/automation/dashboard/dashboard.html'
         })
+        .state('fubar', {
+          url: '/fubar'
+        })
         .state(consoleState.home)
         .state(consoleState.customize)
         .state(consoleState.editPage);

@@ -112,6 +112,10 @@
 
     // PUBLIC methods
 
+    $scope.logout = function() {
+      alert('logout');
+    };
+
     $scope.CreateSpaceList = function (Name, URL, type) {
       $log.info('$scope.CreateSpaceList()');
 //      SpaceService.Create(Name, URL, type, function (data) {
@@ -245,7 +249,7 @@
     // spaces Action function
 
     $scope.SpaceAction = function (Action, spaceID) {
-      $log.info('$scope.SpaceAction()');
+      $log.info(sprintf('$scope.SpaceAction(%s, %s)', Action, spaceID));
 //      switch (Action.toLowerCase()) {
 //        case 'pin':
 //          $scope.PinSortID('pin', spaceID);
