@@ -3,7 +3,7 @@
 
   angular.
   module('accela.core')
-  .directive("sidenavTooltip", function($compile) {
+  .directive('sidenavTooltip', function($compile) {
     return {
       restrict: 'A',
       priority: 1001, // compiles first

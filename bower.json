@@ -1,6 +1,6 @@
 {
   "name": "nextgen-automation-prototype",
-  "version": "0.10.24",
+  "version": "0.11.05",
   "authors": [
     "dbalmer-accela <dbalner@accela.com>"
   ],
@@ -20,13 +20,11 @@
     "angular": "~1.2.22",
     "angular-ui-router": "~0.2.10",
     "angular-bootstrap": "~0.11.0",
-    "bootstrap-css-only": "~3.2.0",
     "underscore": "~1.7.0",
     "angular-smart-table": "~1.2.6",
     "stacktrace-js": "~0.6.2",
     "sprintf": "~1.0.0",
     "angular-resource": "~1.2.26",
-    "jquery": "1.10.2",
     "moment": "~2.8.3"
   },
   "devDependencies": {

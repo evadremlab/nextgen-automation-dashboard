@@ -7,14 +7,14 @@
 
   /**
    * @ngInject
+   *
+   * TODO: refactor this into a separate component that will manage only the Dashboard.
    */
   function controller($scope, $filter, $log, UserManager, _) {
 
     // PRIVATE data
 
     // PUBLIC data
-
-    $scope.fubar = 'tbd';
 
     $scope.myTasks = [];
 
@@ -64,7 +64,59 @@
       }
     };
 
+    // EVENT handlers
+
+//    $rootScope.$on('userSpaceClose', function () {
+//      $scope.getClosedSpaceList();
+//    })
+
     // PUBLIC methods
+
+    $scope.deleteRecentlyClosedUserSpace = function (index) {
+      var space = $scope.dashboard.userSpaces[index];
+//      SpaceService.deleteSpace(space.ID, function (data) {
+//        if (data.result === 200) {
+//          //console.log(angular.toJson(data));
+//          $scope.getClosedSpaceList();
+//        }
+//      });
+      $scope.dashboard.userSpaces.splice(index, 1);
+    };
+
+    $scope.getClosedSpaceList = function () {
+      $scope.newSpaceLoading = true;
+      $scope.dashboard.userSpaces = [];
+
+      UserManager.getUserClosedSpaces().then(function(data) {
+        $scope.dashboard.userSpaces = data;
+
+        _.each($scope.dashboard.userSpaces, function (v) {
+          v.CreatedDate = new Date(v.CreatedDate);
+          var customCreatedDate = v.CreatedDate;
+          var today = new Date();
+          var yesterday = new Date();
+          yesterday.setDate(today.getDate() - 1);
+          // TODO: use moment.js
+          if (customCreatedDate.getFullYear() === today.getFullYear() && customCreatedDate.getMonth() === today.getMonth()) {
+            if (customCreatedDate.getDate() === today.getDate()) {
+              customCreatedDate = 'Today at ' + $filter('date')(customCreatedDate, 'h:mm a');
+            } else if (customCreatedDate.getDate() === yesterday.getDate()) {
+              customCreatedDate = 'Yesterday at ' + $filter('date')(customCreatedDate, 'h:mm a');
+            } else {
+              customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
+            }
+          } else {
+            customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
+          }
+
+          v.customCreatedDate = customCreatedDate;
+
+          v.imgsrc = setImage(v.SpaceType);
+        });
+      });
+
+      $scope.newSpaceLoading = false;
+    };
 
     $scope.getCurrentUser = function () {
 //      UserService.Init().then(function (d) {
@@ -76,14 +128,6 @@
         $scope.dashboard.currentUser = data;
       });
     };
-
-    $scope.getCurrentUser();
-
-//    setInterval(function () {
-//      $safeApply($scope, function () {
-//        $scope.dashboard.today = new Date();
-//      });
-//    }, 60000);
 
     $scope.getMyTasks = function () {
 //      LoadingService.show();
@@ -150,78 +194,18 @@
       });
     };
 
-    $scope.getMyTasks();
-
-    $scope.toggleMyTasksOrderBy = function (sort) {
-      $scope.dashboard.myTasks.orderByValue = sort.value;
-      $scope.dashboard.myTasks.orderByText = sort.text;
-    };
-
-    //get closed user spaces
-    $scope.getSpaceList = function () {
-      $scope.newSpaceLoading = true;
-      $scope.dashboard.userSpaces = [];
-
-      UserManager.getUserClosedSpaces().then(function(data) {
-        $scope.dashboard.userSpaces = data;
-
-        _.each($scope.dashboard.userSpaces, function (v) {
-          v.CreatedDate = new Date(v.CreatedDate);
-          var customCreatedDate = v.CreatedDate;
-          var today = new Date();
-          var yesterday = new Date();
-          yesterday.setDate(today.getDate() - 1);
-          // TODO: use moment.js
-          if (customCreatedDate.getFullYear() === today.getFullYear() && customCreatedDate.getMonth() === today.getMonth()) {
-            if (customCreatedDate.getDate() === today.getDate()) {
-              customCreatedDate = 'Today at ' + $filter('date')(customCreatedDate, 'h:mm a');
-            } else if (customCreatedDate.getDate() === yesterday.getDate()) {
-              customCreatedDate = 'Yesterday at ' + $filter('date')(customCreatedDate, 'h:mm a');
-            } else {
-              customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
-            }
-          } else {
-            customCreatedDate = $filter('date')(customCreatedDate, 'MM/dd/yy h:mm a');
-          }
-
-          v.customCreatedDate = customCreatedDate;
-
-          v.imgsrc = setImage(v.SpaceType);
-        });
-      });
-
-      $scope.newSpaceLoading = false;
-    };
-
-    $scope.getSpaceList();
-
-    $scope.deleteUserSpace = function (index) {
-        var space = $scope.dashboard.userSpaces[index];
-//      SpaceService.deleteSpace(space.ID, function (data) {
-//        if (data.result === 200) {
-//          //console.log(angular.toJson(data));
-//          $scope.getSpaceList();
-//        }
-//      });
-      $scope.dashboard.userSpaces.splice(index, 1);
-    };
-
     $scope.reopenSpace = function (index) {
       var space = $scope.dashboard.userSpaces[index];
 //      SpaceService.reopenUserSpace(space.ID, function (data) {
 //        if (data.result === 'PinFull') {
 //          alertTipsController.show('Danger', 'The Pinned WorkSpace are full: can't add new space!');
 //        }
-//        $rootScope.$broadcast('refreshSpace');
+//        $rootScope.$broadcast('dashboard.refreshSpace');
 //        if (data.result !== '300') {
-//          $rootScope.$broadcast('clickSpace', data.result.ID, data.result.URL);
+//          $rootScope.$broadcast('dashboard.clickSpace', data.result.ID, data.result.URL);
 //        }
 //      });
     };
-
-//    $rootScope.$on('userSpaceClose', function () {
-//      $scope.getSpaceList();
-//    })
 
     $scope.globalSearch = function () {
 //      if ($scope.dashboard.search.text) {
@@ -240,6 +224,11 @@
       }
     };
 
+    $scope.toggleMyTasksOrderBy = function (sort) {
+      $scope.dashboard.myTasks.orderByValue = sort.value;
+      $scope.dashboard.myTasks.orderByText = sort.text;
+    };
+
     // CONSTRUCTOR
 
     activate();
@@ -249,29 +238,42 @@
     function activate() {
       $log = $log.getInstance('DASHBOARD-CONTROLLER');
 
+//    setInterval(function () {
+//      $safeApply($scope, function () {
+//        $scope.dashboard.today = new Date();
+//      });
+//    }, 60000);
+
+      $scope.getCurrentUser();
+
+      $scope.getMyTasks();
+
+      $scope.getClosedSpaceList();
+
       UserManager.getActivityList().then(function(data) {
         $scope.dashboard.activity.list = data;
       });
     }
 
     function setImage(spaceType) {
-      var imgsrc;
+      var src = '';
+
       switch ((spaceType || '').toLowerCase()) {
         case 'permits':
         case 'submitpermits':
-          imgsrc = 'permits_icon_selected.png';
+          src = 'permits_icon_selected.png';
           break;
         case 'people':
-          imgsrc = 'people_icon_selected.png';
+          src = 'people_icon_selected.png';
           break;
         case 'search':
-          imgsrc = 'search_icon_selected.png';
+          src = 'search_icon_selected.png';
           break;
         default:
-          imgsrc = 'untitled_icon_selected.png';
+          src = 'untitled_icon_selected.png';
           break;
       }
-      return imgsrc;
+      return src;
     }
   }
 })();

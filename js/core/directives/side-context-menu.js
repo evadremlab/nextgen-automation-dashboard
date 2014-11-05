@@ -3,7 +3,7 @@
 
   angular.
     module('accela.core')
-    .directive("sideContextMenu", function($timeout) {
+    .directive('sideContextMenu', function($timeout) {
       return {
         restrict: 'A',
         link: function($scope, element, attributes) {

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('accela.automation')
+    .module('accela.core')
     .factory('ConsoleModel', service);
 
   /**

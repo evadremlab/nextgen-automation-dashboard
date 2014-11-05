@@ -37,7 +37,7 @@
       <div class="unpin li-space-hot-title">
         <div class="unpin-img"
              ng-show="space.PinSortID !== 0"
-             ng-click="setClickSpace(space.ID); SpaceAction('unpin', space.ID);"
+             ng-click="setClickSpace(space.ID); spaceAction('unpin', space.ID);"
              tooltip="Unpin" tooltip-trigger="mouseenter" tooltip-placement="right" tooltip-popup-delay="500">
           <img alt="Unpin" src="/images/layout/pinned_icon.png" />
         </div>
@@ -45,9 +45,9 @@
       <div class="row">
         <div class="col-md-12 word-break">
           <a href="#"
-             ng-dblclick="dblclick(space.ID, space.Name);"
-             ng-click="clickrouting(space.ID, space.URL, space.SpaceType)">
-            <div><img ng-src="/images/layout/{{setimgcss(space.ID, space.SpaceType)}}" /></div>
+             ng-dblclick="dblClick(space.ID, space.Name);"
+             ng-click="clickRouting(space.ID, space.URL, space.SpaceType)">
+            <div><img ng-src="/images/layout/{{setImage(space.ID, space.SpaceType)}}" /></div>
             <div class="li-space-hot-title space-name display-ellipsis">{{space.Name}}<span class="sr-only">{{space.Name}}</span></div>
           </a>
         </div>
@@ -60,22 +60,23 @@
       </div>
       <!-- context menu -->
       <ul class="dropdown-menu side-context-menu" id="side-context-menu-{{space.ID}}">
-        <li><a href="#" ng-show="space.PinSortID === 0" ng-click="SpaceAction('pin', space.ID)">Pin</a></li>
-        <li><a href="#" ng-show="space.PinSortID !== 0" ng-click="SpaceAction('unpin', space.ID)">Unpin</a></li>
-        <li><a href="#" ng-click="SpaceAction('duplicate', space.ID)">Duplicate</a></li>
-        <li><a href="#" ng-click="SpaceAction('rename', space.ID)">Rename</a></li>
-        <li><a href="#" ng-click="SpaceAction('quickadd', space.ID)">Quick Add</a></li>
-        <li><a href="#" ng-click="SpaceAction('close', space.ID)">Close</a></li>
+        <li><a href="#" ng-show="space.PinSortID === 0" ng-click="spaceAction('pin', space.ID)">Pin</a></li>
+        <li><a href="#" ng-show="space.PinSortID !== 0" ng-click="spaceAction('unpin', space.ID)">Unpin</a></li>
+        <li><a href="#" ng-click="spaceAction('duplicate', space.ID)">Duplicate</a></li>
+        <li><a href="#" ng-click="spaceAction('rename', space.ID)">Rename</a></li>
+        <li><a href="#" ng-click="spaceAction('quickadd', space.ID)">Quick Add</a></li>
+        <li><a href="#" ng-click="spaceAction('close', space.ID)">Close</a></li>
       </ul>
     </li>
     <!-- n more -->
     <li ng-show="spaceList.length > showcount">
       <div class="word-break">
+        <!-- trigger for context menu -->
         <a href="#" side-context-menu="more" class="btn btn-default btn-xs space-more">
-          <i class="li-space-hot-title">{{spaceList.length - showcount}}</i>
-          more
+          <i>{{spaceList.length - showcount}}</i> more
         </a>
       </div>
+      <!-- context menu -->
       <ul class="dropdown-menu side-context-menu" id="side-context-menu-more">
         <li ng-repeat="space in spaceList" ng-show="($index + 1) > showcount"><a href="#" class=" display-ellipsis">{{space.Name}}</a></li>
       </ul>

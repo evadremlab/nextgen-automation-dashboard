@@ -1,6 +1,3 @@
-
-Signup for creative cloud account
-
 ============================================================================================================
 
 First sprint includes:
@@ -28,16 +25,6 @@ Unpin a space by selecting "Unpin" from popover menu, or clicking on the pin ico
 
 ============================================================================================================
 
-REMOVED FROM index.html:
-  <!--<script src="js/vendor/bootstrap.min.js"></script>-->
-
-  <!-- requires jQuery and Bootstrap.js :-( -->
-  <!--<script src="js/core/directives/bootstrap-popover-menu.js"></script>-->
-
-  <!-- ui-bootstrap-tpls.min.js == (ui-bootstrap.min.js + html templates) -->
-  <!-- If you only included ui-bootstrap.min.js, you will also need to provide your own html templates -->
-
-
 i18n should be done on the server
 
 main.html         --> MainController
@@ -51,25 +38,15 @@ using some embedded templates eg:
 
 has a hidden div called "AlertMsg" that appears in the top left
 
-keep what I like from Permit Solution:
-
-  javascript namespace
-    C:\Users\dbalmer\Documents\GitHub\Role-Based-UI\Accela.RBUI\Scripts\SDK\core\global.js (DONE)
-  javascript modules (ie: "Accela.module("foo", {}); // but use revealing module pattern
-    eg: C:\Users\dbalmer\Documents\GitHub\Role-Based-UI\Accela.RBUI\Scripts\SDK\PermitSDK\address.js
-
 step 1 identify resources (DONE)
 step 2 create WebStorm app without .NET dependencies (DONE)
 step 3 clone dashboard using mock data (DONE)
 
-provided by Accela.Core
-  used by Accela.Automation
-
 CoreController (part of Accela.Core)
   app init (using CONFIG)
   using UserManager to get UserProfile and UserSpaces (part of Accela.Core)
-  should manage the spaces on the sidenav
-  the "+ New" button should just be a ui-sref="..." link
+  should manage the spaces on the Menu Bar
+  the "New" button should just be a ui-sref="..." link
   should listen to global events
     eg: stateChangeError
     how do other controllers subscribe to those events?
@@ -79,23 +56,21 @@ CoreController (part of Accela.Core)
     no need right now, but might manage navigation on forms
 
     DashboardController
+      current tasks
+      recent activity
+      recently closed spaces
+        sort (DONE)
+        search (is this part of Current Tasks?)
+        switch view (grid/list) (DONE)
+        click for more/less (DONE)
 
     ConsoleController
-
-
-Core - contains components shared between AA and ACA
+============================================================================================================
+Accela.Core - contains components shared between AA and ACA
   entities (STARTED)
   error handling (DONE)
   interval refresh (TBD)
   logging (DONE)
   modal dialogs - for messaging and forms (STARTED)
   models - Angularized entities (STARTED)
-DashboardController
-  current tasks
-  recent activity
-  recently closed spaces
-    sort (DONE)
-    search (is this part of Current Tasks?)
-    switch view (grid/list) (DONE)
-    click for more/less (DONE)
-ConsoleController
+============================================================================================================

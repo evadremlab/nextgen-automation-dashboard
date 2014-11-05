@@ -6,7 +6,7 @@
   // TODO: this should be generated from the server
 
   Accela.module('Config', {
-    'CURRENT_VERSION': '0.10.24',
+    'CURRENT_VERSION': '0.11.05',
     'PROJECT_NAME': 'NextGen Automation Prototype',
     'APP_ID': '635350425730842425',
     'APP_SECRET': '447a782f6a944c1caa626bf0e483c288',

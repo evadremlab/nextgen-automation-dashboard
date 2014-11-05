@@ -4,7 +4,7 @@ For prototyping the javascript framework requirements for the nextgen console.
 
 Version
 ---
-0.10.17
+0.11.05
 
 Prerequisites
 ---
@@ -18,7 +18,6 @@ Uses a number of open source projects:
 * [AngularJS](https://angularjs.org/) - JavaScript MVC framework.
 * [angular-ui-router](https://github.com/angular-ui/ui-router) - provides flexible routing with nested views.
 * [angular-bootstrap](http://angular-ui.github.io/bootstrap/) - AngularJS version of Twitter Bootstrap without jQuery or Bootstrap dependencies.
-* [bootstrap-css-only](https://github.com/fyockm/bootstrap-css-only) - to provide css and font resources to angular-bootstrap.
 * [angular-smart-table](https://github.com/lorenzofox3/Smart-Table) - provides table sorting, filtering and pagination.
 * [sprintf](https://github.com/alexei/sprintf.js) - sprintf implementation for the browser and node.js.
 * [underscore](http://underscorejs.org/) - provides collection, array and utility functions.

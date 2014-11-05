@@ -33,7 +33,7 @@
   <!--[if (gte IE 9) | (!IE)]><!-->
   <link rel="stylesheet" href="styles/app.css" />
   <script type="text/javascript" src="//use.typekit.net/grr3gwk.js"></script>
-  <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+  <script type="text/javascript">try { Typekit.load(); } catch (ignore) { }</script>
   <!--<![endif]-->
 
   <!-- TODO: get locale specific files -->
@@ -41,24 +41,11 @@
 </head>
 <body ng-cloak ng-controller="CoreController">
   <div class="page">
-    <div id="big-nav" class="main-nav"
-         ng-include="'views/core/sidenav.html'"></div>
-
-    <div xxx-ng-controller="ConfirmController">
-      <div xxx-ng-view class="page-content"></div>
-      <div xxx-ng-include src="'/AppViews/Common/Confirm.html'"></div>
-      <div xxx-ng-include src="'/AppViews/Common/MessageBox.html'"></div>
-    </div>
-
+    <div id="big-nav" class="main-nav" ng-include="'views/core/sidenav.html'"></div>
     <div class="page-content" ui-view=""></div>
-
-    <!-- <script type="text/ng-template" id="templateSpaceNew.html"> -->
-    <!-- temporarily moved to /views/templates/templateSpaceNew.js -->
-
   </div>
 
   <!-- bower:js -->
-  <!--<script src="bower_components/jquery/jquery.js"></script>-->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -93,6 +80,7 @@
   <script src="js/core/entities/user-space.js"></script>
   <script src="js/core/entities/user-workflow-task.js"></script>
   <script src="js/core/filters/customDateFilter.js"></script>
+  <script src="js/core/models/console-model.js"></script>
   <script src="js/core/models/user-model.js"></script>
   <script src="js/core/services/data-service.js"></script>
   <script src="js/core/services/http-interceptor.js"></script>
@@ -108,7 +96,6 @@
   <script src="js/automation/console/controllers/console-page-controller.js"></script>
   <script src="js/automation/console/controllers/add-portlet-controller.js"></script>
   <script src="js/automation/console/directives/portlet-iframe.js"></script>
-  <script src="js/automation/console/models/console-model.js"></script>
   <script src="js/automation/console/services/console-manager.js"></script>
 </body>
 </html>

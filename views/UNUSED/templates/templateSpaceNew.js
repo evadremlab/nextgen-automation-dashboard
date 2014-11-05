@@ -30,7 +30,7 @@
           <tr>
             <td>
               <ul class="list-unstyled">
-                <li><a href="#/Permits" class="btnclose" id="Permits" ng-click="Operate('Permits','/Permits');">Permits</a></li>
+                <li><a href="#/Permits" class="btnclose" id="Permits" ng-click="operate('Permits','/Permits');">Permits</a></li>
                 <li>23 total &nbsp;&nbsp; 4 updated</li>
               </ul>
             </td>
@@ -43,7 +43,7 @@
           <tr>
             <td>
               <ul class="list-unstyled">
-                <li><a href="#/Inspections" class="btnclose" id="Inspections" ng-click="Operate('Inspections','/Inspections');">Inspections</a></li>
+                <li><a href="#/Inspections" class="btnclose" id="Inspections" ng-click="operate('Inspections','/Inspections');">Inspections</a></li>
                 <li>12 total &nbsp;&nbsp; 6 updated</li>
               </ul>
             </td>
@@ -58,7 +58,7 @@
           <tr>
             <td>
               <ul class="list-unstyled">
-                <li><a class="btnclose" id="People" ng-click="Operate('People','/People');">People</a></li>
+                <li><a class="btnclose" id="People" ng-click="operate('People','/People');">People</a></li>
                 <li>12 total &nbsp;&nbsp; 2 updated</li>
               </ul>
             </td>
@@ -72,7 +72,7 @@
           <tr>
             <td>
               <ul class="list-unstyled">
-                <li><a class="btnclose" id="Locations" ng-click="Operate('Locations','/Locations');">Locations</a></li>
+                <li><a class="btnclose" id="Locations" ng-click="operate('Locations','/Locations');">Locations</a></li>
                 <li>45 total &nbsp;&nbsp; 41 updated</li>
               </ul>
             </td>
