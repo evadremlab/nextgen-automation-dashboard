@@ -1,3 +1,4 @@
+<!-- Main Menu -->
 <div id="tileGroupDiv">
   <ul class="text-center">
     <li sidenav-tooltip="Dashboard">
@@ -10,67 +11,54 @@
         <li><a href="#">Dashboard</a></li>
       </ul>
     </li>
-    <li sidenav-tooltip="Notifications">
-      <ul class="list-unstyled">
-        <li class="notification"><span class="info-number">16</span></li>
-        <li><a>Notifications</a></li>
-      </ul>
-    </li>
     <li sidenav-tooltip="Maps">
-      <ul class="list-unstyled no-bottom-border">
+      <ul class="list-unstyled">
         <li><img src="/images/layout/maps_icon.png" /></li>
-        <li><a>Maps</a></li>
+        <li><a href="#">Maps</a></li>
       </ul>
     </li>
-    <li class="li-space-new"><!-- NOTE: these are the sidenav buttons -->
-      <div class="row">
-        <div class="col-md-7 text-left">
-          <button type="button" class="space-new" ui-sref="console">
-            <b>Console</b>
-          </button>
-        </div>
-        <div class="col-md-5 hidden" style="padding-top:12px; xxx-display:none;" placement='right' template='templateSpaceNew.html' bs-popover>
-          <a data-toggle="popover" class="isfixed" data-trigger='click' data-container='body' rel="popover" data-html="true" href="#" xxx-href="javascript:void(0);"><div class="caret">  </div></a>
-        </div>
-      </div>
+    <li sidenav-tooltip="Search">
+      <ul class="list-unstyled">
+        <li><a href="#">search</a></li>
+      </ul>
     </li>
-    <li class="li-space-new">
-      <div class="row">
-        <div class="col-md-7 text-left">
-          <button type="button" id="btnSpaceNew" class="space-new" ng-click="changeUrl('spaceNew');">
-            <div style="color:#e17d00; top:0;" class="glyphicon glyphicon-plus"></div>
-            <b>New</b>
-          </button>
-        </div>
-        <div class="col-md-5 hidden" style="padding-top:12px; xxx-display:none;" placement='right' template='templateSpaceNew.html' bs-popover>
-          <a data-toggle="popover" class="isfixed" data-trigger='click' data-container='body' rel="popover" data-html="true" href="#" xxx-href="javascript:void(0);"><div class="caret">  </div></a>
-        </div>
-      </div>
+    <li sidenav-tooltip="New...">
+      <ul class="list-unstyled no-bottom-border">
+        <li><a href="#" ng-click="changeUrl('spaceNew')">new</a></li>
+      </ul>
     </li>
   </ul>
 </div>
+<!-- Spaces Menu -->
 <div class="spaces-group" id="spaceGroupDiv">
   <ul class="text-center">
+    <!-- Space -->
     <li class="li-space-hot animate-repeat" id="space_{{space.ID}}" ng-show="($index + 1) <= showcount" id="li_{{space.ID}}" ng-class="{'li-space-df' : SpaceSelectedId == space.ID, 'li-space-close' : clickID == space.ID}" ng-repeat="space in spaceList">
       <div class="unpin li-space-hot-title">
-        <div class="unpin-img" ng-show="space.PinSortID !== 0" ng-click="setClickSpace(space.ID); SpaceAction('Unpin', space.ID);" tooltip="Unpin" tooltip-trigger="mouseenter" tooltip-placement="right" tooltip-popup-delay="500">
+        <div class="unpin-img"
+             ng-show="space.PinSortID !== 0"
+             ng-click="setClickSpace(space.ID); SpaceAction('unpin', space.ID);"
+             tooltip="Unpin" tooltip-trigger="mouseenter" tooltip-placement="right" tooltip-popup-delay="500">
           <img alt="Unpin" src="/images/layout/pinned_icon.png" />
         </div>
       </div>
       <div class="row">
         <div class="col-md-12 word-break">
-          <a href="#" xxx-href="javascript:void(0);" id="{{space.ID}}" ng-dblclick="dblclick(space.ID, space.Name);" ng-click="clickrouting(space.ID, space.URL, space.SpaceType)">
-            <div><img id="imgspace{{space.ID}}" class="imgspace" ng-src="/images/layout/{{setimgcss(space.ID, space.SpaceType);}}" /></div>
-            <div class="li-space-hot-title space-name">{{substring(space.Name);}}<span class="sr-only">{{space.Name}}</span></div>
+          <a href="#"
+             ng-dblclick="dblclick(space.ID, space.Name);"
+             ng-click="clickrouting(space.ID, space.URL, space.SpaceType)">
+            <div><img ng-src="/images/layout/{{setimgcss(space.ID, space.SpaceType)}}" /></div>
+            <div class="li-space-hot-title space-name display-ellipsis">{{space.Name}}<span class="sr-only">{{space.Name}}</span></div>
           </a>
-          <!--<textarea id="textarea_{{space.ID}}" cols="13" ng-blur="UpdateSpaceList(space.ID)" xxx-style="display:none;" class="hidden">{{space.Name}}</textarea>-->
         </div>
+        <!-- trigger for context menu -->
         <div class="space-menu-btn-group" side-context-menu="{{space.ID}}">
           <a href="#" class="space-arrow-a space-menu-btn" ng-click="setClickSpace(space.ID);">
             <i class="caret"></i>
           </a>
         </div>
       </div>
+      <!-- context menu -->
       <ul class="dropdown-menu side-context-menu" id="side-context-menu-{{space.ID}}">
         <li><a href="#" ng-show="space.PinSortID === 0" ng-click="SpaceAction('pin', space.ID)">Pin</a></li>
         <li><a href="#" ng-show="space.PinSortID !== 0" ng-click="SpaceAction('unpin', space.ID)">Unpin</a></li>
@@ -80,6 +68,7 @@
         <li><a href="#" ng-click="SpaceAction('close', space.ID)">Close</a></li>
       </ul>
     </li>
+    <!-- n more -->
     <li ng-show="spaceList.length > showcount">
       <div class="word-break">
         <a href="#" side-context-menu="more" class="btn btn-default btn-xs space-more">
@@ -88,11 +77,12 @@
         </a>
       </div>
       <ul class="dropdown-menu side-context-menu" id="side-context-menu-more">
-        <li><a href="#">fubar</a></li>
+        <li ng-repeat="space in spaceList" ng-show="($index + 1) > showcount"><a href="#" class=" display-ellipsis">{{space.Name}}</a></li>
       </ul>
     </li>
   </ul>
 </div>
+<!-- Footer Menu -->
 <div id="nav-last-li">
   <ul>
     <li class="col-md-6"><a href="#" ng-click="userLogout();"><img src="/images/layout/settings_icon.png" alt="Setting" /></a></li>

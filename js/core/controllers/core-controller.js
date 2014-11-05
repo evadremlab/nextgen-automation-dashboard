@@ -12,8 +12,6 @@
 
     // PRIVATE data
 
-    var resizeTimer = null;
-
     // PUBLIC data
 
     $scope.activeSubMenu = $location.path();
@@ -22,8 +20,8 @@
 
     // EVENT handlers
 
-    // TODO: replace this with $state.go('xxx')
     $rootScope.$on('clickSpace', function (d, id, url) {
+      // TODO: replace this with $state.go('xxx')
       $log.info('clickSpace EVENT');
 //      $rootScope.SpaceSelectedId = id;
 //      $location.path(url);
@@ -123,7 +121,6 @@
 //      });
     };
 
-    // delete space by space id
     $scope.DeleteSpaceList = function (spaceID) {
       $log.info('$scope.DeleteSpaceList()');
 //      LoadingService.show();
@@ -351,15 +348,6 @@
 //      });
     };
 
-    $scope.substring = function (str) {
-      var subStr = str;
-      var len = 20;
-      if (str.length > len) {
-        subStr = str.substring(0, len / 2) + '-' + str.substring(len / 2, len) + '...';
-      }
-      return subStr;
-    };
-
     $scope.setimgcss = function (ID, spaceType) {
       var imgsrc = '';
 
@@ -553,6 +541,9 @@
 
     // PRIVATE methods
 
+    /**
+     * DONE
+     */
     function activate() {
       $log = $log.getInstance('CORE-CONTROLLER');
 
@@ -565,20 +556,8 @@
         userName: 'dbalmer'
       });
 
-////      $(document).ready(function () {
-////        //   resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
-////        if (!resizeTimer) {
-////          resizeTimer = setTimeout(calcSpacesCount, 1000);
-////          $scope.GetSpaceList();
-////        }
-////        else {
-////          resizeTimer = null;
-////        }
-////      });
-
       function resizeHandler() {
         $timeout(calcSpacesCount, 500);
-//        resizeTimer = resizeTimer ? null : setTimeout(calcSpacesCount, 1000);
       }
 
       angular.element($window).bind('resize', _.debounce(resizeHandler, 500));
@@ -586,6 +565,9 @@
       $scope.GetSpaceList();
     }
 
+    /**
+     * DONE
+     */
     function calcSpacesCount() {
       var moreHeight = 30;
       var navHeight = Accela.$('#big-nav').prop('offsetHeight');

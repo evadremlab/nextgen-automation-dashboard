@@ -39,6 +39,7 @@
 
   .main-nav .spaces-group {
     height: 100%;
+    margin-top: 6px;
   }
 
   .main-nav ul {
@@ -75,42 +76,6 @@
     position: relative;
     transition: 0.2s all ease;
   }
-
-  .main-nav .li-space-new {
-    margin: 5px;
-    height: 26px;
-  }
-
-    .main-nav .li-space-new .space-new {
-      width: 90px;
-      height: 26px;
-      padding: 0px !important;
-      border: 0px !important;
-      border-radius: 2px;
-      background-color: #FFF;
-    }
-
-      .main-nav .li-space-new .space-new:hover,
-      .main-nav .li-space-new .space-new:focus {
-        color: #e17d00;
-        text-decoration: none;
-      }
-
-    .main-nav .li-space-new .space-new h5 {
-      margin-left: 20px;
-      margin-right: 5px;
-      margin-top: 5px;
-      margin-bottom: 5px;
-      font-size: @font12;
-      font-style: normal;
-      font-weight: 600;
-    }
-
-    .main-nav .li-space-new .space-new b {
-      font-size: @font14;
-      font-weight: 600;
-      line-height: 26px;
-    }
 
   .main-nav .li-space-hot {
     margin-left: 5px;
@@ -238,22 +203,6 @@
     border-bottom: none !important;
   }
 
-  .notification {
-    padding-top: 8px;
-    height: 34px;
-  }
-
-  .info-number {
-    color: #cc0000 !important;
-    font-size: @font18 !important;
-    font-style: normal;
-    font-weight: 600;
-  }
-
-    .info-number:first-letter {
-      font-size: @font18;
-    }
-
 /* TINY NAVIGATION
 ============================================================================= */
 
@@ -303,11 +252,6 @@
     width: 50px;
   }
 
-  .main-nav .li-space-new .space-new {
-    width: 38px;
-    height: 24px;
-  }
-
   .main-nav .li-space-hot {
     width: 38px;
     height: 42px;
@@ -317,13 +261,6 @@
     .main-nav .li-space-hot > .row > .text-right {
       position: absolute;
       right: 0;
-      bottom: 0;
-      padding: 0;
-    }
-
-    .main-nav .li-space-new > .row > .col-md-5 {
-      position: absolute;
-      right: 2px;
       bottom: 0;
       padding: 0;
     }
@@ -352,7 +289,7 @@
     }
 
   #tileGroupDiv > .text-center > li > .list-unstyled > li:last-child > a,
-  #tileGroupDiv .li-space-new b, .main-nav .li-space-hot-title {
+  .main-nav .li-space-hot-title {
     display: none;
   }
 
@@ -376,6 +313,7 @@
   #side-context-menu-more { /* HACK - align with more pill */
     left: 7.7em;
     top: -0.5em;
+    min-width: 10em;
   }
   .side-context-menu li a {
     color: #000 !important;

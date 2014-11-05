@@ -5,9 +5,9 @@
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
-      <li><a href="#"><i></i>View Account</a></li>
-      <li><a href="#"><i></i>Preferences</a></li>
-      <li><a href="#" ng-click="userLogout()"><i></i>Logout</a></li>
+      <li><a ui-sref="console">Console</a></li>
+      <li><a href="#">Preferences</a></li>
+      <li><a href="#" ng-click="userLogout()">Logout</a></li>
     </ul>
     <span bind-once="" ng-bind="dashboard.currentUser.role"></span>
   </div>
